@@ -1,0 +1,45 @@
+# Remote MCP gateway (preview). Loopback listener only; terminate TLS in a reverse
+# proxy. Disabled by default: enable only after the launch, policy and workspace
+# files exist, owner-only, for the capicove service account.
+[Unit]
+Description=Capicove remote MCP endpoint (preview)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=capicove
+Group=capicove
+ExecStartPre=/opt/capicove/venv/bin/capicove mcp remote-check --config /etc/capicove/remote-launch.json
+ExecStart=/opt/capicove/venv/bin/capicove mcp serve-http --config /etc/capicove/remote-launch.json
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=60
+KillMode=mixed
+UMask=0077
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/etc/capicove
+ReadWritePaths=/var/lib/capicove
+StateDirectory=capicove
+StateDirectoryMode=0700
+
+[Install]
+WantedBy=multi-user.target

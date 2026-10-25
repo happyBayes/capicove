@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "capicove-retriever-opensearch"
+version = "0.1.0"
+description = "Lazy OpenSearch text retriever plugin for Capicove."
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+dependencies = [
+  "capicove>=0.1.0,<0.2",
+  "opensearch-py>=3,<4",
+]
+
+[project.entry-points."capicove.retrievers"]
+opensearch = "capicove_retriever_opensearch:opensearch_retriever_plugin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/capicove_retriever_opensearch"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "integration: tests against an isolated local OpenSearch container",
+  "e2e: installed-wheel end-to-end tests",
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/pyproject.toml", "/LICENSE", "/README.md"]

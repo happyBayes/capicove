@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/happyBayes/capicove/security/advisories/new
+    about: Report vulnerabilities privately; never disclose them in an issue.
+  - name: Design discussion
+    url: https://github.com/happyBayes/capicove/discussions
+    about: Use Discussions for open-ended ideas after Discussions is enabled.

@@ -1,0 +1,74 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.pdf binary
+*.png binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+
+# Public snapshots omit internal material without deleting development history.
+# This policy is independently checked by scripts/public_snapshot.py.
+/.internal export-ignore
+/.agents export-ignore
+/.codex export-ignore
+/.superpowers export-ignore
+/.cache export-ignore
+/.aws export-ignore
+/.ssh export-ignore
+/.huggingface export-ignore
+/.netrc export-ignore
+/.pypirc export-ignore
+/.npmrc export-ignore
+/.git-credentials export-ignore
+/.venv export-ignore
+/.worktrees export-ignore
+/docs/internal export-ignore
+/docs/prd export-ignore
+/docs/reports export-ignore
+/docs/superpowers export-ignore
+/sources export-ignore
+/reference export-ignore
+/tests/datasets export-ignore
+/artifacts export-ignore
+/data export-ignore
+/indexes export-ignore
+/models export-ignore
+/Models export-ignore
+/outputs export-ignore
+/output export-ignore
+/tmp export-ignore
+/site export-ignore
+/dist export-ignore
+/build export-ignore
+/Untitled export-ignore
+
+# Do not exclude the parent directory: Git must traverse it for the allowlist.
+/docs/development/** export-ignore
+/docs/development/audio-speech-eval-v1.json -export-ignore
+/docs/development/audio-tool-acceptance.md -export-ignore
+/docs/development/audio-transcription.md -export-ignore
+/docs/development/cli-mcp-capability-catalog.md -export-ignore
+/docs/development/code-search-eval-v1.json -export-ignore
+/docs/development/code-search-eval-heldout-v1.json -export-ignore
+/docs/development/document-graph-qualification.md -export-ignore
+/docs/development/image-models.md -export-ignore
+/docs/development/remote-mcp-capability-coverage.md -export-ignore
+/docs/development/remote-mcp-contracts-core.json -export-ignore
+/docs/development/remote-mcp-contracts-extended.json -export-ignore
+/docs/development/remote-mcp-core-payloads.json -export-ignore
+/docs/development/remote-mcp-operations.json -export-ignore
+/docs/development/testing.md -export-ignore
+/docs/development/video-retrieval-qualification.md -export-ignore
+/docs/development/workflow.md -export-ignore
+
+/assets/** export-ignore
+/assets/logo.png -export-ignore
+/assets/readme-wiki-result.svg -export-ignore

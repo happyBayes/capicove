@@ -1,0 +1,330 @@
+{
+  "schema": "capicove.code-search-eval.v1",
+  "corpus": "Capicove repository at commit 53fb8e0 (local processing only)",
+  "frozen_at": "2026-10-23",
+  "labelling": "relevance by relative path and optional symbol; chunk IDs are never labels",
+  "queries": [
+    {
+      "id": "id-01",
+      "category": "identifier",
+      "query": "WeightedReciprocalRankFusion",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/fusion.py",
+          "symbol": "WeightedReciprocalRankFusion"
+        }
+      ],
+      "definition": "WeightedReciprocalRankFusion"
+    },
+    {
+      "id": "id-02",
+      "category": "identifier",
+      "query": "chunk_markdown",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/local_retrieval.py",
+          "symbol": "chunk_markdown"
+        }
+      ],
+      "definition": "chunk_markdown"
+    },
+    {
+      "id": "id-03",
+      "category": "identifier",
+      "query": "RequestAdmission",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py",
+          "symbol": "RequestAdmission"
+        }
+      ],
+      "definition": "RequestAdmission"
+    },
+    {
+      "id": "id-04",
+      "category": "identifier",
+      "query": "SessionCapacity",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py",
+          "symbol": "SessionCapacity"
+        }
+      ],
+      "definition": "SessionCapacity"
+    },
+    {
+      "id": "id-05",
+      "category": "identifier",
+      "query": "RemoteReadHost",
+      "relevant": [
+        {
+          "path": "src/capicove/mcp/remote.py",
+          "symbol": "RemoteReadHost"
+        }
+      ],
+      "definition": "RemoteReadHost"
+    },
+    {
+      "id": "id-06",
+      "category": "identifier",
+      "query": "AudioClippingService",
+      "relevant": [
+        {
+          "path": "src/capicove/processing/audio/clipping.py",
+          "symbol": "AudioClippingService"
+        }
+      ],
+      "definition": "AudioClippingService"
+    },
+    {
+      "id": "id-07",
+      "category": "identifier",
+      "query": "ModelFactory",
+      "relevant": [
+        {
+          "path": "src/capicove/model/factory.py",
+          "symbol": "ModelFactory"
+        }
+      ],
+      "definition": "ModelFactory"
+    },
+    {
+      "id": "id-08",
+      "category": "identifier",
+      "query": "ProviderRegistry",
+      "relevant": [
+        {
+          "path": "src/capicove/model/registry.py",
+          "symbol": "ProviderRegistry"
+        }
+      ],
+      "definition": "ProviderRegistry"
+    },
+    {
+      "id": "id-09",
+      "category": "identifier",
+      "query": "decode_search_arguments",
+      "relevant": [
+        {
+          "path": "src/capicove/tools/search.py",
+          "symbol": "decode_search_arguments"
+        }
+      ],
+      "definition": "decode_search_arguments"
+    },
+    {
+      "id": "id-10",
+      "category": "identifier",
+      "query": "TextSearchService",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/text_search.py",
+          "symbol": "TextSearchService"
+        }
+      ],
+      "definition": "TextSearchService"
+    },
+    {
+      "id": "id-11",
+      "category": "identifier",
+      "query": "EvidenceToolHandler",
+      "relevant": [
+        {
+          "path": "src/capicove/tools/evidence.py",
+          "symbol": "EvidenceToolHandler"
+        }
+      ],
+      "definition": "EvidenceToolHandler"
+    },
+    {
+      "id": "id-12",
+      "category": "identifier",
+      "query": "compose_mcp_host",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/mcp_host.py",
+          "symbol": "compose_mcp_host"
+        }
+      ],
+      "definition": "compose_mcp_host"
+    },
+    {
+      "id": "id-13",
+      "category": "identifier",
+      "query": "load_configuration",
+      "relevant": [
+        {
+          "path": "src/capicove/model/configuration.py",
+          "symbol": "load_configuration"
+        }
+      ],
+      "definition": "load_configuration"
+    },
+    {
+      "id": "id-14",
+      "category": "identifier",
+      "query": "TemporalRange",
+      "relevant": [
+        {
+          "path": "src/capicove/contracts/retrieval.py",
+          "symbol": "TemporalRange"
+        }
+      ],
+      "definition": "TemporalRange"
+    },
+    {
+      "id": "qual-01",
+      "category": "qualified",
+      "query": "ProcessingFingerprint.from_manifest",
+      "relevant": [
+        {
+          "path": "src/capicove/contracts/retrieval.py",
+          "symbol": "from_manifest"
+        }
+      ]
+    },
+    {
+      "id": "qual-02",
+      "category": "qualified",
+      "query": "SessionCapacity.reserve",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py",
+          "symbol": "reserve"
+        }
+      ]
+    },
+    {
+      "id": "split-01",
+      "category": "split_identifier",
+      "query": "reciprocal rank fusion",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/fusion.py"
+        }
+      ]
+    },
+    {
+      "id": "split-02",
+      "category": "split_identifier",
+      "query": "session capacity reserve",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py"
+        }
+      ]
+    },
+    {
+      "id": "path-01",
+      "category": "path",
+      "query": "remote_sessions.py",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py"
+        }
+      ]
+    },
+    {
+      "id": "path-02",
+      "category": "path",
+      "query": "src/capicove/model/factory.py",
+      "relevant": [
+        {
+          "path": "src/capicove/model/factory.py"
+        }
+      ]
+    },
+    {
+      "id": "path-03",
+      "category": "path",
+      "query": "check_remote_mcp_coverage.py",
+      "relevant": [
+        {
+          "path": "scripts/check_remote_mcp_coverage.py"
+        }
+      ]
+    },
+    {
+      "id": "path-04",
+      "category": "path",
+      "query": "clip_models.py",
+      "relevant": [
+        {
+          "path": "src/capicove/processing/audio/clip_models.py"
+        }
+      ]
+    },
+    {
+      "id": "en-01",
+      "category": "english",
+      "query": "reject duplicate JSON fields before forwarding a request to the SDK",
+      "relevant": [
+        {
+          "path": "src/capicove/mcp/remote.py"
+        }
+      ]
+    },
+    {
+      "id": "en-02",
+      "category": "english",
+      "query": "non-empty half-open interval in integer milliseconds",
+      "relevant": [
+        {
+          "path": "src/capicove/contracts/retrieval.py"
+        }
+      ]
+    },
+    {
+      "id": "en-03",
+      "category": "english",
+      "query": "bounded request admission for a single remote gateway process",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py"
+        }
+      ]
+    },
+    {
+      "id": "en-04",
+      "category": "english",
+      "query": "split Markdown into deterministic bounded paragraph ranges",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/local_retrieval.py"
+        }
+      ]
+    },
+    {
+      "id": "zh-01",
+      "category": "chinese",
+      "query": "融合检索结果的排名",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/fusion.py"
+        }
+      ]
+    },
+    {
+      "id": "zh-02",
+      "category": "chinese",
+      "query": "远程会话容量限制",
+      "relevant": [
+        {
+          "path": "src/capicove/runtime/remote_sessions.py"
+        }
+      ]
+    },
+    {
+      "id": "none-01",
+      "category": "no_answer",
+      "query": "zzqx_quantum_teleport_handler",
+      "relevant": []
+    },
+    {
+      "id": "none-02",
+      "category": "no_answer",
+      "query": "kubernetes helm chart values",
+      "relevant": []
+    }
+  ]
+}

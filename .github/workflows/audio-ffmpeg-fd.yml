@@ -1,0 +1,44 @@
+name: Audio FFmpeg descriptor qualification
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  audio-ffmpeg-fd:
+    name: audio-ffmpeg-fd
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+      - name: Install checksum-pinned FFmpeg and FFprobe binaries
+        # Official package identity: https://packages.ubuntu.com/noble/amd64/ffmpeg/download
+        run: |
+          curl --fail --location --retry 3 \
+            https://archive.ubuntu.com/ubuntu/pool/universe/f/ffmpeg/ffmpeg_6.1.1-3ubuntu5_amd64.deb \
+            --output /tmp/capicove-ffmpeg.deb
+          echo '1a23baace5f2688a47e28119aedae6993cd638e6279a7227dfc52d9a337a1c17  /tmp/capicove-ffmpeg.deb' | sha256sum --check
+          sudo apt-get update
+          sudo apt-get install -y --allow-downgrades /tmp/capicove-ffmpeg.deb
+          ffmpeg -version
+          ffprobe -version
+          sha256sum /usr/bin/ffmpeg /usr/bin/ffprobe
+      - run: python -m pip install "uv==0.11.26"
+      - run: uv sync --frozen --no-default-groups --group test --extra mcp
+      - name: Require real descriptor-bound audio qualification with no skips
+        env:
+          CAPICOVE_REQUIRE_AUDIO_FFMPEG: "1"
+        run: >-
+          uv run --no-sync pytest --no-cov -q
+          tests/integration/processing/audio/test_audio_clip.py
+          tests/unit/processing/audio/test_clip_files.py
+          tests/unit/tools/test_audio_clip.py
+          tests/unit/cli/test_audio_clip.py
+          tests/e2e/test_audio_clip_wheel.py

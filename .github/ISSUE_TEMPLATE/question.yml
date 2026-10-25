@@ -1,0 +1,36 @@
+name: Question
+description: Ask a focused usage, development, or architecture question.
+title: "question: "
+labels: ["question", "needs-triage"]
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched documentation, issues, RFCs, and pull requests.
+          required: true
+        - label: This does not disclose a vulnerability, credential, or private user data.
+          required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to accomplish?
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Include relevant commands, documentation, and sanitized diagnostics.
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Specific question
+    validations:
+      required: true

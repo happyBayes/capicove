@@ -1,0 +1,85 @@
+name: Feature request
+description: Propose a testable Capicove capability or improvement.
+title: "feat: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the user problem before the implementation. Material changes to
+        contracts, storage formats, plugin interfaces, security boundaries, or
+        module dependencies must use the RFC form instead.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues, RFCs, and pull requests.
+          required: true
+        - label: This request describes one independently testable outcome.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who has the problem, in what context, and what is blocked today?
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe observable success without prescribing unnecessary implementation details.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Representative use case
+      description: Include a concrete workflow or example input and result.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: extension_point
+    attributes:
+      label: Likely extension point
+      options:
+        - Core contracts
+        - Source adapter
+        - Processor
+        - Embedding provider
+        - Retriever or reranker
+        - Execution backend
+        - API, CLI, or MCP
+        - Knowledge, Wiki, or evolution
+        - Export
+        - Documentation or developer experience
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Explain current workarounds or why existing capabilities are insufficient.
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Compatibility, privacy, security, and dependency impact
+      description: Identify new dependencies, network access, data handling, migration, or public-contract changes.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to help implement or test this request after scope approval.

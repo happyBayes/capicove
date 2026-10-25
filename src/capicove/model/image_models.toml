@@ -1,0 +1,114 @@
+manifest_version = 1
+
+[[models]]
+key = "aesthetics-cafe"
+repository = "cafeai/cafe_aesthetic"
+revision = "48a343764f786abc1ca8aaddfcd60a688a70da9b" # pragma: allowlist secret
+license = "agpl-3.0"
+license_url = "https://huggingface.co/cafeai/cafe_aesthetic/blob/48a343764f786abc1ca8aaddfcd60a688a70da9b/README.md"
+capability = "image_aesthetics_filter"
+adapter = "huggingface-aesthetics"
+architecture = "BeitForImageClassification"
+preprocess_revision = "transformers-auto-image-processor-v1"
+default = false
+restricted = true
+
+[models.settings]
+target_label = "aesthetic"
+
+[[models]]
+key = "nsfw-falconsai"
+repository = "Falconsai/nsfw_image_detection"
+revision = "04367978d3474804ab1a00a9bd6548b741764069" # pragma: allowlist secret
+license = "apache-2.0"
+license_url = "https://huggingface.co/Falconsai/nsfw_image_detection/blob/04367978d3474804ab1a00a9bd6548b741764069/README.md"
+capability = "image_nsfw_filter"
+adapter = "huggingface-image-classification"
+architecture = "ViTForImageClassification"
+preprocess_revision = "transformers-image-classification-v1"
+default = true
+restricted = false
+
+[models.settings]
+target_label = "nsfw"
+
+[[models]]
+key = "watermark-siglip2"
+repository = "prithivMLmods/Watermark-Detection-SigLIP2"
+revision = "ce32ed8fe48872dd7d15e1db2602a0d50ddceae0" # pragma: allowlist secret
+license = "apache-2.0"
+license_url = "https://huggingface.co/prithivMLmods/Watermark-Detection-SigLIP2/blob/ce32ed8fe48872dd7d15e1db2602a0d50ddceae0/README.md"
+capability = "image_watermark_filter"
+adapter = "huggingface-image-classification"
+architecture = "SiglipForImageClassification"
+preprocess_revision = "transformers-image-classification-v1"
+default = true
+restricted = false
+
+[models.settings]
+target_label = "Watermark"
+
+[[models]]
+key = "clip-vit-b32"
+repository = "openai/clip-vit-base-patch32"
+revision = "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268" # pragma: allowlist secret
+license = "mit"
+license_url = "https://huggingface.co/openai/clip-vit-base-patch32/blob/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/LICENSE"
+capability = "image_text_similarity_filter+image_pair_similarity_filter"
+adapter = "huggingface-clip-similarity"
+architecture = "CLIPModel"
+preprocess_revision = "transformers-clip-processor-v1"
+default = true
+restricted = false
+
+[[models]]
+key = "siglip2-base-patch16-224"
+repository = "google/siglip2-base-patch16-224"
+revision = "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2" # pragma: allowlist secret
+license = "apache-2.0"
+license_url = "https://huggingface.co/google/siglip2-base-patch16-224/blob/75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2/LICENSE"
+capability = "multimodal_embedding+image_text_ranking"
+adapter = "huggingface-siglip2-retrieval"
+architecture = "Siglip2Model"
+preprocess_revision = "transformers-siglip2-processor-v1"
+default = false
+restricted = false
+
+[[models]]
+key = "blip-itm-coco"
+repository = "Salesforce/blip-itm-base-coco"
+revision = "bed8ad38cb2d04a5a4bdf2d071b3c3c0a4aa724c" # pragma: allowlist secret
+license = "bsd-3-clause"
+license_url = "https://huggingface.co/Salesforce/blip-itm-base-coco/blob/bed8ad38cb2d04a5a4bdf2d071b3c3c0a4aa724c/README.md"
+capability = "image_text_matching_filter"
+adapter = "huggingface-blip-itm"
+architecture = "BlipForImageTextRetrieval"
+preprocess_revision = "transformers-blip-itm-processor-v1"
+default = true
+restricted = false
+
+[[models]]
+key = "blip-caption-base"
+repository = "Salesforce/blip-image-captioning-base"
+revision = "82a37760796d32b1411fe092ab5d4e227313294b" # pragma: allowlist secret
+license = "bsd-3-clause"
+license_url = "https://huggingface.co/Salesforce/blip-image-captioning-base/blob/82a37760796d32b1411fe092ab5d4e227313294b/README.md"
+capability = "imgdiff_difference_caption_generator_mapper:region-caption"
+adapter = "huggingface-region-caption"
+architecture = "BlipForConditionalGeneration"
+preprocess_revision = "transformers-caption-pipelines-v2"
+default = true
+restricted = false
+
+[[models]]
+key = "smolvlm-256m-instruct"
+repository = "HuggingFaceTB/SmolVLM-256M-Instruct" # pragma: allowlist secret
+revision = "7e3e67edbbed1bf9888184d9df282b700a323964" # pragma: allowlist secret
+license = "apache-2.0"
+license_url = "https://huggingface.co/HuggingFaceTB/SmolVLM-256M-Instruct/blob/7e3e67edbbed1bf9888184d9df282b700a323964/README.md"
+capability = "imgdiff_difference_caption_generator_mapper:difference-caption"
+adapter = "huggingface-difference-caption"
+architecture = "Idefics3ForConditionalGeneration"
+preprocess_revision = "transformers-caption-pipelines-v2"
+default = true
+restricted = false

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "capicove-retriever-faiss"
+version = "0.1.0"
+description = "Lazy local FAISS HNSW visual retriever plugin for Capicove."
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+dependencies = [
+  "capicove>=0.1.0,<0.2",
+  "faiss-cpu>=1.9,<2",
+  "numpy>=1.26,<3",
+]
+
+[project.entry-points."capicove.retrievers"]
+faiss = "capicove_retriever_faiss:faiss_retriever_plugin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/capicove_retriever_faiss"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "integration: opt-in tests against an explicitly provisioned native FAISS runtime",
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/pyproject.toml", "/LICENSE", "/README.md"]

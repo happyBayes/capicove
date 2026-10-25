@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "capicove-execution-spark"
+version = "0.1.0"
+description = "Lazy Spark batch execution backend for Capicove."
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+dependencies = [
+  "capicove>=0.1.0,<0.2",
+  "pyspark>=4.1,<4.3",
+]
+
+[dependency-groups]
+ci = [
+  "bandit>=1.8,<2",
+  "jsonschema>=4.23,<5",
+  "mypy>=1.15,<2",
+  "pip-audit>=2.8,<3",
+  "pytest>=8.3,<10",
+  "ruff>=0.11,<1",
+]
+
+[project.entry-points."capicove.execution_backends"]
+spark = "capicove_execution_spark:spark_execution_backend_plugin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/capicove_execution_spark"]
+
+[tool.pytest.ini_options]
+markers = ["spark: tests that require a local Spark runtime"]
+
+[tool.uv.sources]
+capicove = { path = "../..", editable = true }
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/pyproject.toml", "/LICENSE", "/README.md"]

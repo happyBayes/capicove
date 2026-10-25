@@ -1,0 +1,139 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version already present in all six packages (without v)
+        required: true
+        default: "0.1.0"
+        type: string
+      publish:
+        description: Publish verified artifacts from a matching version tag
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  UV_VERSION: "0.11.26"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject an invalid publication context
+        env:
+          CAPICOVE_RELEASE_VERSION: ${{ inputs.version }}
+          CAPICOVE_PUBLISH: ${{ inputs.publish }}
+          CAPICOVE_PUBLISH_REPOSITORY: ${{ vars.CAPICOVE_PUBLISH_REPOSITORY }}
+        run: |
+          if [ "$CAPICOVE_PUBLISH" = true ]; then
+            test -n "$CAPICOVE_PUBLISH_REPOSITORY"
+            test "$GITHUB_REPOSITORY" = "$CAPICOVE_PUBLISH_REPOSITORY"
+            test "$GITHUB_REF_TYPE" = tag
+            test "$GITHUB_REF_NAME" = "v$CAPICOVE_RELEASE_VERSION"
+          fi
+  checks:
+    needs: validate
+    uses: ./.github/workflows/ci.yml
+  security:
+    needs: validate
+    uses: ./.github/workflows/security.yml
+
+  build:
+    needs: [checks, security]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.11"
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group release
+      - name: Build and inspect the exact release inventory
+        env:
+          CAPICOVE_RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          uv run --no-sync python scripts/release_packages.py --version "$CAPICOVE_RELEASE_VERSION" --build --output dist
+          uv run --no-sync twine check --strict dist/*.whl dist/*.tar.gz
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-distributions
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
+
+  install:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13", "3.14"]
+        profile: [interfaces]
+        include:
+          - {python: "3.11", profile: base}
+          - {python: "3.11", profile: spark}
+          - {python: "3.11", profile: paddle}
+          - {python: "3.11", profile: elasticsearch}
+          - {python: "3.11", profile: opensearch}
+          - {python: "3.11", profile: faiss}
+          - {python: "3.11", profile: generation}
+          - {python: "3.11", profile: knowledge}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group security
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-distributions
+          path: dist/
+      - name: Verify checksums
+        working-directory: dist
+        run: sha256sum --check SHA256SUMS
+      - name: Exercise an isolated installation and audit its resolved dependencies
+        env:
+          CAPICOVE_RELEASE_PROFILE: ${{ matrix.profile }}
+        run: uv run --no-sync python scripts/release_smoke.py --dist dist --profile "$CAPICOVE_RELEASE_PROFILE" --audit --report install-report.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: install-${{ matrix.python }}-${{ matrix.profile }}
+          path: install-report.json
+          if-no-files-found: error
+
+  publish:
+    needs: [build, install]
+    if: ${{ inputs.publish && vars.CAPICOVE_PUBLISH_REPOSITORY != '' && github.repository == vars.CAPICOVE_PUBLISH_REPOSITORY && github.ref_type == 'tag' && github.ref_name == format('v{0}', inputs.version) }}
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/capicove/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.11"
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-distributions
+          path: dist/
+      - name: Verify approved artifacts
+        working-directory: dist
+        run: sha256sum --check SHA256SUMS
+      - name: Publish core with PyPI Trusted Publishing
+        run: uv publish --trusted-publishing always dist/capicove-*.whl dist/capicove-*.tar.gz
+      - name: Publish companion plugins with PyPI Trusted Publishing
+        run: uv publish --trusted-publishing always dist/capicove_*.whl dist/capicove_*.tar.gz

@@ -1,0 +1,25 @@
+schema_version = 2
+max_instances = 1
+
+[profiles.qwen35-9b]
+transport = "http"
+provider = "openai-vlm"
+capability = "multimodal_generation"
+endpoint = "http://127.0.0.1:8001/v1"
+model = "Qwen/Qwen3.5-9B"
+# Public upstream model commit, not a credential.
+model_revision = "c202236235762e1c871ad0ccb60c8ee5ba337b9a" # pragma: allowlist secret
+allow_network = true
+api_key_env = "CAPICOVE_VLM_API_KEY" # pragma: allowlist secret
+modalities = ["image", "video"]
+token_counting = "vllm"
+max_images = 8
+max_videos = 1
+max_output_tokens = 4096
+timeout_seconds = 120
+
+[profiles.qwen35-9b.chat_template_kwargs]
+enable_thinking = false
+
+[bindings]
+"assistant.vision" = "qwen35-9b"

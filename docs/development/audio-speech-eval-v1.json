@@ -1,0 +1,245 @@
+{
+  "schema": "capicove.audio-speech-eval.v1",
+  "frozen_at": "2026-10-23",
+  "synthesis": "FFmpeg lavfi flite (default voice), 16 kHz mono WAV, generated locally at evaluation time",
+  "labelling": "Each query is a paraphrase written before any run; the relevant clip is the one speaking the matching sentence. No-answer queries have no relevant clip.",
+  "clips": [
+    {
+      "id": "train",
+      "text": "The last train to Edinburgh leaves from platform nine at seven fifteen this evening."
+    },
+    {
+      "id": "rain",
+      "text": "Heavy rain is expected tomorrow morning, so the outdoor market will close early."
+    },
+    {
+      "id": "dentist",
+      "text": "Your dentist appointment has been moved to Thursday at half past two."
+    },
+    {
+      "id": "oven",
+      "text": "Preheat the oven to two hundred degrees before you put the bread inside."
+    },
+    {
+      "id": "passport",
+      "text": "Remember to bring your passport and boarding pass to the airport check in desk."
+    },
+    {
+      "id": "meeting",
+      "text": "The quarterly budget meeting starts at nine in conference room B."
+    },
+    {
+      "id": "dog",
+      "text": "Our neighbour's dog barks every night when the delivery truck arrives."
+    },
+    {
+      "id": "library",
+      "text": "The city library will be closed on Monday for a public holiday."
+    },
+    {
+      "id": "battery",
+      "text": "The laptop battery is low, please plug in the charger now."
+    },
+    {
+      "id": "football",
+      "text": "The home team won the football match by three goals to one."
+    },
+    {
+      "id": "garden",
+      "text": "Water the tomato plants in the garden twice a week during summer."
+    },
+    {
+      "id": "password",
+      "text": "Your account password will expire in five days, please choose a new one."
+    },
+    {
+      "id": "concert",
+      "text": "Tickets for the jazz concert on Saturday are sold out."
+    },
+    {
+      "id": "medicine",
+      "text": "Take one tablet of the medicine after breakfast and one after dinner."
+    },
+    {
+      "id": "traffic",
+      "text": "There is a long traffic jam on the motorway because of an accident."
+    },
+    {
+      "id": "printer",
+      "text": "The printer on the third floor is out of paper again."
+    },
+    {
+      "id": "birthday",
+      "text": "We are planning a surprise birthday party for Anna next Friday."
+    },
+    {
+      "id": "museum",
+      "text": "The science museum offers free entry for children under twelve."
+    },
+    {
+      "id": "flight",
+      "text": "Flight two four seven to Tokyo has been delayed by forty minutes."
+    },
+    {
+      "id": "coffee",
+      "text": "The coffee machine in the kitchen makes a loud noise when it is cleaning itself."
+    }
+  ],
+  "queries": [
+    {
+      "id": "q-train",
+      "query": "when does the evening train to Edinburgh depart",
+      "relevant": [
+        "train"
+      ]
+    },
+    {
+      "id": "q-rain",
+      "query": "weather forecast says the outdoor market shuts because of rain",
+      "relevant": [
+        "rain"
+      ]
+    },
+    {
+      "id": "q-dentist",
+      "query": "rescheduled dental visit",
+      "relevant": [
+        "dentist"
+      ]
+    },
+    {
+      "id": "q-oven",
+      "query": "how hot should the oven be for baking bread",
+      "relevant": [
+        "oven"
+      ]
+    },
+    {
+      "id": "q-passport",
+      "query": "documents needed at the airport",
+      "relevant": [
+        "passport"
+      ]
+    },
+    {
+      "id": "q-meeting",
+      "query": "where is the budget meeting held",
+      "relevant": [
+        "meeting"
+      ]
+    },
+    {
+      "id": "q-dog",
+      "query": "a dog that barks at night",
+      "relevant": [
+        "dog"
+      ]
+    },
+    {
+      "id": "q-library",
+      "query": "library opening hours on the holiday",
+      "relevant": [
+        "library"
+      ]
+    },
+    {
+      "id": "q-battery",
+      "query": "computer needs charging",
+      "relevant": [
+        "battery"
+      ]
+    },
+    {
+      "id": "q-football",
+      "query": "result of the soccer game",
+      "relevant": [
+        "football"
+      ]
+    },
+    {
+      "id": "q-garden",
+      "query": "how often to water tomatoes",
+      "relevant": [
+        "garden"
+      ]
+    },
+    {
+      "id": "q-password",
+      "query": "change my login password soon",
+      "relevant": [
+        "password"
+      ]
+    },
+    {
+      "id": "q-concert",
+      "query": "no more seats for the jazz show",
+      "relevant": [
+        "concert"
+      ]
+    },
+    {
+      "id": "q-medicine",
+      "query": "dosage instructions for the pills",
+      "relevant": [
+        "medicine"
+      ]
+    },
+    {
+      "id": "q-traffic",
+      "query": "road accident causing delays",
+      "relevant": [
+        "traffic"
+      ]
+    },
+    {
+      "id": "q-printer",
+      "query": "office printer has no paper",
+      "relevant": [
+        "printer"
+      ]
+    },
+    {
+      "id": "q-birthday",
+      "query": "secret party for a birthday",
+      "relevant": [
+        "birthday"
+      ]
+    },
+    {
+      "id": "q-museum",
+      "query": "kids get into the museum for free",
+      "relevant": [
+        "museum"
+      ]
+    },
+    {
+      "id": "q-flight",
+      "query": "delayed plane to Japan",
+      "relevant": [
+        "flight"
+      ]
+    },
+    {
+      "id": "q-coffee",
+      "query": "noisy coffee maker",
+      "relevant": [
+        "coffee"
+      ]
+    },
+    {
+      "id": "none-0",
+      "query": "quantum chromodynamics lattice simulation",
+      "relevant": []
+    },
+    {
+      "id": "none-1",
+      "query": "recipe for fermented shark",
+      "relevant": []
+    },
+    {
+      "id": "none-2",
+      "query": "medieval castle siege engines",
+      "relevant": []
+    }
+  ]
+}

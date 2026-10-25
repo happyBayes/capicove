@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "synthetic_profile": "synthetic-cpu",
+  "provenance": "Authored local identity and process fixtures; no user content or models",
+  "production_qualification": false,
+  "real_provider_assets": [],
+  "required_external_profiles": ["linux-isolation", "real-models", "two-identity-providers", "typescript-client", "24-hour-soak"]
+}

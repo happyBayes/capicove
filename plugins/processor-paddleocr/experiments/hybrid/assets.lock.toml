@@ -1,0 +1,73 @@
+# Public model revisions and content hashes, not credentials.
+[models.el]
+revision = "b15bcf2467a03a0c079baa4b0347da51e89aaaba" # pragma: allowlist secret - public model identity
+remote_missing_intentionally = [
+    ".gitattributes",
+]
+
+[models.el.files."README.md"]
+sha256 = "73226d6c1930708c2994125f3d469a75bce00d6b4fd6ace0159e8f6d6ef6c12f" # pragma: allowlist secret - public model identity
+size = 7761
+
+[models.el.files."config.json"]
+sha256 = "34b40878f0fa002a74d66d5298b1ccee45e114c5fda702159c70d3c7864703ef" # pragma: allowlist secret - public model identity
+size = 8911
+
+[models.el.files."inference.json"]
+sha256 = "7fb97d32c52562deb0a0654e0839acbb54cacc0441a857cc1d66e12892337e41" # pragma: allowlist secret - public model identity
+size = 217712
+
+[models.el.files."inference.pdiparams"]
+sha256 = "4d69bbb8ed9f84373631d121ab459f8583cd978df813b5fb9b139b7783b05fbd" # pragma: allowlist secret - public model identity
+size = 7732627
+
+[models.el.files."inference.yml"]
+sha256 = "17d85b2fe2d2f24cd4ab07bcbc33e0c126859b956ced36e281dc65e2d0c1f0bf" # pragma: allowlist secret - public model identity
+size = 3317
+
+[models.en]
+revision = "267c36e24c331595590fe7bd72bde2436fd286f2" # pragma: allowlist secret - public model identity
+remote_missing_intentionally = [
+    ".gitattributes",
+]
+
+[models.en.files."README.md"]
+sha256 = "4c1cfd6e103b0966fe97505b5254cfa35a931d47d7effca97a9db47fb57dd699" # pragma: allowlist secret - public model identity
+size = 6908
+
+[models.en.files."config.json"]
+sha256 = "16103ac291a82fca50f0bb000d62a4b8168f6042f03c89c44cf32f241d1eb1f2" # pragma: allowlist secret - public model identity
+size = 10455
+
+[models.en.files."inference.json"]
+sha256 = "fd1b6ec722ea841a72d3ba43e527df1d1066d5d7808e0503ee3eec7265188753" # pragma: allowlist secret - public model identity
+size = 217712
+
+[models.en.files."inference.pdiparams"]
+sha256 = "3ec8a97ed6cefe8568d3e2ee90bb193299b566a7661aa4fd52d224b96b59f66b" # pragma: allowlist secret - public model identity
+size = 7772315
+
+[models.en.files."inference.yml"]
+sha256 = "27e91d0582f40168aa218303c76e184bc78fa7a5d105aad0cfbad8458b441067" # pragma: allowlist secret - public model identity
+size = 3964
+
+[models.server]
+revision = "b26c3587fda8da3c8ec0ce357214b4d661ff1558" # pragma: allowlist secret - public model identity
+
+[models.server.files."config.json"]
+sha256 = "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51" # pragma: allowlist secret - public model identity
+
+[models.server.files."README.md"]
+sha256 = "519eba1704ddeb8d3e68c4f54221dde11074be0644197cdc4d5581b6d74bd62c" # pragma: allowlist secret - public model identity
+
+[models.server.files."inference.json"]
+sha256 = "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb" # pragma: allowlist secret - public model identity
+
+[models.server.files.".gitattributes"]
+sha256 = "a3a43406012ee8c7b9b38dfab1b11610f33e8245cd864a9a9302d042616a859e" # pragma: allowlist secret - public model identity
+
+[models.server.files."inference.pdiparams"]
+sha256 = "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77" # pragma: allowlist secret - public model identity
+
+[models.server.files."inference.yml"]
+sha256 = "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d" # pragma: allowlist secret - public model identity

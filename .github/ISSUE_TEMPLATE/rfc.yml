@@ -1,0 +1,74 @@
+name: Request for comments
+description: Propose a material architecture, contract, compatibility, or governance change.
+title: "rfc: "
+labels: ["rfc", "needs-design-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Open the RFC before implementation. An accepted RFC records the problem and
+        chosen direction; an ADR records the final long-lived decision.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: State the decision being proposed in a few sentences.
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation and evidence
+      description: Explain the current constraint and include measured or reproducible evidence.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Detailed proposal
+      description: Define interfaces, ownership, data flow, failure behavior, and operational impact.
+    validations:
+      required: true
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and migration
+      description: Cover APIs, schemas, persistent data, plugins, CLI/MCP behavior, rollout, and rollback.
+    validations:
+      required: true
+
+  - type: textarea
+    id: trust
+    attributes:
+      label: Security, privacy, and trust boundaries
+      description: Cover credentials, network access, untrusted input, consent, retention, telemetry, and isolation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Compare at least one credible alternative and the option of making no change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation and acceptance criteria
+      description: Define tests, benchmarks, observability, and measurable exit criteria.
+    validations:
+      required: true
+
+  - type: input
+    id: owners
+    attributes:
+      label: Proposed owners and reviewers
+      placeholder: "@user, @team"
+    validations:
+      required: true

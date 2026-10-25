@@ -1,0 +1,34 @@
+# Source publication policy. Internal files remain in the development repository.
+# Keep .gitattributes aligned; the snapshot inspector independently enforces this.
+private_directories = [
+  ".internal", ".agents", ".codex", ".superpowers", ".cache", ".venv", ".worktrees",
+  ".aws", ".ssh", ".huggingface",
+  "docs/internal", "docs/prd", "docs/reports", "docs/superpowers",
+  "sources", "reference", "tests/datasets", "artifacts", "data", "indexes",
+  "models", "Models", "outputs", "output", "tmp", "site", "dist", "build",
+]
+
+# These development files are public contracts, authored corpora or procedures.
+# Every other file under docs/development is private by default.
+public_development_files = [
+  "audio-speech-eval-v1.json",
+  "audio-tool-acceptance.md",
+  "audio-transcription.md",
+  "cli-mcp-capability-catalog.md",
+  "code-search-eval-v1.json",
+  "code-search-eval-heldout-v1.json",
+  "document-graph-qualification.md",
+  "image-models.md",
+  "remote-mcp-capability-coverage.md",
+  "remote-mcp-contracts-core.json",
+  "remote-mcp-contracts-extended.json",
+  "remote-mcp-core-payloads.json",
+  "remote-mcp-operations.json",
+  "testing.md",
+  "video-retrieval-qualification.md",
+  "workflow.md",
+]
+
+# README uses the project logo and authored result illustration.
+# Concept references and unused variants remain private.
+public_assets = ["assets/logo.png", "assets/readme-wiki-result.svg"]

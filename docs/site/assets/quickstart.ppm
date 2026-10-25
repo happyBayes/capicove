@@ -1,0 +1,6 @@
+P3
+# Synthetic four-pixel RGB fixture; no user content.
+2 2
+255
+255 0 0   0 255 0
+0 0 255   255 255 255

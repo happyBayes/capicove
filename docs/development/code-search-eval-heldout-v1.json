@@ -1,0 +1,349 @@
+{
+  "schema": "capicove.code-search-eval.v1",
+  "corpus": "S3 snapshot dae90c7 (150 files of src/ and scripts/ at 53fb8e0)",
+  "frozen_at": "2026-10-23",
+  "split": "held-out",
+  "labelling": "Authored after the tuning set and before any held-out run; labels name source paths and symbols, independent of chunk IDs. `context` lists related units whose presence in the top 10 measures relation-context coverage.",
+  "queries": [
+    {
+      "id": "h-id-01",
+      "category": "identifier",
+      "query": "HmacSearchCursorCodec",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/cursor.py",
+          "symbol": "HmacSearchCursorCodec"
+        }
+      ],
+      "definition": "HmacSearchCursorCodec"
+    },
+    {
+      "id": "h-id-02",
+      "category": "identifier",
+      "query": "temporal_iou",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/temporal.py",
+          "symbol": "temporal_iou"
+        }
+      ],
+      "definition": "temporal_iou"
+    },
+    {
+      "id": "h-id-03",
+      "category": "identifier",
+      "query": "FfprobeAudioStreamInspector",
+      "relevant": [
+        {
+          "path": "src/capicove/processing/audio/_adapters/ffprobe.py",
+          "symbol": "FfprobeAudioStreamInspector"
+        }
+      ],
+      "definition": "FfprobeAudioStreamInspector"
+    },
+    {
+      "id": "h-id-04",
+      "category": "identifier",
+      "query": "normalized_rrf",
+      "relevant": [
+        {
+          "path": "src/capicove/contracts/rank_fusion.py",
+          "symbol": "normalized_rrf"
+        }
+      ],
+      "definition": "normalized_rrf"
+    },
+    {
+      "id": "h-id-05",
+      "category": "identifier",
+      "query": "VideoQueryPlanner",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/video_planning.py",
+          "symbol": "VideoQueryPlanner"
+        }
+      ],
+      "definition": "VideoQueryPlanner"
+    },
+    {
+      "id": "h-id-06",
+      "category": "identifier",
+      "query": "verify_model_installation",
+      "relevant": [
+        {
+          "path": "src/capicove/model/receipt.py",
+          "symbol": "verify_model_installation"
+        }
+      ],
+      "definition": "verify_model_installation"
+    },
+    {
+      "id": "h-qual-01",
+      "category": "qualified",
+      "query": "HmacSearchCursorCodec.encode",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/cursor.py",
+          "symbol": "encode"
+        }
+      ]
+    },
+    {
+      "id": "h-qual-02",
+      "category": "qualified",
+      "query": "TemporalCandidateAssembler.assemble",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/temporal.py",
+          "symbol": "assemble"
+        }
+      ]
+    },
+    {
+      "id": "h-qual-03",
+      "category": "qualified",
+      "query": "BgeReranker.rerank",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/bge_reranker.py",
+          "symbol": "rerank"
+        }
+      ]
+    },
+    {
+      "id": "h-split-01",
+      "category": "split_identifier",
+      "query": "stale cursor error",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/cursor.py",
+          "symbol": "StaleCursorError"
+        }
+      ]
+    },
+    {
+      "id": "h-split-02",
+      "category": "split_identifier",
+      "query": "deduplicate segments",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/temporal.py",
+          "symbol": "deduplicate_segments"
+        }
+      ]
+    },
+    {
+      "id": "h-split-03",
+      "category": "split_identifier",
+      "query": "rank scores",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/reranking.py",
+          "symbol": "rank_scores"
+        }
+      ]
+    },
+    {
+      "id": "h-path-01",
+      "category": "path",
+      "query": "scale_codec.py",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/scale_codec.py"
+        }
+      ]
+    },
+    {
+      "id": "h-path-02",
+      "category": "path",
+      "query": "src/capicove/model/downloader.py",
+      "relevant": [
+        {
+          "path": "src/capicove/model/downloader.py"
+        }
+      ]
+    },
+    {
+      "id": "h-path-03",
+      "category": "path",
+      "query": "bge_reranker.py",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/bge_reranker.py"
+        }
+      ]
+    },
+    {
+      "id": "h-en-01",
+      "category": "english",
+      "query": "verify the signature of a search pagination cursor",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/cursor.py"
+        }
+      ]
+    },
+    {
+      "id": "h-en-02",
+      "category": "english",
+      "query": "merge overlapping video segments by temporal intersection over union",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/temporal.py",
+          "symbol": "deduplicate_segments"
+        }
+      ],
+      "context": [
+        {
+          "path": "src/capicove/retrieval/temporal.py",
+          "symbol": "temporal_iou"
+        },
+        {
+          "path": "src/capicove/retrieval/temporal.py",
+          "symbol": "_sort_key"
+        }
+      ]
+    },
+    {
+      "id": "h-en-03",
+      "category": "english",
+      "query": "count audio streams with ffprobe without reading stream metadata",
+      "relevant": [
+        {
+          "path": "src/capicove/processing/audio/_adapters/ffprobe.py",
+          "symbol": "inspect"
+        }
+      ],
+      "context": [
+        {
+          "path": "src/capicove/processing/audio/_adapters/ffprobe.py",
+          "symbol": "_remaining_timeout"
+        },
+        {
+          "path": "src/capicove/processing/audio/_adapters/ffprobe.py",
+          "symbol": "_run_probe"
+        }
+      ]
+    },
+    {
+      "id": "h-en-04",
+      "category": "english",
+      "query": "download image models with the Hugging Face command line",
+      "relevant": [
+        {
+          "path": "src/capicove/model/downloader.py",
+          "symbol": "download_models"
+        }
+      ],
+      "context": [
+        {
+          "path": "src/capicove/model/downloader.py",
+          "symbol": "_existing_result"
+        },
+        {
+          "path": "src/capicove/model/downloader.py",
+          "symbol": "_download_one"
+        }
+      ]
+    },
+    {
+      "id": "h-en-05",
+      "category": "english",
+      "query": "parse the TOML lock file that lists image models",
+      "relevant": [
+        {
+          "path": "src/capicove/model/manifest.py",
+          "symbol": "parse_image_model_manifest"
+        }
+      ],
+      "context": [
+        {
+          "path": "src/capicove/model/manifest.py",
+          "symbol": "_parse_manifest"
+        }
+      ]
+    },
+    {
+      "id": "h-en-06",
+      "category": "english",
+      "query": "validate a rerank request and its top n bound",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/reranking.py",
+          "symbol": "validate_rerank_request"
+        }
+      ]
+    },
+    {
+      "id": "h-zh-01",
+      "category": "chinese",
+      "query": "签名的搜索分页游标",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/cursor.py"
+        }
+      ]
+    },
+    {
+      "id": "h-zh-02",
+      "category": "chinese",
+      "query": "视频片段的时间交并比",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/temporal.py"
+        }
+      ]
+    },
+    {
+      "id": "h-zh-03",
+      "category": "chinese",
+      "query": "用 ffprobe 统计音频流数量",
+      "relevant": [
+        {
+          "path": "src/capicove/processing/audio/_adapters/ffprobe.py"
+        }
+      ]
+    },
+    {
+      "id": "h-zh-04",
+      "category": "chinese",
+      "query": "下载图像模型",
+      "relevant": [
+        {
+          "path": "src/capicove/model/downloader.py"
+        }
+      ]
+    },
+    {
+      "id": "h-zh-05",
+      "category": "chinese",
+      "query": "对候选文档重新排序",
+      "relevant": [
+        {
+          "path": "src/capicove/retrieval/reranking.py"
+        },
+        {
+          "path": "src/capicove/retrieval/bge_reranker.py"
+        }
+      ]
+    },
+    {
+      "id": "h-none-01",
+      "category": "no_answer",
+      "query": "blockchain smart contract gas estimator",
+      "relevant": []
+    },
+    {
+      "id": "h-none-02",
+      "category": "no_answer",
+      "query": "zzqx_photon_compiler_pass",
+      "relevant": []
+    },
+    {
+      "id": "h-none-03",
+      "category": "no_answer",
+      "query": "PostgreSQL logical replication slot lag",
+      "relevant": []
+    }
+  ]
+}

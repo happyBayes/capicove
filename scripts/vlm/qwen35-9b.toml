@@ -1,0 +1,31 @@
+repository = "Qwen/Qwen3.5-9B"
+# Public upstream model commit, not a credential.
+revision = "c202236235762e1c871ad0ccb60c8ee5ba337b9a" # pragma: allowlist secret
+license = "apache-2.0"
+vllm_version = "0.32.0rc1.dev41+g426f3bd36"
+served_model_name = "Qwen/Qwen3.5-9B"
+arguments = [
+  "--host",
+  "127.0.0.1",
+  "--port",
+  "8001",
+  "--dtype",
+  "bfloat16",
+  "--max-model-len",
+  "32768",
+  "--gpu-memory-utilization",
+  "0.75",
+  "--max-num-seqs",
+  "2",
+  "--reasoning-parser",
+  "qwen3",
+  "--enable-auto-tool-choice",
+  "--tool-call-parser",
+  "qwen3_xml",
+  "--default-chat-template-kwargs",
+  "{\"enable_thinking\":false}",
+  "--limit-mm-per-prompt",
+  "{\"image\":8,\"video\":1}",
+  "--no-enable-prefix-caching",
+  "--no-async-scheduling",
+]

@@ -1,0 +1,44 @@
+[collection]
+# Relative paths are resolved from this configuration file.
+root = "./youtube-collection"
+date_after = "2024-01-01"
+date_before = "2025-12-31"
+discovery_workers = 2
+download_workers = 2
+media = "both" # "video", "audio", or "both"
+write_subtitles = true
+write_auto_subtitles = false
+write_thumbnail = true
+
+# External tools can be bare executable names or absolute paths.
+yt_dlp = "yt-dlp"
+ffmpeg = "ffmpeg"
+# cookie_file = "/absolute/path/to/youtube-cookies.txt"
+
+command_timeout_seconds = 900
+socket_timeout_seconds = 30
+min_duration_seconds = 60
+max_duration_seconds = 14400
+max_retries = 3
+max_height = 720
+min_free_gib = 10
+max_media_gib = 500
+max_file_gib = 4
+
+[[topics]]
+id = "machine-learning"
+queries = [
+  "machine learning university lecture",
+  "机器学习 大学 课程",
+]
+max_results = 50
+
+[[topics]]
+id = "robotics"
+queries = [
+  "robotics seminar university",
+  "机器人 学术 讲座",
+]
+max_results = 30
+# A topic may narrow or extend the global date range.
+date_after = "2024-06-01"

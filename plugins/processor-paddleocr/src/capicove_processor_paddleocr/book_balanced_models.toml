@@ -1,0 +1,144 @@
+manifest_version = 1
+profile_id = "book-balanced"
+profile_version = 2
+supported_languages = ["en", "ja", "zh"]
+
+[inference_engine]
+name = "PP-StructureV3"
+paddleocr = ">=3.7,<3.8"
+paddlepaddle = ">=3.3,<4"
+paddlex = ">=3.7,<3.8"
+pypdf = ">=5,<7"
+pypdfium2 = ">=4,<6"
+
+[pipeline_configuration]
+layout_detection_model_name = "PP-DocLayout-L"
+text_detection_model_name = "PP-OCRv5_server_det"
+text_recognition_model_name = "PP-OCRv5_server_rec"
+use_doc_orientation_classify = false
+use_doc_unwarping = false
+use_textline_orientation = false
+use_table_recognition = false
+use_formula_recognition = false
+use_chart_recognition = false
+use_seal_recognition = false
+use_region_detection = false
+device = "$requested_device"
+text_det_limit_side_len = 736
+text_det_limit_type = "max"
+text_recognition_batch_size = 1
+cpu_threads = 2
+
+[[models]]
+key = "pp-doclayout-l"
+repository = "PaddlePaddle/PP-DocLayout-L"
+# Public model repository commit SHA, not a credential.
+revision = "ca760c3336d922ee63cdbff85003181222e3911c" # pragma: allowlist secret
+size_bytes = 130120316
+model_parameter = "layout_detection_model_dir"
+
+[[models.files]]
+path = ".gitattributes"
+size_bytes = 1575
+sha256 = "a3a43406012ee8c7b9b38dfab1b11610f33e8245cd864a9a9302d042616a859e" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "README.md"
+size_bytes = 7434
+sha256 = "16b6d660dad83179c3647a678fbf29a66e9762c564194a3e29e6ca8ab3de08b2" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "config.json"
+size_bytes = 6134
+sha256 = "f2dae4643151c4b236c5173ef3d960e2b0f7a5471f1615a96ca9a6fe0ba5568a" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.json"
+size_bytes = 1081389
+sha256 = "d25813273051801894d97c11725a246b529be6d3f0556298ac27a37305d2f21b" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.pdiparams"
+size_bytes = 129021913
+sha256 = "4df69115349e1e6215629d058e3bc7f087cad7a0d2776ef40c463daf73c38982" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.yml"
+size_bytes = 1871
+sha256 = "fbdbb903efd3d82db5800f9ae3e2477d2d84525956ef410ffe8e64bbaad02fa5" # pragma: allowlist secret - public model identity
+
+[[models]]
+key = "pp-ocrv5-server-det"
+repository = "PaddlePaddle/PP-OCRv5_server_det"
+# Public model repository commit SHA, not a credential.
+revision = "ca867c897ecbca8873081573a802ad70d499cb94" # pragma: allowlist secret
+size_bytes = 88356628
+model_parameter = "text_detection_model_dir"
+
+[[models.files]]
+path = ".gitattributes"
+size_bytes = 1575
+sha256 = "a3a43406012ee8c7b9b38dfab1b11610f33e8245cd864a9a9302d042616a859e" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "README.md"
+size_bytes = 15912
+sha256 = "4fd4cf7c6fc3239ede7274c3877e7a0c4424ffa7f56b2775e4e7961c24b1f107" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "config.json"
+size_bytes = 2871
+sha256 = "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.json"
+size_bytes = 402480
+sha256 = "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.pdiparams"
+size_bytes = 87932887
+sha256 = "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.yml"
+size_bytes = 903
+sha256 = "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685" # pragma: allowlist secret - public model identity
+
+[[models]]
+key = "pp-ocrv5-server-rec"
+repository = "PaddlePaddle/PP-OCRv5_server_rec"
+# Public model repository commit SHA, not a credential.
+revision = "b26c3587fda8da3c8ec0ce357214b4d661ff1558" # pragma: allowlist secret
+size_bytes = 85233386
+model_parameter = "text_recognition_model_dir"
+
+[[models.files]]
+path = ".gitattributes"
+size_bytes = 1575
+sha256 = "a3a43406012ee8c7b9b38dfab1b11610f33e8245cd864a9a9302d042616a859e" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "README.md"
+size_bytes = 15892
+sha256 = "519eba1704ddeb8d3e68c4f54221dde11074be0644197cdc4d5581b6d74bd62c" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "config.json"
+size_bytes = 352253
+sha256 = "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.json"
+size_bytes = 325204
+sha256 = "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.pdiparams"
+size_bytes = 84390117
+sha256 = "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77" # pragma: allowlist secret - public model identity
+
+[[models.files]]
+path = "inference.yml"
+size_bytes = 148345
+sha256 = "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d" # pragma: allowlist secret - public model identity

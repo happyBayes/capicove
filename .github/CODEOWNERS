@@ -1,0 +1,8 @@
+# Repository-wide ownership remains with the initial maintainer until capability
+# teams are established. More specific rules should be added below this fallback.
+* @happyBayes
+
+/.github/ @happyBayes
+/docs/adr/ @happyBayes
+/docs/architecture/ @happyBayes
+/src/capicove/ @happyBayes

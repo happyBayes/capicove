@@ -1,0 +1,81 @@
+# Reference projects are local research inputs, not Capicove source.
+/reference/
+
+# Internal product planning is reviewed separately before public release.
+/docs/prd/The Multimodal Second Brain - Product Requirements.md
+
+# New local-only policies, notes and credentials. Existing tracked engineering
+# records stay versioned internally; .gitattributes controls public source exports.
+/.internal/
+/docs/internal/
+/.agents/
+/.codex/
+/.superpowers/
+/.cache/
+/.aws/
+/.ssh/
+/.huggingface/
+/.netrc
+/.pypirc
+/.npmrc
+/.git-credentials
+/outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+.python-version.local
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Environments and package output
+.venv/
+venv/
+env/
+build/
+dist/
+*.egg-info/
+/site/
+
+# Secrets and local overrides
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Capicove local state and large generated data
+/.capicove/
+/artifacts/
+/data/
+/indexes/
+/models/
+/Models/
+
+# Editors and operating systems
+.worktrees/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+tests/datasets
+tmp/
+output/
+
+sources/
+models/
+Models/

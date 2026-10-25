@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "policy_path": "/etc/capicove/remote-policy.json",
+  "workspace_config": "/etc/capicove/host.json",
+  "epoch_store": "/var/lib/capicove/remote/epochs.sqlite3",
+  "revocation_journal": "/var/lib/capicove/durable/revocations.jsonl",
+  "control_store": "/var/lib/capicove/control",
+  "listen": {"host": "127.0.0.1", "port": 8443},
+  "verifier": {"kind": "jwks", "url": "https://issuer.example/jwks", "subject_kind": "human"},
+  "json_response": false,
+  "publish_resource_metadata": true
+}

@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capicove personal-growth-v1 model extraction response",
+  "description": "Local IDs and segment-relative quotes only. The host additionally verifies unique IDs and qualifier keys, endpoints, bounds, quote equality, finite scores, authorization, core ownership, and ontology compatibility. Identity authority cannot be granted by a model.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "entities": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "$ref": "#/$defs/entity"
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/$defs/relationship"
+      }
+    }
+  },
+  "required": [
+    "entities",
+    "relationships"
+  ],
+  "$defs": {
+    "relative_span": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "segment_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "\\S"
+        },
+        "start_char": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_char": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        }
+      },
+      "required": [
+        "segment_id",
+        "start_char",
+        "end_char",
+        "quote"
+      ]
+    },
+    "identity_key": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "\\S"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "authoritative": {
+          "const": false
+        }
+      },
+      "required": [
+        "namespace",
+        "value",
+        "authoritative"
+      ]
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "\\S"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "entity_type": {
+          "enum": [
+            "PERSON",
+            "SKILL",
+            "CONCEPT",
+            "PROJECT",
+            "TASK",
+            "RESOURCE",
+            "LEARNING_EVENT",
+            "PRACTICE_EVENT",
+            "WORK_EVENT",
+            "FEEDBACK_EVENT",
+            "OUTCOME_EVENT",
+            "GENERAL_EVENT",
+            "DIFFICULTY",
+            "KNOWLEDGE_GAP",
+            "ERROR_PATTERN",
+            "CAUSE_HYPOTHESIS",
+            "FALSE_ASSUMPTION",
+            "CONSTRAINT",
+            "INTERVENTION"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "source_spans": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/relative_span"
+          }
+        },
+        "anchor_role": {
+          "enum": [
+            "core",
+            "context_anchor"
+          ]
+        },
+        "extraction_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "identity_keys": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/identity_key"
+          }
+        },
+        "attribution_ref": {
+          "description": "A local PERSON entity ID, or null when attribution is unknown. The host rebinds this local ID; never supply an external evidence or identity reference.",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "local_id",
+        "name",
+        "entity_type",
+        "description",
+        "source_spans",
+        "anchor_role",
+        "extraction_confidence",
+        "identity_keys",
+        "attribution_ref"
+      ]
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "\\S"
+        },
+        "source_local_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "\\S"
+        },
+        "target_local_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "\\S"
+        },
+        "predicate": {
+          "enum": [
+            "HAS_SKILL",
+            "REQUIRES_SKILL",
+            "ABOUT_CONCEPT",
+            "PART_OF_PROJECT",
+            "PRACTICES_SKILL",
+            "OCCURS_IN_PROJECT",
+            "PARTICIPATED_IN",
+            "USES_RESOURCE",
+            "APPLIES_CONCEPT",
+            "EVALUATES",
+            "PRODUCES",
+            "REVEALS",
+            "EXHIBITS",
+            "MAY_BE_CAUSED_BY",
+            "BASED_ON",
+            "CONSTRAINED_BY",
+            "ADDRESSES",
+            "TARGETS",
+            "EVALUATES_EFFECT_OF",
+            "RELATED_TO"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "source_spans": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/relative_span"
+          }
+        },
+        "epistemic_status": {
+          "enum": [
+            "explicit",
+            "inferred",
+            "hypothesized",
+            "disputed"
+          ]
+        },
+        "polarity": {
+          "enum": [
+            "positive",
+            "negative"
+          ]
+        },
+        "extraction_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "attribution_ref": {
+          "description": "A local PERSON entity ID, or null when attribution is unknown. The host rebinds this local ID; never supply an external evidence or identity reference.",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "qualifiers": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "enum": [
+                  "raw_predicate",
+                  "occurrence_ref",
+                  "time_text",
+                  "condition_text"
+                ]
+              },
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096,
+                "pattern": "\\S"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": false
+          }
+        }
+      },
+      "required": [
+        "local_id",
+        "source_local_id",
+        "target_local_id",
+        "predicate",
+        "description",
+        "source_spans",
+        "epistemic_status",
+        "polarity",
+        "extraction_confidence",
+        "attribution_ref",
+        "qualifiers"
+      ]
+    }
+  }
+}

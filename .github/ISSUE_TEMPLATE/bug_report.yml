@@ -1,0 +1,109 @@
+name: Bug report
+description: Report reproducible incorrect Capicove behavior.
+title: "fix: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Capicove. Use English and remove credentials,
+        personal data, private source content, model weights, and proprietary logs.
+        Report security vulnerabilities through GitHub private vulnerability reporting.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and pull requests for the same behavior.
+          required: true
+        - label: I reproduced the problem on the latest relevant commit or release.
+          required: true
+        - label: This report does not disclose a security vulnerability or sensitive data.
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Capicove version or commit
+      description: Paste `capicove --version` output or the full commit SHA.
+      placeholder: capicove 0.1.0.dev0
+    validations:
+      required: true
+
+  - type: input
+    id: installation
+    attributes:
+      label: Installation method
+      placeholder: uv editable install, wheel, container, or source checkout
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Paste `capicove doctor` output after removing sensitive values.
+      render: text
+    validations:
+      required: true
+
+  - type: input
+    id: plugins
+    attributes:
+      label: Relevant plugins
+      description: List plugin distribution names and versions, or write `none`.
+      placeholder: capicove-processor-example 0.2.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Observed behavior
+      description: Explain what happened and why it is incorrect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide the smallest commands, configuration, and safe sample input that reproduce the problem.
+      placeholder: |
+        1. Run `...`
+        2. Use configuration `...`
+        3. Observe `...`
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe the observable result you expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs or traceback
+      render: text
+
+  - type: dropdown
+    id: regression
+    attributes:
+      label: Regression
+      options:
+        - Unknown
+        - Yes, this worked in an earlier version
+        - No, this has never worked
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add relevant environment, performance, or data-format details.

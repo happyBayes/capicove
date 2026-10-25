@@ -1,0 +1,30 @@
+:root {
+  --capicove-heading-primary: #17212b;
+  --capicove-heading-secondary: #253849;
+  --capicove-heading-rule: rgba(37, 56, 73, 0.28);
+}
+
+[data-md-color-scheme="slate"] {
+  --capicove-heading-primary: #f4f8fb;
+  --capicove-heading-secondary: #d8e7ef;
+  --capicove-heading-rule: rgba(216, 231, 239, 0.32);
+}
+
+.md-typeset h1 {
+  color: var(--capicove-heading-primary);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.md-typeset h2 {
+  color: var(--capicove-heading-secondary);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  padding-bottom: 0.28em;
+  border-bottom: 1px solid var(--capicove-heading-rule);
+}
+
+.md-typeset h1 .headerlink,
+.md-typeset h2 .headerlink {
+  color: inherit;
+}

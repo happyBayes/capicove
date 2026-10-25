@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-labelledby="title desc">
+  <title id="title">A local Wiki search result</title>
+  <desc id="desc">The traceable query finds Local knowledge at pages/local-knowledge.md, with the snippet: Capicove keeps source evidence traceable. Selected fields from the verified quickstart output.</desc>
+  <rect width="880" height="240" rx="16" fill="#18251f"/>
+  <path d="M16 0h848a16 16 0 0 1 16 16v28H0V16A16 16 0 0 1 16 0" fill="#25372c"/>
+  <g fill="#a4b49a">
+    <circle cx="24" cy="22" r="5"/>
+    <circle cx="42" cy="22" r="5"/>
+    <circle cx="60" cy="22" r="5"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">
+    <text x="96" y="28" fill="#d2dcc8">CAPICOVE / LOCAL WIKI</text>
+    <text x="28" y="82" fill="#d6e6b0">$ capicove wiki query ../capicove-demo "traceable"</text>
+    <text x="28" y="124" fill="#ffffff" font-size="22" font-weight="600">Local knowledge</text>
+    <text x="28" y="154" fill="#a4b49a">pages/local-knowledge.md</text>
+    <text x="28" y="188" fill="#e3e9dd">Capicove keeps source evidence traceable.</text>
+    <text x="28" y="220" fill="#a4b49a" font-size="13">1 matching page · preserved source · no model or external service</text>
+  </g>
+</svg>

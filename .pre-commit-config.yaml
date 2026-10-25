@@ -1,0 +1,49 @@
+default_install_hook_types: [pre-commit, pre-push]
+default_stages: [pre-commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=3072"]
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.14
+    hooks:
+      - id: ruff-check
+        args: ["--fix"]
+      - id: ruff-format
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        # Reviewed image perceptual hash in the historical evaluation report.
+        args: ["--no-verify", "--baseline", ".secrets.baseline", "--exclude-secrets", "^c2924c5532bddfc8$"]
+        exclude: ^(reference/|uv\.lock$)
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: uv run --extra mcp --extra graph-data mypy src tests
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+      - id: pytest
+        name: pytest
+        # Use the same fast selection as the local development command.
+        entry: make test-fast
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

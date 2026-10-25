@@ -1,0 +1,343 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "capicove"
+dynamic = ["version"]
+description = "Local-first multimodal evidence, search, knowledge, and memory infrastructure for humans and AI agents."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Jwell.ai, Inc." },
+]
+keywords = [
+  "agents",
+  "artificial-intelligence",
+  "knowledge",
+  "memory",
+  "multimodal",
+  "search",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.26,<3",
+  "opencv-python-headless>=4.8,<5",
+  "pillow>=13,<14",
+]
+
+[project.urls]
+Homepage = "https://github.com/happyBayes/capicove"
+Documentation = "https://capicove.readthedocs.io/"
+Issues = "https://github.com/happyBayes/capicove/issues"
+Repository = "https://github.com/happyBayes/capicove"
+
+[project.scripts]
+capicove = "capicove.cli:main"
+capicove-download-image-models = "capicove.model.cli:main"
+
+[project.optional-dependencies]
+vlm = [
+  "aiohttp>=3.14.5,<4",
+  "aiodns>=3.5,<4",
+]
+knowledge = [
+  "jinja2>=3.1.6,<4",
+  "networkx>=3.6,<4",
+  "pyarrow>=25,<26",
+  "pypdf>=5,<7",
+  "pypdfium2>=4,<6",
+  "sentence-transformers>=5.6,<5.7",
+  "torch>=2.2,<3",
+  "transformers>=4.48,<6",
+]
+wiki = [
+  "PyYAML>=6,<7",
+]
+api = [
+  "fastapi>=0.115,<1",
+  "jsonschema>=4.20,<5",
+  "python-multipart>=0.0.20,<1",
+  "uvicorn>=0.34,<1",
+]
+remote-mcp = [
+  "mcp>=1.30,<2",
+  "PyJWT[crypto]>=2.15.1,<3",
+  "httpx>=0.28,<1",
+  "uvicorn>=0.34,<1",
+]
+mcp = [
+  "mcp>=1.30,<2",
+]
+image-rembg = [
+  "onnxruntime>=1.18,<2",
+  "rembg>=2.0.60,<3",
+]
+models-cpu = [
+  "onnxruntime>=1.20,<2",
+  "transformers>=4.48,<6",
+]
+retrieval-cpu = [
+  "onnxruntime>=1.20,<2",
+]
+models-gpu = [
+  "onnxruntime-gpu>=1.20,<2; platform_system != 'Darwin'",
+  "torch>=2.2,<3",
+  "transformers>=4.48,<6",
+]
+graph-models = [
+  "torch>=2.2,<3",
+  "transformers>=4.48,<6",
+]
+graph-remote = [
+  "jinja2>=3.1.6,<4",
+  "transformers>=4.48,<6",
+]
+graph-community = [
+  "networkx>=3.6,<4",
+]
+code-ast = [
+  "tree-sitter>=0.25.2,<0.26",
+  "tree-sitter-python>=0.25,<0.26",
+  "tree-sitter-javascript>=0.25,<0.26",
+  "tree-sitter-typescript>=0.23.2,<0.24",
+]
+graph-data = [
+  "pyarrow>=25,<26",
+]
+text-embedding = [
+  "sentence-transformers>=5.6,<5.7",
+  "torch>=2.2,<3",
+  "transformers>=4.48,<6",
+]
+model-serving = [
+  "fastapi>=0.115,<1",
+  "python-multipart>=0.0.20,<1",
+  "torch>=2.2,<3",
+  "transformers>=4.50,<6",
+  "uvicorn>=0.34,<1",
+]
+models-dev = [
+  "datasets>=3,<6",
+  "onnx>=1.17,<2",
+  "optimum>=1.24,<3",
+  "psutil>=6,<8",
+  "torch>=2.2,<3",
+  "transformers>=4.48,<6",
+]
+image-dedup = [
+  "imagededup>=0.3.2,<0.4",
+]
+image-ray = [
+  "ray>=2.40,<3",
+]
+video-av = [
+  "av>=14,<18",
+]
+video-scene = [
+  "opencv-python-headless>=4.8,<5",
+  "scenedetect-headless>=0.7.1,<0.8",
+]
+video-dedup = [
+  "xxhash>=3.5,<5",
+]
+video = [
+  "av>=14,<18",
+  "opencv-python-headless>=4.8,<5",
+  "scenedetect-headless>=0.7.1,<0.8",
+]
+video-filter = [
+  "av>=14,<18",
+  "numpy>=1.26,<3",
+  "opencv-python-headless>=4.8,<5",
+]
+video-filter-ocr = [
+  "easyocr>=1.7,<2",
+  "numpy>=1.26,<3",
+  "opencv-python-headless>=4.8,<5",
+]
+video-filter-models = [
+  "pillow>=13,<14",
+  "torch>=2.2,<3",
+  "transformers>=4.45,<6",
+]
+video-filter-tags = [
+  "pillow>=13,<14",
+  "torch>=2.2,<3",
+]
+video-all = [
+  "av>=14,<18",
+  "easyocr>=1.7,<2",
+  "numpy>=1.26,<3",
+  "opencv-python-headless>=4.8,<5",
+  "pillow>=13,<14",
+  "scenedetect-headless>=0.7.1,<0.8",
+  "torch>=2.2,<3",
+  "transformers>=4.45,<6",
+  "xxhash>=3.5,<5",
+]
+
+[dependency-groups]
+release = [
+  "packaging>=24,<27",
+  "twine>=7,<8",
+]
+docs = [
+  "mkdocs-material>=9.6,<10",
+  "mkdocstrings[python]>=0.29,<1",
+]
+lint = [
+  "mypy>=1.15,<2",
+  "ruff>=0.11,<1",
+]
+test = [
+  "aiohttp>=3.14.5,<4",
+  "aiodns>=3.5,<4",
+  "pypdf>=5,<7",
+  "pypdfium2>=4,<6",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "jsonschema>=4.23,<5",
+  "mcp>=1.30,<2",
+  "numpy>=1.26,<3",
+  "opencv-python-headless>=4.8,<5",
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "pytest-xdist>=3.6,<4",
+  "PyYAML>=6,<7",
+  "python-multipart>=0.0.20,<1",
+  "xxhash>=3.5,<5",
+]
+model-test = [
+  { include-group = "test" },
+  "onnx>=1.17,<2",
+]
+security = [
+  "bandit>=1.8,<2",
+  "pip-audit>=2.8,<3",
+  "pre-commit>=4,<5",
+]
+dev = [
+  { include-group = "lint" },
+  { include-group = "test" },
+  { include-group = "security" },
+  "build>=1.2,<2",
+]
+
+[tool.hatch.version]
+path = "src/capicove/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/scripts/vlm",
+  "/LICENSE",
+  "/README.md",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/capicove"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["reference"]
+
+[tool.ruff.lint]
+select = ["B", "E4", "E7", "E9", "F", "I", "RUF", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# These modules re-export a pytest fixture under the name the tests request.
+# Ruff 0.14 treats each matching parameter as an unused redefinition (F811).
+"tests/unit/api/test_workspace_server.py" = ["F811"]
+"tests/unit/cli/test_http.py" = ["F811"]
+"tests/unit/runtime/test_retrieval_mcp.py" = ["F811"]
+"tests/unit/runtime/test_retrieval_retirement.py" = ["F811"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["capicove"]
+lines-after-imports = 2
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+pretty = true
+show_error_codes = true
+warn_unreachable = true
+files = ["src", "tests"]
+exclude = ["^reference/"]
+
+[tool.pytest.ini_options]
+minversion = "8.3"
+testpaths = ["tests"]
+# Coverage stays off the default invocation. Branch coverage of src/capicove
+# plus term-missing reporting is several times slower than the tests themselves
+# and made every pre-push/TDD run pay the 85% package gate. `make test` and the
+# CI coverage job pass the coverage flags explicitly.
+addopts = [
+  "-ra",
+  "--strict-config",
+  "--strict-markers",
+]
+# Delete a passing test's tmp_path when it finishes, so temporary storage tracks the
+# tests that are running rather than every test completed in the session.
+tmp_path_retention_policy = "failed"
+markers = [
+  "contract: plugin and public-contract compatibility tests",
+  "cpu: tests that require a CPU model runtime",
+  "e2e: end-to-end tests",
+  "evaluation: deterministic authored retrieval evaluation",
+  "gpu: tests that require a GPU",
+  "graph_slow: slow graph build checks requiring --run-graph-slow",
+  "integration: tests spanning more than one component",
+  "model_full: full-model certification tests run outside pull-request CI",
+  "model_logic: model tests without model SDK dependencies",
+  "model_onnx: synthetic ONNX Runtime tests without downloaded models",
+  "model_small: integration tests using a pinned tiny model",
+  "network: tests that access a network",
+  "performance: explicitly provisioned local capacity and latency qualification",
+  "qualification: capacity and memory limits; opt in with --run-qualification without coverage",
+  "ray: tests that require Ray",
+  "slow: tests unsuitable for the pull-request fast path",
+  "spark: tests that require Spark",
+  "unit: isolated deterministic tests",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["src/capicove"]
+omit = [
+  "src/capicove/processing/video/_adapters/pyav.py",
+  "src/capicove/processing/video/_adapters/scenedetect.py",
+  "src/capicove/processing/video/filtering/_adapters/huggingface_frame_scorers.py",
+  "src/capicove/processing/video/filtering/_adapters/pyav_frame_sampler.py",
+  "src/capicove/processing/video/filtering/_adapters/ram_plus_video_tagger.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+precision = 2
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+  "raise NotImplementedError",
+]
+
+[tool.bandit]
+exclude_dirs = ["reference", "tests"]
+skips = ["B101"]

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "capicove-processor-paddleocr"
+version = "0.1.0"
+description = "Lazy PP-StructureV3 document parser plugin for Capicove."
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+dependencies = [
+  "capicove>=0.1.0,<0.2",
+  "huggingface-hub>=0.35,<2",
+  "packaging>=24,<27",
+  "paddleocr[doc-parser]>=3.7,<3.8",
+  "pypdf>=5,<7",
+]
+
+[dependency-groups]
+ci = [
+  "mypy>=1.15,<2",
+  "pytest>=8.3,<10",
+  "ruff>=0.11,<1",
+]
+
+[project.entry-points."capicove.document_parsers"]
+paddleocr = "capicove_processor_paddleocr:paddleocr_document_parser_plugin"
+
+[project.entry-points."capicove.model_installers"]
+paddleocr = "capicove_processor_paddleocr:paddleocr_document_parser_plugin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/capicove_processor_paddleocr"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/pyproject.toml", "/LICENSE", "/README.md"]
+
+[tool.uv.sources]
+capicove = { path = "../..", editable = true }

@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "task_key",
+    "report_kind",
+    "community_id",
+    "title",
+    "sections"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "task_key": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "report_kind": {
+      "type": "string",
+      "enum": [
+        "community",
+        "overview"
+      ],
+      "maxLength": 16
+    },
+    "community_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "sections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "observed_patterns",
+        "strengths",
+        "difficulties",
+        "possible_causes",
+        "existing_interventions",
+        "observed_outcomes",
+        "suggested_next_steps",
+        "counter_evidence",
+        "limitations"
+      ],
+      "properties": {
+        "summary": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "observed_patterns": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "strengths": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "difficulties": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "possible_causes": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "existing_interventions": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "observed_outcomes": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "suggested_next_steps": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "counter_evidence": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "reference": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "child": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report_id",
+        "statement_id"
+      ],
+      "properties": {
+        "report_id": {
+          "$ref": "#/$defs/reference"
+        },
+        "statement_id": {
+          "$ref": "#/$defs/reference"
+        }
+      }
+    },
+    "statement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "local_id",
+        "text",
+        "kind",
+        "assertion_refs",
+        "finding_refs",
+        "child_statement_refs"
+      ],
+      "properties": {
+        "local_id": {
+          "$ref": "#/$defs/reference"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "fact",
+            "hypothesis",
+            "recommendation",
+            "limitation"
+          ],
+          "maxLength": 20
+        },
+        "assertion_refs": {
+          "type": "array",
+          "maxItems": 128,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/reference"
+          }
+        },
+        "finding_refs": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/reference"
+          }
+        },
+        "child_statement_refs": {
+          "type": "array",
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/child"
+          }
+        }
+      }
+    }
+  }
+}

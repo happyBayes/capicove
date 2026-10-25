@@ -1,0 +1,382 @@
+name: CI
+
+on:
+  workflow_call:
+  pull_request:
+  push:
+    branches: [main, dev, "release/**"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  UV_VERSION: "0.11.26"
+
+jobs:
+  docs:
+    name: docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group docs
+      - run: uv run --no-sync mkdocs build --strict
+      - run: uv run --no-sync python scripts/check_docs.py
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group lint
+      - run: uv run --no-sync ruff check .
+      - run: uv run --no-sync ruff format --check .
+
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group lint --group test --extra mcp --extra graph-data
+      - run: uv run --no-sync mypy src tests
+
+  unit:
+    name: unit
+    needs: [coverage, qualification]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require both regression coverage and uninstrumented qualification
+        env:
+          CAPICOVE_COVERAGE_RESULT: ${{ needs.coverage.result }}
+          CAPICOVE_QUALIFICATION_RESULT: ${{ needs.qualification.result }}
+        run: |
+          test "$CAPICOVE_COVERAGE_RESULT" = success
+          test "$CAPICOVE_QUALIFICATION_RESULT" = success
+
+  coverage:
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - name: Install local media tools for authored integration fixtures
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: uv sync --frozen --no-default-groups --group test --extra graph-data --extra graph-community --extra video-av
+      - name: Run regression suite with coverage, including slow graph checks
+        run: uv run --no-sync python scripts/run_tests.py -- --run-graph-slow -m "not model_small and not model_full and not gpu" --cov=src/capicove --cov-report=term-missing --cov-fail-under=85
+
+  qualification:
+    name: qualification
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group test --extra graph-data --extra graph-community
+      - name: Qualify streaming capacity and retrieval memory without coverage
+        run: UV_NO_SYNC=1 make test-qualification
+
+  test-runner:
+    name: test-runner (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${{ env.UV_VERSION }}"
+      - run: uv sync --frozen --no-default-groups --group test
+      # The runner runs its own tests, which start nested runs with passing,
+      # failing, and interrupted suites and check what each leaves on disk.
+      - name: Qualify temporary storage, budgets, and cleanup on this OS
+        run: uv run --no-sync python scripts/run_tests.py --workers 2 -- --no-cov -q tests/unit/scripts
+
+  mcp-windows:
+    name: mcp-windows
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==$env:UV_VERSION"
+      - run: uv sync --frozen --no-default-groups --group test --extra mcp
+      - name: Exercise MCP host, traces, and installed wheel on Windows
+        run: >-
+          uv run --no-sync python scripts/run_tests.py --workers 1 -- --no-cov -q
+          tests/unit/cli/test_mcp.py
+          tests/unit/cli/test_setup.py
+          tests/unit/runtime/test_mcp_config.py
+          tests/unit/runtime/test_mcp_host.py
+          tests/unit/runtime/test_media_handoff.py
+          tests/unit/traces
+          tests/integration/mcp/test_catalog_server.py
+          tests/integration/mcp/test_image_host.py
+          tests/unit/tools/test_image.py::test_image_tool_handler_authorizes_paths_and_serializes_lineage
+          tests/unit/tools/test_image.py::test_windows_image_local_path_syntax_is_checked_without_filesystem_access
+          tests/unit/tools/test_image.py::test_windows_image_read_root_is_not_resolved_after_validation
+          tests/unit/tools/test_image.py::test_windows_image_rejects_unc_before_path_resolution
+          tests/unit/tools/test_image.py::test_windows_native_image_reader_rejects_reparse_source
+          tests/unit/tools/test_image.py::test_windows_image_handler_classifies_native_path_rejection
+          tests/e2e/test_mcp_stdio.py
+          tests/e2e/test_mcp_wheel.py
+
+  mcp-macos:
+    name: mcp-macos
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group test --extra mcp
+      - name: Exercise setup, MCP host, and installed wheel on macOS
+        run: >-
+          uv run --no-sync python scripts/run_tests.py --workers 1 -- --no-cov -q
+          tests/unit/cli/test_mcp.py
+          tests/unit/cli/test_setup.py
+          tests/unit/runtime/test_mcp_config.py
+          tests/unit/runtime/test_mcp_host.py
+          tests/integration/mcp/test_catalog_server.py
+          tests/integration/mcp/test_image_host.py
+          tests/e2e/test_mcp_stdio.py
+          tests/e2e/test_mcp_wheel.py
+
+  paddleocr-plugin:
+    name: paddleocr-plugin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group lint --group test
+      - name: Type-check the plugin and its tests
+        run: >-
+          PYTHONPATH=plugins/processor-paddleocr/src
+          uv run --no-sync mypy --strict
+          plugins/processor-paddleocr/src plugins/processor-paddleocr/tests
+      - name: Run PaddleOCR plugin unit tests without the optional runtime
+        run: >-
+          PYTHONPATH=plugins/processor-paddleocr/src
+          uv run --no-sync pytest --no-cov
+          plugins/processor-paddleocr/tests/unit -q
+      - name: Build core and PaddleOCR plugin wheels
+        run: |
+          uv build --wheel --out-dir dist --clear .
+          uv build --wheel --out-dir dist plugins/processor-paddleocr
+      - name: Smoke-test the installed PaddleOCR plugin wheel
+        run: |
+          uv venv .paddleocr-smoke --python 3.11 --clear
+          uv pip install --python .paddleocr-smoke/bin/python --no-deps \
+            dist/capicove-*.whl \
+            dist/capicove_processor_paddleocr-*.whl
+          .paddleocr-smoke/bin/python -I -c \
+            "from importlib.metadata import entry_points; eps = tuple(entry_points(group='capicove.document_parsers', name='paddleocr')); assert len(eps) == 1; plugin = eps[0].load()(); assert plugin.metadata.plugin_id == 'capicove.processor.paddleocr'"
+          .paddleocr-smoke/bin/python -I -c \
+            "from capicove_processor_paddleocr.models import load_book_balanced_manifest; manifest = load_book_balanced_manifest(); assert manifest.profile_id == 'book-balanced'; assert manifest.profile_version == 2; assert len(manifest.models) == 3; assert sum(len(model.files) for model in manifest.models) == 18"
+
+  spark-plugin:
+    name: spark-plugin
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.0.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - name: Sync the locked plugin CI environment
+        run: |
+          uv lock --project plugins/execution-spark --check
+          uv sync --project plugins/execution-spark --python 3.11 --frozen \
+            --no-default-groups --group ci
+      - name: Lint and format-check the plugin
+        run: |
+          uv run --project plugins/execution-spark --no-sync \
+            ruff check plugins/execution-spark
+          uv run --project plugins/execution-spark --no-sync \
+            ruff format --check plugins/execution-spark
+      - name: Type-check the plugin and its tests
+        run: >-
+          uv run --project plugins/execution-spark --no-sync
+          mypy --strict plugins/execution-spark/src plugins/execution-spark/tests
+      - name: Run plugin unit tests
+        run: >-
+          uv run --project plugins/execution-spark --no-sync
+          pytest -c plugins/execution-spark/pyproject.toml
+          plugins/execution-spark/tests/unit -q
+      - name: Run real local Spark integration tests
+        run: >-
+          uv run --project plugins/execution-spark --no-sync
+          pytest -c plugins/execution-spark/pyproject.toml
+          plugins/execution-spark/tests/integration -m spark -q
+      - name: Scan plugin source
+        run: >-
+          uv run --project plugins/execution-spark --no-sync
+          bandit -q -r plugins/execution-spark/src
+      - name: Export and audit locked runtime dependencies
+        run: |
+          uv export --project plugins/execution-spark --frozen \
+            --no-default-groups --no-emit-local \
+            --output-file .spark-runtime.txt
+          uv run --project plugins/execution-spark --no-sync \
+            pip-audit --strict --no-deps --disable-pip -r .spark-runtime.txt
+      - name: Build core and plugin wheels
+        run: |
+          uv build --wheel --out-dir dist --clear .
+          uv build --wheel --out-dir dist plugins/execution-spark
+      - name: Smoke-test installed plugin entry point
+        run: |
+          uv venv .spark-smoke --python 3.11
+          uv pip sync --python .spark-smoke/bin/python \
+            --require-hashes .spark-runtime.txt
+          uv pip install --python .spark-smoke/bin/python --no-deps \
+            dist/capicove-0*.whl dist/capicove_execution_spark-*.whl
+          .spark-smoke/bin/python -c \
+            "from importlib.metadata import entry_points; eps = tuple(entry_points(group='capicove.execution_backends', name='spark')); assert len(eps) == 1; plugin = eps[0].load()(); assert plugin.metadata.plugin_id == 'capicove.execution.spark'; assert plugin.availability().available"
+          .spark-smoke/bin/python -c \
+            "from pathlib import Path; from capicove_execution_spark.session import SparkBackendConfiguration, create_spark_session; spark = create_spark_session(SparkBackendConfiguration(master='local[1]', app_name='capicove-installed-wheel-smoke', local_scratch_root=Path('/tmp/capicove-installed-wheel-smoke'))); assert spark.range(1).count() == 1; spark.stop()"
+
+  cpu-model:
+    name: cpu-model
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group model-test --extra models-cpu
+      - name: Verify the CPU runtime does not install Torch
+        run: >-
+          uv run --no-sync python -c
+          "import importlib.util; assert importlib.util.find_spec('torch') is None"
+      - name: Run model logic and synthetic ONNX tests
+        run: uv run --no-sync pytest --no-cov -m "model_logic or (model_onnx and cpu)"
+
+  reverse-image-onnx:
+    name: reverse-image-onnx
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group model-test --extra retrieval-cpu --extra mcp
+      - name: Verify retrieval CPU isolation
+        run: >-
+          uv run --no-sync python -c
+          "import importlib.util;
+          assert importlib.util.find_spec('torch') is None;
+          assert importlib.util.find_spec('transformers') is None"
+      - name: Run synthetic reverse-image ONNX parity and runtime vertical
+        run: >-
+          uv run --no-sync pytest --no-cov
+          tests/model/test_reverse_image_onnx_cpu.py
+          tests/model/test_reverse_image_onnx_runtime_vertical.py
+
+  package:
+    name: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - name: Inspect the public source snapshot
+        run: python scripts/public_snapshot.py
+      - run: uv build
+      - run: uv venv .smoke
+      - run: uv pip install --python .smoke/bin/python dist/*.whl
+      - run: uv pip install --python .smoke/bin/python "onnxruntime>=1.20,<2" "mcp>=1.7,<2"
+      - run: .smoke/bin/capicove --version
+      - run: .smoke/bin/capicove doctor
+      - name: Smoke public reverse-image surfaces from the wheel
+        run: >-
+          .smoke/bin/python -c
+          "from capicove.retrieval import RetrievalService;
+          from capicove.runtime import ReverseImageRuntime, build_reverse_image_runtime;
+          from capicove.tools import SEARCH_SPEC;
+          from capicove.mcp.image_search import MCP_SEARCH_NAME;
+          assert SEARCH_SPEC.tool_id == 'capicove.search.image';
+          assert MCP_SEARCH_NAME == 'capicove_search_image'"
+
+  retriever-plugins:
+    name: retriever-plugins
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.11"
+      - run: python -m pip install "uv==${UV_VERSION}"
+      - run: uv sync --frozen --no-default-groups --group test
+      - name: Install retriever runtimes
+        run: uv pip install -e plugins/retriever-elasticsearch -e plugins/retriever-opensearch -e plugins/retriever-faiss
+      - name: Run all retriever unit suites
+        run: |
+          for plugin in retriever-elasticsearch retriever-opensearch retriever-faiss; do
+            uv run --no-sync pytest -c "plugins/$plugin/pyproject.toml" "plugins/$plugin/tests/unit" -q
+          done
+      - name: Qualify native FAISS recall and persistence
+        env:
+          CAPICOVE_TEST_REAL_FAISS: "1"
+        run: uv run --no-sync pytest -c plugins/retriever-faiss/pyproject.toml plugins/retriever-faiss/tests/integration -q
+      - name: Provision the pinned OpenSearch test image
+        run: docker pull opensearchproject/opensearch@sha256:b5dd1512af2a99748c942cfbbd7f32162623336b210667d0fc6333c6321f171d
+      - name: Qualify local OpenSearch generation, lexical and vector search
+        run: uv run --no-sync pytest -c plugins/retriever-opensearch/pyproject.toml plugins/retriever-opensearch/tests/integration -q

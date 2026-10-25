@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "findings"],
+  "properties": {
+    "version": {"type": "integer", "const": 1},
+    "findings": {"type": "array", "maxItems": 32, "items": {"$ref": "#/$defs/finding"}}
+  },
+  "$defs": {
+    "reference": {"type": "string", "minLength": 1, "maxLength": 256},
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_id", "candidate_kind", "diagnostic_type", "subject_ref", "target_ref", "epistemic_status", "support_refs", "counter_refs", "explanation", "limitations", "verification_step"],
+      "properties": {
+        "local_id": {"$ref": "#/$defs/reference"},
+        "candidate_kind": {"type": "string", "maxLength": 32, "enum": ["error_pattern", "difficulty", "knowledge_gap", "feedback", "cause_hypothesis", "false_assumption", "intervention_recommendation", "intervention_outcome"]},
+        "diagnostic_type": {"type": "string", "maxLength": 32, "enum": ["ERROR_PATTERN", "DIFFICULTY", "KNOWLEDGE_GAP", "CAUSE_HYPOTHESIS", "FALSE_ASSUMPTION", "INTERVENTION"]},
+        "subject_ref": {"$ref": "#/$defs/reference"},
+        "target_ref": {"$ref": "#/$defs/reference"},
+        "epistemic_status": {"type": "string", "maxLength": 32, "enum": ["inferred", "hypothesized"]},
+        "support_refs": {"type": "array", "minItems": 1, "maxItems": 128, "uniqueItems": true, "items": {"$ref": "#/$defs/reference"}},
+        "counter_refs": {"type": "array", "maxItems": 128, "uniqueItems": true, "items": {"$ref": "#/$defs/reference"}},
+        "explanation": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "limitations": {"type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 256}},
+        "verification_step": {"type": ["string", "null"], "minLength": 1, "maxLength": 2048}
+      }
+    }
+  }
+}
