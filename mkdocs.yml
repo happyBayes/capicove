@@ -10,6 +10,7 @@ site_dir: site
 
 theme:
   name: material
+  custom_dir: docs/theme
   language: en
   features:
     - content.action.edit
@@ -38,6 +39,9 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/presentation.js
 
 plugins:
   - search
