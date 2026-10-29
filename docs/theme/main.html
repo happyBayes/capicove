@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block hero %}
+  {% if page and page.is_homepage %}
+    <div class="capicove-hero">
+      <div class="capicove-hero__inner md-grid">
+        {# Repeat only the existing title; the original article and its anchor stay intact. #}
+        <p class="capicove-hero__title" aria-hidden="true">{{ (page.toc | first).title | default(page.title) }}</p>
+        <button class="capicove-hero__search" type="button" hidden>
+          <span class="md-icon" aria-hidden="true">{% include ".icons/material/magnify.svg" %}</span>
+          <span>{{ lang.t("search.placeholder") }}</span>
+          <span class="capicove-hero__search-action" aria-hidden="true">{% include ".icons/material/arrow-right.svg" %}</span>
+        </button>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
