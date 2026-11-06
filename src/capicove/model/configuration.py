@@ -30,6 +30,7 @@ _DEVICE = re.compile(r"cpu|mps|cuda(?::[0-9]+)?\Z")
 class ModelCapability(StrEnum):
     """Select a typed inference port; no universal inference operation exists."""
 
+    AUDIO_SYNTHESIS = "audio_synthesis"
     AUDIO_TRANSCRIPTION = "audio_transcription"
     TEXT_EMBEDDING = "text_embedding"
     TEXT_RERANKING = "text_reranking"

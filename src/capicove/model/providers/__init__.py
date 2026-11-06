@@ -20,6 +20,7 @@ from capicove.model.providers.local import (
     validate_reranker,
     validate_siglip2,
 )
+from capicove.model.providers.speech import create_speech, validate_speech
 from capicove.model.registry import ProviderDefinition, ProviderRegistry
 
 
@@ -33,6 +34,9 @@ def builtin_registry() -> ProviderRegistry:
     """Register the locally qualified providers without loading model assets."""
     registry = ProviderRegistry()
     for provider in (
+        ProviderDefinition(
+            "llama-cpp-tts", "1", ModelCapability.AUDIO_SYNTHESIS, create_speech, validate_speech
+        ),
         ProviderDefinition(
             "whisper-cpp", "1", ModelCapability.AUDIO_TRANSCRIPTION, create_audio, validate_audio
         ),

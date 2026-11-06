@@ -30,6 +30,12 @@ from capicove.mcp.video_filter import (
 from capicove.mcp.video_filter import (
     encode_mcp_result as encode_video_filter_mcp_result,
 )
+from capicove.mcp.video_quality import (
+    MCP_VIDEO_QUALITY_NAME,
+    MCP_VIDEO_QUALITY_OUTPUT_SCHEMA,
+    create_video_quality_mcp_server,
+    register_video_quality_mcp,
+)
 from capicove.mcp.video_split import (
     MAX_INLINE_VIDEO_BYTES,
     MCP_VIDEO_SPLIT_NAME,
@@ -87,6 +93,8 @@ __all__ = [
     "MCP_SEARCH_NAME",
     "MCP_VIDEO_FILTER_NAME",
     "MCP_VIDEO_FILTER_OUTPUT_SCHEMA",
+    "MCP_VIDEO_QUALITY_NAME",
+    "MCP_VIDEO_QUALITY_OUTPUT_SCHEMA",
     "MCP_VIDEO_SPLIT_NAME",
     "MCP_VIDEO_SPLIT_OUTPUT_SCHEMA",
     "VIDEO_FILTER_MAX_INLINE_VIDEO_BYTES",
@@ -97,6 +105,7 @@ __all__ = [
     "create_bound_mcp_server",
     "create_mcp_server",
     "create_video_filter_mcp_server",
+    "create_video_quality_mcp_server",
     "decode_audio_transcribe_mcp_arguments",
     "decode_mcp_arguments",
     "decode_search_mcp_arguments",
@@ -110,5 +119,6 @@ __all__ = [
     "register_book_mcp",
     "register_search_mcp",
     "register_video_filter_mcp",
+    "register_video_quality_mcp",
     "register_video_split_mcp",
 ]

@@ -50,6 +50,8 @@ _WORKSPACE_FIELDS = frozenset(
 # Canonical Tool IDs owned by a capability whose name is not the ID's second segment.
 _TOOL_CAPABILITIES = MappingProxyType(
     {
+        "capicove.audio.synthesize": "audio_synthesis",
+        "capicove.audio.clone": "audio_synthesis",
         "capicove.search": "retrieval",
         "capicove.get_evidence": "retrieval",
         "capicove.search.multimodal": "multimodal",
@@ -95,6 +97,7 @@ _CAPABILITY_NAMES = frozenset(
         "retrieval",
         "video",
         "audio",
+        "audio_synthesis",
         "batch",
         "trace",
         "model",

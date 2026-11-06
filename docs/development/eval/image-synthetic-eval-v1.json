@@ -1,0 +1,691 @@
+{
+  "schema": "capicove.retrieval-eval.v1",
+  "dataset_id": "image-synthetic-eval-v1",
+  "stacks": [
+    "image"
+  ],
+  "frozen_at": "2026-10-29",
+  "provenance": "Procedurally rendered single-color block-pattern PNGs (rendered at run time from specs; no media committed). Relevance is authored: the source image (grade 3) and same-color images (grades 1-2).",
+  "corpus": {
+    "images": [
+      {
+        "id": "red-1",
+        "path": "images/red-1.png",
+        "spec": {
+          "color": "red",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "red-2",
+        "path": "images/red-2.png",
+        "spec": {
+          "color": "red",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "red-3",
+        "path": "images/red-3.png",
+        "spec": {
+          "color": "red",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "green-1",
+        "path": "images/green-1.png",
+        "spec": {
+          "color": "green",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "green-2",
+        "path": "images/green-2.png",
+        "spec": {
+          "color": "green",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "green-3",
+        "path": "images/green-3.png",
+        "spec": {
+          "color": "green",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "blue-1",
+        "path": "images/blue-1.png",
+        "spec": {
+          "color": "blue",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "blue-2",
+        "path": "images/blue-2.png",
+        "spec": {
+          "color": "blue",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "blue-3",
+        "path": "images/blue-3.png",
+        "spec": {
+          "color": "blue",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "yellow-1",
+        "path": "images/yellow-1.png",
+        "spec": {
+          "color": "yellow",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "yellow-2",
+        "path": "images/yellow-2.png",
+        "spec": {
+          "color": "yellow",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "yellow-3",
+        "path": "images/yellow-3.png",
+        "spec": {
+          "color": "yellow",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "purple-1",
+        "path": "images/purple-1.png",
+        "spec": {
+          "color": "purple",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "purple-2",
+        "path": "images/purple-2.png",
+        "spec": {
+          "color": "purple",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "purple-3",
+        "path": "images/purple-3.png",
+        "spec": {
+          "color": "purple",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "orange-1",
+        "path": "images/orange-1.png",
+        "spec": {
+          "color": "orange",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "orange-2",
+        "path": "images/orange-2.png",
+        "spec": {
+          "color": "orange",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "orange-3",
+        "path": "images/orange-3.png",
+        "spec": {
+          "color": "orange",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "black-1",
+        "path": "images/black-1.png",
+        "spec": {
+          "color": "black",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "black-2",
+        "path": "images/black-2.png",
+        "spec": {
+          "color": "black",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "black-3",
+        "path": "images/black-3.png",
+        "spec": {
+          "color": "black",
+          "variant": 3,
+          "size": 96
+        }
+      },
+      {
+        "id": "white-1",
+        "path": "images/white-1.png",
+        "spec": {
+          "color": "white",
+          "variant": 1,
+          "size": 96
+        }
+      },
+      {
+        "id": "white-2",
+        "path": "images/white-2.png",
+        "spec": {
+          "color": "white",
+          "variant": 2,
+          "size": 96
+        }
+      },
+      {
+        "id": "white-3",
+        "path": "images/white-3.png",
+        "spec": {
+          "color": "white",
+          "variant": 3,
+          "size": 96
+        }
+      }
+    ]
+  },
+  "queries": [
+    {
+      "id": "near-red-1-identity",
+      "category": "exact",
+      "text": null,
+      "relevant": [
+        {
+          "label": "red-1",
+          "document": "red-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "red-2",
+          "document": "red-2",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "red-3",
+          "document": "red-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "red-1",
+          "transform": "identity"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-green-2-resize-half",
+      "category": "near-duplicate",
+      "text": null,
+      "relevant": [
+        {
+          "label": "green-2",
+          "document": "green-2",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "green-1",
+          "document": "green-1",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "green-3",
+          "document": "green-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "green-2",
+          "transform": "resize-half"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-blue-3-crop-center-80",
+      "category": "near-duplicate",
+      "text": null,
+      "relevant": [
+        {
+          "label": "blue-3",
+          "document": "blue-3",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "blue-1",
+          "document": "blue-1",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "blue-2",
+          "document": "blue-2",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "blue-3",
+          "transform": "crop-center-80"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-yellow-1-brighten-12",
+      "category": "near-duplicate",
+      "text": null,
+      "relevant": [
+        {
+          "label": "yellow-1",
+          "document": "yellow-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "yellow-2",
+          "document": "yellow-2",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "yellow-3",
+          "document": "yellow-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "yellow-1",
+          "transform": "brighten-12"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-purple-2-mirror",
+      "category": "near-duplicate",
+      "text": null,
+      "relevant": [
+        {
+          "label": "purple-2",
+          "document": "purple-2",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "purple-1",
+          "document": "purple-1",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "purple-3",
+          "document": "purple-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "purple-2",
+          "transform": "mirror"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-orange-3-identity",
+      "category": "exact",
+      "text": null,
+      "relevant": [
+        {
+          "label": "orange-3",
+          "document": "orange-3",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "orange-1",
+          "document": "orange-1",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "orange-2",
+          "document": "orange-2",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "orange-3",
+          "transform": "identity"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-black-1-resize-half",
+      "category": "near-duplicate",
+      "text": null,
+      "relevant": [
+        {
+          "label": "black-1",
+          "document": "black-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "black-2",
+          "document": "black-2",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "black-3",
+          "document": "black-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "black-1",
+          "transform": "resize-half"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "near-white-2-crop-center-80",
+      "category": "near-duplicate",
+      "text": null,
+      "relevant": [
+        {
+          "label": "white-2",
+          "document": "white-2",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "white-1",
+          "document": "white-1",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "white-3",
+          "document": "white-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "white-2",
+          "transform": "crop-center-80"
+        },
+        "intent": "balanced"
+      }
+    },
+    {
+      "id": "concept-red",
+      "category": "concept",
+      "text": null,
+      "relevant": [
+        {
+          "label": "red-1",
+          "document": "red-1",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "red-2",
+          "document": "red-2",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "red-3",
+          "document": "red-3",
+          "contains": null,
+          "grade": 2
+        }
+      ],
+      "payload": {
+        "image": {
+          "spec": {
+            "color": "red",
+            "variant": 9,
+            "size": 96
+          }
+        },
+        "intent": "concept"
+      }
+    },
+    {
+      "id": "concept-blue",
+      "category": "concept",
+      "text": null,
+      "relevant": [
+        {
+          "label": "blue-1",
+          "document": "blue-1",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "blue-2",
+          "document": "blue-2",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "blue-3",
+          "document": "blue-3",
+          "contains": null,
+          "grade": 2
+        }
+      ],
+      "payload": {
+        "image": {
+          "spec": {
+            "color": "blue",
+            "variant": 9,
+            "size": 96
+          }
+        },
+        "intent": "concept"
+      }
+    },
+    {
+      "id": "concept-orange",
+      "category": "concept",
+      "text": null,
+      "relevant": [
+        {
+          "label": "orange-1",
+          "document": "orange-1",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "orange-2",
+          "document": "orange-2",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "orange-3",
+          "document": "orange-3",
+          "contains": null,
+          "grade": 2
+        }
+      ],
+      "payload": {
+        "image": {
+          "spec": {
+            "color": "orange",
+            "variant": 9,
+            "size": 96
+          }
+        },
+        "intent": "concept"
+      }
+    },
+    {
+      "id": "concept-white",
+      "category": "concept",
+      "text": null,
+      "relevant": [
+        {
+          "label": "white-1",
+          "document": "white-1",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "white-2",
+          "document": "white-2",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "white-3",
+          "document": "white-3",
+          "contains": null,
+          "grade": 2
+        }
+      ],
+      "payload": {
+        "image": {
+          "spec": {
+            "color": "white",
+            "variant": 9,
+            "size": 96
+          }
+        },
+        "intent": "concept"
+      }
+    },
+    {
+      "id": "instance-green-1",
+      "category": "instance-intent",
+      "text": null,
+      "relevant": [
+        {
+          "label": "green-1",
+          "document": "green-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "green-2",
+          "document": "green-2",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "green-3",
+          "document": "green-3",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "green-1",
+          "transform": "mirror"
+        },
+        "intent": "instance"
+      }
+    },
+    {
+      "id": "instance-purple-3",
+      "category": "instance-intent",
+      "text": null,
+      "relevant": [
+        {
+          "label": "purple-3",
+          "document": "purple-3",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "purple-1",
+          "document": "purple-1",
+          "contains": null,
+          "grade": 1
+        },
+        {
+          "label": "purple-2",
+          "document": "purple-2",
+          "contains": null,
+          "grade": 1
+        }
+      ],
+      "payload": {
+        "image": {
+          "source": "purple-3",
+          "transform": "mirror"
+        },
+        "intent": "instance"
+      }
+    }
+  ]
+}

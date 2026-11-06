@@ -102,6 +102,12 @@ def _video_factory() -> Callable[..., AbstractContextManager[tuple[McpToolBindin
     return compose_video_mcp
 
 
+def _speech_factory() -> Callable[..., AbstractContextManager[tuple[McpToolBinding, ...]]]:
+    from capicove.runtime.speech_mcp import compose_speech_mcp
+
+    return compose_speech_mcp
+
+
 def _audio_factory() -> Callable[..., AbstractContextManager[tuple[McpToolBinding, ...]]]:
     from capicove.runtime.audio_mcp import compose_audio_mcp
 
@@ -144,6 +150,7 @@ _WORKSPACE_CAPABILITIES: dict[
     "retrieval": _retrieval_factory,
     "video": _video_factory,
     "audio": _audio_factory,
+    "audio_synthesis": _speech_factory,
     "batch": _batch_factory,
     "trace": _trace_factory,
     "model": _model_factory,

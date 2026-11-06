@@ -1,0 +1,722 @@
+{
+  "adapter": {
+    "id": "offline-text",
+    "version": "1"
+  },
+  "dataset": {
+    "id": "personal-notes-eval-v1",
+    "queries": 20,
+    "schema": "capicove.retrieval-eval.v1",
+    "sha256": "91ad026e2df37eeec4ab64c560cbd80b4ef3c0bd70a0d3ce3979d887301940a0"
+  },
+  "environment": {
+    "capicove_version": "0.1.0",
+    "cpus": 4,
+    "machine": "x86_64",
+    "platform": "linux",
+    "python": "3.11.15"
+  },
+  "experimental": true,
+  "index": {
+    "generation_id": "local-9a0196607ef5a5ea2085f8596f22f0fdb8b0e6cb0dfbf9f9037250fe7ff447f2",
+    "kind": "local-fts5-generation",
+    "manifest_sha256": null
+  },
+  "model": {
+    "components": [
+      "reranker:capicove/deterministic-fake-reranker"
+    ],
+    "kind": "deterministic-fake",
+    "real_model_validation": "not_run"
+  },
+  "options": {
+    "fake_dense": false,
+    "k": 10,
+    "reranker": "deterministic-fake"
+  },
+  "profile": {
+    "fingerprint": "cb9a298fbc8efa6f33dfb3b63e2c5e7600033a4dd6f167c43a1967ec01b4c22f",
+    "id": "offline-text-default-v1-fake-rerank",
+    "version": 1
+  },
+  "results": [
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "garden-tomato": 3
+      },
+      "pool": {
+        "labels": [
+          "garden-tomato"
+        ],
+        "size": 1
+      },
+      "query_id": "q01",
+      "ranked": [
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": [
+            "garden-tomato"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "bike-cable": 3
+      },
+      "pool": {
+        "labels": [
+          "bike-cable"
+        ],
+        "size": 1
+      },
+      "query_id": "q02",
+      "ranked": [
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": [
+            "bike-cable"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "bread-bake": 3
+      },
+      "pool": {
+        "labels": [
+          "bread-bake"
+        ],
+        "size": 1
+      },
+      "query_id": "q03",
+      "ranked": [
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": [
+            "bread-bake"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "travel-booking": 3
+      },
+      "pool": {
+        "labels": [
+          "travel-booking"
+        ],
+        "size": 1
+      },
+      "query_id": "q04",
+      "ranked": [
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": [
+            "travel-booking"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "finance-invoice": 3
+      },
+      "pool": {
+        "labels": [
+          "finance-invoice"
+        ],
+        "size": 1
+      },
+      "query_id": "q05",
+      "ranked": [
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": [
+            "finance-invoice"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "bike-pressure": 3
+      },
+      "pool": {
+        "labels": [
+          "bike-pressure"
+        ],
+        "size": 1
+      },
+      "query_id": "q06",
+      "ranked": [
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": [
+            "bike-pressure"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "paraphrase",
+      "diagnostics": {},
+      "judgments": {
+        "garden-aphids": 3
+      },
+      "pool": {
+        "labels": [
+          "garden-aphids"
+        ],
+        "size": 10
+      },
+      "query_id": "q07",
+      "ranked": [
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": []
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": [
+            "garden-aphids"
+          ]
+        },
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        },
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": []
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "paraphrase",
+      "diagnostics": {},
+      "judgments": {
+        "car-tyres": 3
+      },
+      "pool": {
+        "labels": [],
+        "size": 5
+      },
+      "query_id": "q08",
+      "ranked": [
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        },
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": []
+        },
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "paraphrase",
+      "diagnostics": {},
+      "judgments": {
+        "health-shin": 3
+      },
+      "pool": {
+        "labels": [
+          "health-shin"
+        ],
+        "size": 7
+      },
+      "query_id": "q09",
+      "ranked": [
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": [
+            "health-shin"
+          ]
+        },
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": []
+        },
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": []
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "multi",
+      "diagnostics": {},
+      "judgments": {
+        "finance-electricity": 3
+      },
+      "pool": {
+        "labels": [
+          "finance-electricity"
+        ],
+        "size": 1
+      },
+      "query_id": "q10",
+      "ranked": [
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": [
+            "finance-electricity"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "multi",
+      "diagnostics": {},
+      "judgments": {
+        "work-atlas": 3,
+        "work-risks": 2
+      },
+      "pool": {
+        "labels": [
+          "work-atlas",
+          "work-risks"
+        ],
+        "size": 1
+      },
+      "query_id": "q11",
+      "ranked": [
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": [
+            "work-atlas",
+            "work-risks"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "bread-starter": 3
+      },
+      "pool": {
+        "labels": [
+          "bread-starter"
+        ],
+        "size": 1
+      },
+      "query_id": "q12",
+      "ranked": [
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": [
+            "bread-starter"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "travel-tram": 3
+      },
+      "pool": {
+        "labels": [
+          "travel-tram"
+        ],
+        "size": 1
+      },
+      "query_id": "q13",
+      "ranked": [
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": [
+            "travel-tram"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "multi",
+      "diagnostics": {},
+      "judgments": {
+        "bike-chain": 3,
+        "health-shoes": 1
+      },
+      "pool": {
+        "labels": [
+          "bike-chain",
+          "health-shoes"
+        ],
+        "size": 3
+      },
+      "query_id": "q14",
+      "ranked": [
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": [
+            "bike-chain"
+          ]
+        },
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": [
+            "health-shoes"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "kitchen-leak": 3
+      },
+      "pool": {
+        "labels": [
+          "kitchen-leak"
+        ],
+        "size": 1
+      },
+      "query_id": "q15",
+      "ranked": [
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": [
+            "kitchen-leak"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "paraphrase",
+      "diagnostics": {},
+      "judgments": {
+        "books-lefthand": 3
+      },
+      "pool": {
+        "labels": [
+          "books-lefthand"
+        ],
+        "size": 8
+      },
+      "query_id": "q16",
+      "ranked": [
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": [
+            "books-lefthand"
+          ]
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": []
+        },
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "multi",
+      "diagnostics": {},
+      "judgments": {
+        "finance-renew": 2,
+        "kitchen-install": 2
+      },
+      "pool": {
+        "labels": [
+          "finance-renew",
+          "kitchen-install"
+        ],
+        "size": 2
+      },
+      "query_id": "q17",
+      "ranked": [
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": [
+            "kitchen-install"
+          ]
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": [
+            "finance-renew"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "garden-compost": 3
+      },
+      "pool": {
+        "labels": [
+          "garden-compost"
+        ],
+        "size": 1
+      },
+      "query_id": "q18",
+      "ranked": [
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": [
+            "garden-compost"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 1
+      },
+      "query_id": "q19",
+      "ranked": [
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "q20",
+      "ranked": [],
+      "status": "succeeded"
+    }
+  ],
+  "results_sha256": "fdf99a71712fa940b6f0c6bd79cbf426f17267549ed84e5c7f57d295c469d539",
+  "schema": "capicove.retrieval-eval-run.v1",
+  "stack": "offline-text",
+  "timing": {
+    "build_ms": 246.755453,
+    "query_ms": {
+      "q01": 15.749183,
+      "q02": 11.976998,
+      "q03": 13.962969,
+      "q04": 11.661562,
+      "q05": 11.524237,
+      "q06": 13.312212,
+      "q07": 33.327806,
+      "q08": 11.392046,
+      "q09": 11.59758,
+      "q10": 6.749328,
+      "q11": 5.825473,
+      "q12": 4.95382,
+      "q13": 5.513546,
+      "q14": 6.494754,
+      "q15": 5.596851,
+      "q16": 11.188323,
+      "q17": 6.554473,
+      "q18": 7.144401,
+      "q19": 5.237938,
+      "q20": 7.474391
+    },
+    "search_ms": {
+      "q01": 10.732712,
+      "q02": 7.294035,
+      "q03": 8.316199,
+      "q04": 6.946088,
+      "q05": 6.432991,
+      "q06": 13.222223,
+      "q07": 12.359216,
+      "q08": 11.295155,
+      "q09": 11.495838,
+      "q10": 6.665552,
+      "q11": 5.737002,
+      "q12": 4.839139,
+      "q13": 5.435465,
+      "q14": 6.412312,
+      "q15": 5.527108,
+      "q16": 11.085055,
+      "q17": 6.470659,
+      "q18": 7.064519,
+      "q19": 5.164365,
+      "q20": 7.417678
+    },
+    "search_stats": {
+      "count": 20,
+      "max_ms": 13.222223,
+      "mean_ms": 7.995665549999998,
+      "p50_ms": 6.946088,
+      "p95_ms": 12.359216
+    },
+    "stats": {
+      "count": 20,
+      "max_ms": 33.327806,
+      "mean_ms": 10.361894549999999,
+      "p50_ms": 7.474391,
+      "p95_ms": 15.749183
+    }
+  }
+}

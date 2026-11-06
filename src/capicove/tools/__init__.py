@@ -32,6 +32,12 @@ from capicove.tools.video_filter import (
     register_video_filter_tool,
     sanitize_video_filter_arguments,
 )
+from capicove.tools.video_quality import (
+    VIDEO_QUALITY_SPEC,
+    VideoQualityToolHandler,
+    build_video_quality_tool_handler,
+    register_video_quality_tool,
+)
 from capicove.tools.video_split import (
     VIDEO_SPLIT_SPEC,
     VideoSplitToolHandler,
@@ -96,6 +102,7 @@ __all__ = [
     "IMAGE_TOOL_SPECS_BY_NAME",
     "SEARCH_SPEC",
     "VIDEO_FILTER_SPEC",
+    "VIDEO_QUALITY_SPEC",
     "VIDEO_SPLIT_SPEC",
     "AudioClipToolHandler",
     "AudioTranscribeToolHandler",
@@ -111,10 +118,12 @@ __all__ = [
     "TracedToolHandler",
     "UnknownToolError",
     "VideoFilterToolHandler",
+    "VideoQualityToolHandler",
     "VideoSplitToolHandler",
     "audio_transcribe_capabilities",
     "build_image_tool_handler",
     "build_video_filter_tool_handler",
+    "build_video_quality_tool_handler",
     "build_video_split_tool_handler",
     "register_audio_clip_tool",
     "register_audio_transcribe_tool",
@@ -123,6 +132,7 @@ __all__ = [
     "register_image_tools",
     "register_search_tool",
     "register_video_filter_tool",
+    "register_video_quality_tool",
     "register_video_split_tool",
     "sanitize_audio_transcribe_arguments",
     "sanitize_video_filter_arguments",

@@ -1,0 +1,334 @@
+{
+  "baseline": {
+    "dataset": {
+      "id": "multihop-graph-eval-v1",
+      "queries": 13,
+      "schema": "capicove.retrieval-eval.v1",
+      "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+    },
+    "index": {
+      "chunks": 20,
+      "generation": 20,
+      "kind": "native-knowledge-generation",
+      "revision": 20
+    },
+    "model": {
+      "components": [],
+      "kind": "none",
+      "real_model_validation": "not_run"
+    },
+    "options": {
+      "fake_dense": false,
+      "k": 5,
+      "reranker": "none"
+    },
+    "profile": {
+      "fingerprint": "4bd38a59f3651d5f50e4df4a3a016f315a86f7f7318f2e34b9ee9973510a44f0",
+      "id": "kb-default-v1",
+      "version": 1
+    },
+    "results_sha256": "152dc9105dc8bfbc2c4d23f5185abec18043434bc5f15bf3328d3326720e48c2",
+    "stack": "kb"
+  },
+  "bootstrap": {
+    "groups": "query",
+    "samples": 2000,
+    "seed": 0
+  },
+  "candidate": {
+    "dataset": {
+      "id": "multihop-graph-eval-v1",
+      "queries": 13,
+      "schema": "capicove.retrieval-eval.v1",
+      "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+    },
+    "index": {
+      "completeness": "complete",
+      "entities": 34,
+      "graph_profile_fingerprint": "2b279d49e5740ea5c49389821c82bc4c87bd291e84a00c92e09747cd9e0227f2",
+      "kind": "graph-snapshot",
+      "manifest_sha256": "2465c0a8a16c46830439e01ec27b5bc0b2035df12a30a1337868e77726e9774c",
+      "relationships": 20,
+      "reports": 35,
+      "snapshot_id": "graph:2465c0a8a16c46830439e01ec27b5bc0b2035df12a30a1337868e77726e9774c"
+    },
+    "model": {
+      "components": [
+        "generator:capicove/scripted-graph-generator",
+        "embedder:capicove-deterministic-fake:hashed-text-64",
+        "partitioner:capicove/fixture-components"
+      ],
+      "generator_calls": 41,
+      "kind": "deterministic-fake",
+      "real_model_validation": "not_run"
+    },
+    "options": {
+      "fake_dense": false,
+      "k": 5,
+      "reranker": "none"
+    },
+    "profile": {
+      "fingerprint": "86b88b9778e58fb7d2dc11d2d3f303a6f4f4a2784c24bb033475769ae71fbb59",
+      "id": "graphrag-default-v1",
+      "version": 1
+    },
+    "results_sha256": "0e606b74c93080590cace956cb4241bf631507ea3a9ba3f094415d2870fbbc0a",
+    "stack": "graphrag-local"
+  },
+  "dataset": {
+    "id": "multihop-graph-eval-v1",
+    "queries": 13,
+    "schema": "capicove.retrieval-eval.v1",
+    "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+  },
+  "experimental": true,
+  "interpretation": "Engineering comparison over a frozen set; deterministic fakes are not model quality",
+  "latency": {
+    "baseline": {
+      "count": 13,
+      "max_ms": 9.729796,
+      "mean_ms": 5.802448615384616,
+      "p50_ms": 5.466322,
+      "p95_ms": 9.729796
+    },
+    "candidate": {
+      "count": 13,
+      "max_ms": 0.312958,
+      "mean_ms": 0.2401795384615385,
+      "p50_ms": 0.273042,
+      "p95_ms": 0.312958
+    }
+  },
+  "metrics": {
+    "candidate_pool_recall": {
+      "baseline": 0.9583333333333334,
+      "candidate": 0.9444444444444443,
+      "delta": -0.013888888888889062,
+      "losses": 2,
+      "paired_bootstrap_95ci": [
+        -0.11111111111111112,
+        0.09722222222222221
+      ],
+      "sign_test_p": 1.0,
+      "ties": 9,
+      "wins": 1
+    },
+    "complete_support@1": {
+      "baseline": 0.16666666666666666,
+      "candidate": 0.16666666666666666,
+      "delta": 0.0,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.0,
+        0.0
+      ],
+      "sign_test_p": 1.0,
+      "ties": 12,
+      "wins": 0
+    },
+    "complete_support@3": {
+      "baseline": 0.25,
+      "candidate": 0.5833333333333334,
+      "delta": 0.33333333333333337,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.08333333333333333,
+        0.5833333333333334
+      ],
+      "sign_test_p": 0.125,
+      "ties": 8,
+      "wins": 4
+    },
+    "complete_support@5": {
+      "baseline": 0.3333333333333333,
+      "candidate": 0.75,
+      "delta": 0.4166666666666667,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.16666666666666666,
+        0.75
+      ],
+      "sign_test_p": 0.0625,
+      "ties": 7,
+      "wins": 5
+    },
+    "context_chars@1": {
+      "baseline": 98.25,
+      "candidate": 36.333333333333336,
+      "delta": -61.916666666666664,
+      "losses": 12,
+      "ties": 0,
+      "wins": 0
+    },
+    "context_chars@3": {
+      "baseline": 272.0,
+      "candidate": 114.66666666666667,
+      "delta": -157.33333333333331,
+      "losses": 12,
+      "ties": 0,
+      "wins": 0
+    },
+    "context_chars@5": {
+      "baseline": 439.6666666666667,
+      "candidate": 182.0,
+      "delta": -257.6666666666667,
+      "losses": 12,
+      "ties": 0,
+      "wins": 0
+    },
+    "mrr": {
+      "baseline": 0.888888888888889,
+      "candidate": 0.9027777777777777,
+      "delta": 0.013888888888888729,
+      "losses": 2,
+      "paired_bootstrap_95ci": [
+        -0.19444444444444445,
+        0.22222222222222224
+      ],
+      "sign_test_p": 1.0,
+      "ties": 8,
+      "wins": 2
+    },
+    "ndcg@1": {
+      "baseline": 0.8333333333333334,
+      "candidate": 0.8333333333333334,
+      "delta": 0.0,
+      "losses": 2,
+      "paired_bootstrap_95ci": [
+        -0.3333333333333333,
+        0.3333333333333333
+      ],
+      "sign_test_p": 1.0,
+      "ties": 8,
+      "wins": 2
+    },
+    "ndcg@3": {
+      "baseline": 0.6168031590436842,
+      "candidate": 0.807090118844734,
+      "delta": 0.19028695980104982,
+      "losses": 2,
+      "paired_bootstrap_95ci": [
+        0.010935839449119631,
+        0.36207383879725713
+      ],
+      "sign_test_p": 0.2890625,
+      "ties": 4,
+      "wins": 6
+    },
+    "ndcg@5": {
+      "baseline": 0.6702541928578835,
+      "candidate": 0.861066557312275,
+      "delta": 0.19081236445439154,
+      "losses": 2,
+      "paired_bootstrap_95ci": [
+        0.034780261401998115,
+        0.3373617742204011
+      ],
+      "sign_test_p": 0.1796875,
+      "ties": 3,
+      "wins": 7
+    },
+    "recall@1": {
+      "baseline": 0.513888888888889,
+      "candidate": 0.4583333333333333,
+      "delta": -0.055555555555555636,
+      "losses": 3,
+      "paired_bootstrap_95ci": [
+        -0.23611111111111113,
+        0.1111111111111111
+      ],
+      "sign_test_p": 1.0,
+      "ties": 7,
+      "wins": 2
+    },
+    "recall@3": {
+      "baseline": 0.625,
+      "candidate": 0.8055555555555555,
+      "delta": 0.18055555555555547,
+      "losses": 1,
+      "paired_bootstrap_95ci": [
+        0.027777777777777787,
+        0.3194444444444445
+      ],
+      "sign_test_p": 0.125,
+      "ties": 5,
+      "wins": 6
+    },
+    "recall@5": {
+      "baseline": 0.7222222222222222,
+      "candidate": 0.9027777777777777,
+      "delta": 0.18055555555555547,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.06944444444444445,
+        0.3194444444444445
+      ],
+      "sign_test_p": 0.0625,
+      "ties": 7,
+      "wins": 5
+    },
+    "single_credit_recall@1": {
+      "baseline": 0.4583333333333333,
+      "candidate": 0.4583333333333333,
+      "delta": 0.0,
+      "losses": 2,
+      "paired_bootstrap_95ci": [
+        -0.15277777777777776,
+        0.13888888888888887
+      ],
+      "sign_test_p": 1.0,
+      "ties": 8,
+      "wins": 2
+    },
+    "single_credit_recall@3": {
+      "baseline": 0.5694444444444444,
+      "candidate": 0.8055555555555555,
+      "delta": 0.23611111111111105,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.09722222222222221,
+        0.375
+      ],
+      "sign_test_p": 0.03125,
+      "ties": 6,
+      "wins": 6
+    },
+    "single_credit_recall@5": {
+      "baseline": 0.6666666666666666,
+      "candidate": 0.9027777777777777,
+      "delta": 0.23611111111111105,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.09722222222222222,
+        0.38888888888888884
+      ],
+      "sign_test_p": 0.03125,
+      "ties": 6,
+      "wins": 6
+    }
+  },
+  "no_answer": {
+    "baseline_false_positive_queries": 1,
+    "candidate_false_positive_queries": 0
+  },
+  "paired_queries": 12,
+  "rankings": {
+    "changed_queries": [
+      "mh01",
+      "mh02",
+      "mh03",
+      "mh04",
+      "mh05",
+      "mh06",
+      "mh07",
+      "mh08",
+      "mh09",
+      "mh10",
+      "mh11",
+      "mh12",
+      "mh13"
+    ],
+    "results_identical": false
+  },
+  "schema": "capicove.retrieval-eval-comparison.v1"
+}

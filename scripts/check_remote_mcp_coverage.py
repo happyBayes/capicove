@@ -30,6 +30,7 @@ DOMAINS = {
     "C02": ("retrieval/image", "runtime/reverse_image.py"),
     "C03": (
         "processing/video/filtering",
+        "processing/video/quality",
         "processing/video/splitter.py",
         "processing/video/strategies",
     ),
@@ -91,12 +92,14 @@ SURFACE_FAMILIES = {
     "image_search": "C02",
     "video_split": "C03",
     "video_filter": "C03",
+    "video_quality": "C03",
     "video_deduplicate": "C25",
     "search_video": "C04",
     "audio": "C05",
     "audio_import": "C05",
     "audio_clip": "C05",
     "audio_transcribe": "C05",
+    "audio_synthesis": "C05",
     "local_retrieval": "C06",
     "search": "C07",
     "evidence": "C07",
@@ -425,7 +428,7 @@ def local_wire_names(root):
     names.update({BOOK_TOOL_SPECS[key].tool_id: value for key, value in BOOK_MCP_NAMES.items()})
     names.update({spec.tool_id: "capicove_memory_" + key for key, spec in MEMORY_SPECS.items()})
     for domain, operations in {
-        "audio": ("import", "clip", "transcribe"),
+        "audio": ("import", "clip", "transcribe", "synthesize", "clone"),
         "knowledge": ("status", "search", "ask", "evidence"),
     }.items():
         names.update(
@@ -1136,7 +1139,7 @@ def validate_core_manifest(manifest, root):
             errors.append(f"unrecorded core acceptance: {identity}")
     if families != CORE_FAMILIES:
         errors.append("core capability mapping is incomplete")
-    for missing in sorted((CORE_REQUIRED_OPERATIONS - seen) | (required_local - covered)):
+    for missing in sorted(CORE_REQUIRED_OPERATIONS - seen):
         errors.append(f"missing core operation: {missing}")
     try:
         inventory_data = json.loads(
@@ -1203,6 +1206,23 @@ def validate_core_manifest(manifest, root):
             partition.add(key)
     if partition != set(expected_candidates):
         errors.append("core source reconciliation does not cover the exact candidate partition")
+    # A newly added standalone Tool can remain an explicit unresolved discovery
+    # candidate. That is not an accepted remote contract or runtime enablement.
+    unresolved_local = {
+        original["canonical_tool_id"]
+        for entry in unresolved
+        if isinstance(entry, dict)
+        and (
+            original := expected_candidates.get(
+                (entry.get("operation_id"), entry.get("provider_profile"))
+            )
+        )
+        is not None
+        and entry.get("source_entrypoints") == original["source_entrypoints"]
+        and original.get("canonical_tool_id")
+    }
+    for missing in sorted(required_local - covered - unresolved_local):
+        errors.append(f"missing core operation: {missing}")
     return errors
 
 
@@ -1440,6 +1460,8 @@ def validate(data, root, mode, receipts):
             errors.append("core contract manifest linkage missing or changed")
         errors.extend(validate_core_manifest(core, root))
         if mode in {"planned", "qualified"}:
+            if core.get("unresolved_candidates"):
+                errors.append("core source reconciliation incomplete")
             for operation in core.get("operations", []):
                 if operation.get("semantic_audit", {}).get("state") != "source_fields_projected":
                     errors.append(

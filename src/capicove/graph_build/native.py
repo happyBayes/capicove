@@ -5,7 +5,7 @@ from __future__ import annotations
 import time
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 from capicove.contracts import EmbeddingSpaceRef
 from capicove.contracts.data import DatasetSnapshotRef
@@ -18,7 +18,13 @@ from capicove.graph_build._stage_artifacts import BuildStageStore
 from capicove.graph_build.codec import fingerprint
 from capicove.graph_build.datasets import DocumentRow, codec_for_role, publish_table
 from capicove.graph_build.inference import InferenceRunner
-from capicove.graph_build.ports import BatchTextEmbeddingProvider
+from capicove.graph_build.ports import (
+    BatchTextEmbeddingProvider,
+    CommunityPartitioner,
+    RequestTokenizer,
+    StructuredGenerator,
+    TextTokenizer,
+)
 from capicove.graph_build.profiles import ChunkingProfile, GraphBuildProfile, InferencePolicy
 from capicove.graph_build.remote_generation import (
     OpenAICompatibleGenerator,
@@ -39,6 +45,10 @@ from capicove.graph_build.snapshots import (
 )
 from capicove.graph_build.vlm_generation import RegisteredGenerationProfile
 from capicove.processing import LocalProcessingWorkspace
+
+
+class NativeTokenizer(RequestTokenizer, TextTokenizer, Protocol):
+    """Count both chunker text and complete provider requests."""
 
 
 class _Inventory:
@@ -124,16 +134,25 @@ def build_native_graph(
     generation: OpenAICompatibleProfile | RegisteredGenerationProfile,
     embedder: BatchTextEmbeddingProvider,
     space: EmbeddingSpaceRef,
+    generator: StructuredGenerator | None = None,
+    tokenizer: NativeTokenizer | None = None,
+    partitioner: CommunityPartitioner | None = None,
 ) -> dict[str, Any]:
     """Build, validate and activate a graph using the established typed workflow.
 
     Generic corpus sources are never treated as the owner's self reports. The
     existing closed ontology is retained; no subject attribution is inferred.
+    ``generator`` and ``tokenizer`` replace the profile's OpenAI-compatible
+    transport (for example, a scripted generator in offline tests); the
+    inference identity still comes from ``generation``. The result names the
+    attempt directory (``graph_root``) relative to its parent, so query code can
+    reopen the published snapshot. A partitioner can be injected for offline fixtures.
     """
     workspace = LocalProcessingWorkspace(root / "processing")
     inventory = _Inventory(workspace, gate)
     reader = _Reader(representations, gate)
-    tokenizer = OpenAICompatibleTokenizer(generation)
+    if tokenizer is None:
+        tokenizer = OpenAICompatibleTokenizer(generation)
     profile = GraphBuildProfile(
         profile_id="native-knowledge-v1",
         ontology_version="personal-growth-v1",
@@ -169,7 +188,7 @@ def build_native_graph(
         artifacts(tuple(row.representation_ref for row in representations)),
     )
     runner = InferenceRunner(
-        generator=OpenAICompatibleGenerator(generation),
+        generator=generator if generator is not None else OpenAICompatibleGenerator(generation),
         tokenizer=tokenizer,
         gate=gate,
         artifact_factory=artifacts,
@@ -189,7 +208,7 @@ def build_native_graph(
         inference_runner=runner,
         embedder=embedder,
         identity_space=space,
-        partitioner=NetworkXLouvainPartitioner(),
+        partitioner=partitioner if partitioner is not None else NetworkXLouvainPartitioner(),
         workspace=workspace,
         catalog=catalog,
         stages=stages,
@@ -238,7 +257,19 @@ def build_native_graph(
                 context.append({"kind": table.role, "text": json_text(encoded)})
         _, revision = catalog.active(scope)
         catalog.activate(result.graph_ref.snapshot_id, scope, expected_revision=revision)
-    return {"receipt": receipt, "context": context}
+    return {"receipt": receipt, "context": context, "graph_root": root.name}
+
+
+def open_native_graph(
+    root: Path, *, gate: SnapshotAccessGate
+) -> tuple[GraphSnapshotCatalog, LocalProcessingWorkspace]:
+    """Reopen a native build directory's catalog and workspace for read-only queries."""
+    workspace = LocalProcessingWorkspace(root / "processing")
+    stages = BuildStageStore(root / "stages" / "stages.sqlite", gate, workspace)
+    catalog = GraphSnapshotCatalog(
+        root / "catalog" / "catalog.sqlite", workspace, gate, _Inventory(workspace, gate), stages
+    )
+    return catalog, workspace
 
 
 def json_text(value: Any) -> str:

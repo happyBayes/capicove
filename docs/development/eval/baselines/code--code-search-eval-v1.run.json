@@ -1,0 +1,2171 @@
+{
+  "adapter": {
+    "id": "code",
+    "version": "1"
+  },
+  "dataset": {
+    "id": "code-search-eval-v1",
+    "queries": 30,
+    "schema": "capicove.code-search-eval.v1",
+    "sha256": "b2934bd47c437ca466a12520f2f0ae9c1ca0e36e9a7247823d5e4f8ba6304823"
+  },
+  "environment": {
+    "capicove_version": "0.1.0",
+    "cpus": 4,
+    "machine": "x86_64",
+    "platform": "linux",
+    "python": "3.11.15"
+  },
+  "experimental": true,
+  "index": {
+    "corpus_paths": [
+      "src",
+      "scripts"
+    ],
+    "dataset_corpus": "Capicove repository at commit 53fb8e0 (local processing only)",
+    "generation_id": "cg-f2c51af9ad41f61519b41eeaad971b267347e9c721abe73878d7a3dff4e8659c",
+    "kind": "local-code-generation",
+    "repository_commit": "53fb8e0e020a27839243e6041237a3c8093fc17d",
+    "selected_files": 600,
+    "selection_sha256": "d1af72f65eaee5564ec258015973fc9973513f95b59b407a433ae51fd4da99f8",
+    "units": 4309
+  },
+  "model": {
+    "components": [],
+    "kind": "none",
+    "real_model_validation": "not_run"
+  },
+  "options": {
+    "fake_dense": false,
+    "k": 10,
+    "reranker": "none"
+  },
+  "profile": {
+    "code_policy_ref": "code-symbols-v1",
+    "fingerprint": "ebd1c9ba4333cf106d7025c9edb21ead11d0afa68ae3b097f47c16795f5d4353",
+    "id": "local-code-lexical-v1",
+    "version": 1
+  },
+  "results": [
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/fusion.py#WeightedReciprocalRankFusion": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/fusion.py#WeightedReciprocalRankFusion"
+        ],
+        "size": 30
+      },
+      "query_id": "id-01",
+      "ranked": [
+        {
+          "chars": 1309,
+          "key": "src/capicove/retrieval/fusion.py@0-1309",
+          "labels": [
+            "src/capicove/retrieval/fusion.py#WeightedReciprocalRankFusion"
+          ]
+        },
+        {
+          "chars": 961,
+          "key": "src/capicove/retrieval/fusion.py@5057-6018",
+          "labels": [
+            "src/capicove/retrieval/fusion.py#WeightedReciprocalRankFusion"
+          ]
+        },
+        {
+          "chars": 198,
+          "key": "src/capicove/retrieval/__init__.py@4299-4497",
+          "labels": []
+        },
+        {
+          "chars": 1791,
+          "key": "src/capicove/retrieval/__init__.py@60-1851",
+          "labels": []
+        },
+        {
+          "chars": 1791,
+          "key": "src/capicove/runtime/reverse_image.py@14990-16781",
+          "labels": []
+        },
+        {
+          "chars": 1753,
+          "key": "src/capicove/runtime/reverse_image.py@377-2130",
+          "labels": []
+        },
+        {
+          "chars": 1773,
+          "key": "src/capicove/retrieval/__init__.py@2596-4369",
+          "labels": []
+        },
+        {
+          "chars": 663,
+          "key": "src/capicove/retrieval/text_fusion.py@2196-2859",
+          "labels": []
+        },
+        {
+          "chars": 1773,
+          "key": "src/capicove/retrieval/text_fusion.py@501-2274",
+          "labels": []
+        },
+        {
+          "chars": 1762,
+          "key": "src/capicove/retrieval/video_fusion.py@2036-3798",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/local_retrieval.py#chunk_markdown": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/local_retrieval.py#chunk_markdown"
+        ],
+        "size": 30
+      },
+      "query_id": "id-02",
+      "ranked": [
+        {
+          "chars": 1660,
+          "key": "src/capicove/runtime/local_retrieval.py@19240-20900",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py#chunk_markdown"
+          ]
+        },
+        {
+          "chars": 512,
+          "key": "src/capicove/runtime/local_retrieval.py@37755-38267",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py#chunk_markdown"
+          ]
+        },
+        {
+          "chars": 1004,
+          "key": "src/capicove/runtime/local_retrieval.py@10839-11843",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py#chunk_markdown"
+          ]
+        },
+        {
+          "chars": 1738,
+          "key": "src/capicove/runtime/local_retrieval.py@17502-19240",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py#chunk_markdown"
+          ]
+        },
+        {
+          "chars": 1782,
+          "key": "src/capicove/wiki/service.py@1682-3464",
+          "labels": []
+        },
+        {
+          "chars": 1522,
+          "key": "src/capicove/runtime/local_retrieval.py@1433-2955",
+          "labels": []
+        },
+        {
+          "chars": 636,
+          "key": "src/capicove/wiki/filesystem.py@12662-13298",
+          "labels": []
+        },
+        {
+          "chars": 734,
+          "key": "src/capicove/runtime/local_retrieval.py@35313-36047",
+          "labels": []
+        },
+        {
+          "chars": 1157,
+          "key": "src/capicove/wiki/maintenance/publication.py@1606-2763",
+          "labels": []
+        },
+        {
+          "chars": 1754,
+          "key": "src/capicove/wiki/maintenance/sources.py@6644-8398",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py#RequestAdmission": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/remote_sessions.py#RequestAdmission"
+        ],
+        "size": 30
+      },
+      "query_id": "id-03",
+      "ranked": [
+        {
+          "chars": 1779,
+          "key": "src/capicove/runtime/remote_sessions.py@0-1779",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py#RequestAdmission"
+          ]
+        },
+        {
+          "chars": 1760,
+          "key": "src/capicove/mcp/remote.py@2061-3821",
+          "labels": []
+        },
+        {
+          "chars": 1765,
+          "key": "src/capicove/mcp/remote.py@0-1765",
+          "labels": []
+        },
+        {
+          "chars": 854,
+          "key": "src/capicove/knowledge/service.py@12758-13612",
+          "labels": []
+        },
+        {
+          "chars": 1767,
+          "key": "src/capicove/mcp/remote.py@13679-15446",
+          "labels": []
+        },
+        {
+          "chars": 1789,
+          "key": "src/capicove/knowledge/service.py@11079-12868",
+          "labels": []
+        },
+        {
+          "chars": 1382,
+          "key": "src/capicove/runtime/ocr_service.py@1578-2960",
+          "labels": []
+        },
+        {
+          "chars": 1339,
+          "key": "src/capicove/api/vlm.py@4611-5950",
+          "labels": []
+        },
+        {
+          "chars": 1744,
+          "key": "src/capicove/api/audio.py@4242-5986",
+          "labels": []
+        },
+        {
+          "chars": 830,
+          "key": "src/capicove/api/reranker.py@3370-4200",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py#SessionCapacity": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/remote_sessions.py#SessionCapacity"
+        ],
+        "size": 30
+      },
+      "query_id": "id-04",
+      "ranked": [
+        {
+          "chars": 1782,
+          "key": "src/capicove/runtime/remote_sessions.py@3528-5310",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py#SessionCapacity"
+          ]
+        },
+        {
+          "chars": 1760,
+          "key": "src/capicove/mcp/remote.py@2061-3821",
+          "labels": []
+        },
+        {
+          "chars": 1765,
+          "key": "src/capicove/mcp/remote.py@0-1765",
+          "labels": []
+        },
+        {
+          "chars": 1069,
+          "key": "src/capicove/runtime/remote_sessions.py@5310-6379",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/mcp/remote.py@11976-13755",
+          "labels": []
+        },
+        {
+          "chars": 1749,
+          "key": "src/capicove/runtime/remote_sessions.py@1779-3528",
+          "labels": []
+        },
+        {
+          "chars": 1767,
+          "key": "src/capicove/mcp/remote.py@13679-15446",
+          "labels": []
+        },
+        {
+          "chars": 1526,
+          "key": "src/capicove/mcp/remote.py@6755-8281",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/runtime/remote_sessions.py@0-1779",
+          "labels": []
+        },
+        {
+          "chars": 1410,
+          "key": "src/capicove/retrieval/scale_codec.py@26267-27677",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/mcp/remote.py#RemoteReadHost": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/mcp/remote.py#RemoteReadHost"
+        ],
+        "size": 30
+      },
+      "query_id": "id-05",
+      "ranked": [
+        {
+          "chars": 296,
+          "key": "src/capicove/mcp/remote.py@1765-2061",
+          "labels": [
+            "src/capicove/mcp/remote.py#RemoteReadHost"
+          ]
+        },
+        {
+          "chars": 1338,
+          "key": "src/capicove/runtime/knowledge_host.py@0-1338",
+          "labels": []
+        },
+        {
+          "chars": 1760,
+          "key": "src/capicove/mcp/remote.py@2061-3821",
+          "labels": []
+        },
+        {
+          "chars": 1114,
+          "key": "src/capicove/runtime/remote_auth.py@0-1114",
+          "labels": []
+        },
+        {
+          "chars": 1362,
+          "key": "src/capicove/runtime/_remote/jwt.py@0-1362",
+          "labels": []
+        },
+        {
+          "chars": 931,
+          "key": "src/capicove/graph_build/remote_generation.py@12608-13539",
+          "labels": []
+        },
+        {
+          "chars": 1427,
+          "key": "src/capicove/mcp/remote.py@5328-6755",
+          "labels": []
+        },
+        {
+          "chars": 1541,
+          "key": "src/capicove/runtime/remote_config.py@0-1541",
+          "labels": []
+        },
+        {
+          "chars": 1088,
+          "key": "src/capicove/runtime/knowledge_mcp.py@1984-3072",
+          "labels": []
+        },
+        {
+          "chars": 926,
+          "key": "scripts/reconcile_remote_mcp_inventory.py@3030-3956",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/processing/audio/clipping.py#AudioClippingService": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/processing/audio/clipping.py#AudioClippingService"
+        ],
+        "size": 30
+      },
+      "query_id": "id-06",
+      "ranked": [
+        {
+          "chars": 1581,
+          "key": "src/capicove/processing/audio/clipping.py@0-1581",
+          "labels": [
+            "src/capicove/processing/audio/clipping.py#AudioClippingService"
+          ]
+        },
+        {
+          "chars": 1517,
+          "key": "src/capicove/tools/audio_clip.py@5325-6842",
+          "labels": []
+        },
+        {
+          "chars": 1404,
+          "key": "src/capicove/processing/audio/__init__.py@0-1404",
+          "labels": []
+        },
+        {
+          "chars": 1762,
+          "key": "src/capicove/runtime/audio_mcp.py@12261-14023",
+          "labels": []
+        },
+        {
+          "chars": 863,
+          "key": "src/capicove/tools/audio_clip.py@0-863",
+          "labels": []
+        },
+        {
+          "chars": 1038,
+          "key": "src/capicove/cli/commands/audio_clip.py@0-1038",
+          "labels": []
+        },
+        {
+          "chars": 1032,
+          "key": "src/capicove/runtime/audio_mcp.py@14855-15887",
+          "labels": []
+        },
+        {
+          "chars": 1793,
+          "key": "src/capicove/cli/commands/audio_clip.py@3306-5099",
+          "labels": []
+        },
+        {
+          "chars": 1430,
+          "key": "src/capicove/tools/audio_clip.py@9038-10468",
+          "labels": []
+        },
+        {
+          "chars": 1785,
+          "key": "src/capicove/tools/audio_clip.py@7326-9111",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/factory.py#ModelFactory": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/factory.py#ModelFactory"
+        ],
+        "size": 30
+      },
+      "query_id": "id-07",
+      "ranked": [
+        {
+          "chars": 1706,
+          "key": "src/capicove/model/factory.py@1318-3024",
+          "labels": [
+            "src/capicove/model/factory.py#ModelFactory"
+          ]
+        },
+        {
+          "chars": 1552,
+          "key": "src/capicove/model/__init__.py@0-1552",
+          "labels": []
+        },
+        {
+          "chars": 511,
+          "key": "src/capicove/cli/commands/vlm.py@1660-2171",
+          "labels": []
+        },
+        {
+          "chars": 1739,
+          "key": "src/capicove/api/model_server.py@1478-3217",
+          "labels": []
+        },
+        {
+          "chars": 1624,
+          "key": "src/capicove/model/factory.py@3024-4648",
+          "labels": [
+            "src/capicove/model/factory.py#ModelFactory"
+          ]
+        },
+        {
+          "chars": 1094,
+          "key": "src/capicove/processing/video/filtering/_adapters/paddleocr_text_area.py@0-1094",
+          "labels": []
+        },
+        {
+          "chars": 1763,
+          "key": "src/capicove/cli/commands/book.py@4318-6081",
+          "labels": []
+        },
+        {
+          "chars": 1457,
+          "key": "src/capicove/cli/commands/video_filter.py@3862-5319",
+          "labels": []
+        },
+        {
+          "chars": 566,
+          "key": "src/capicove/runtime/knowledge_prepare.py@1784-2350",
+          "labels": []
+        },
+        {
+          "chars": 1256,
+          "key": "src/capicove/runtime/knowledge_models.py@0-1256",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/registry.py#ProviderRegistry": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/registry.py#ProviderRegistry"
+        ],
+        "size": 30
+      },
+      "query_id": "id-08",
+      "ranked": [
+        {
+          "chars": 1668,
+          "key": "src/capicove/model/registry.py@1694-3362",
+          "labels": [
+            "src/capicove/model/registry.py#ProviderRegistry"
+          ]
+        },
+        {
+          "chars": 1239,
+          "key": "src/capicove/model/providers/__init__.py@749-1988",
+          "labels": []
+        },
+        {
+          "chars": 749,
+          "key": "src/capicove/model/providers/__init__.py@0-749",
+          "labels": []
+        },
+        {
+          "chars": 1552,
+          "key": "src/capicove/model/__init__.py@0-1552",
+          "labels": []
+        },
+        {
+          "chars": 1624,
+          "key": "src/capicove/model/factory.py@3024-4648",
+          "labels": []
+        },
+        {
+          "chars": 1739,
+          "key": "src/capicove/api/model_server.py@1478-3217",
+          "labels": []
+        },
+        {
+          "chars": 1318,
+          "key": "src/capicove/model/factory.py@0-1318",
+          "labels": []
+        },
+        {
+          "chars": 1728,
+          "key": "src/capicove/api/model_server.py@10327-12055",
+          "labels": []
+        },
+        {
+          "chars": 1478,
+          "key": "src/capicove/api/model_server.py@0-1478",
+          "labels": []
+        },
+        {
+          "chars": 691,
+          "key": "src/capicove/batch/job_plan_receipt.py@2242-2933",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/tools/search.py#decode_search_arguments": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/tools/search.py#decode_search_arguments"
+        ],
+        "size": 30
+      },
+      "query_id": "id-09",
+      "ranked": [
+        {
+          "chars": 1798,
+          "key": "src/capicove/tools/search.py@6212-8010",
+          "labels": [
+            "src/capicove/tools/search.py#decode_search_arguments"
+          ]
+        },
+        {
+          "chars": 1749,
+          "key": "src/capicove/tools/search.py@3911-5660",
+          "labels": [
+            "src/capicove/tools/search.py#decode_search_arguments"
+          ]
+        },
+        {
+          "chars": 153,
+          "key": "src/capicove/tools/search.py@12311-12464",
+          "labels": [
+            "src/capicove/tools/search.py#decode_search_arguments"
+          ]
+        },
+        {
+          "chars": 1631,
+          "key": "src/capicove/mcp/search.py@1253-2884",
+          "labels": []
+        },
+        {
+          "chars": 1253,
+          "key": "src/capicove/mcp/search.py@0-1253",
+          "labels": []
+        },
+        {
+          "chars": 1558,
+          "key": "src/capicove/tools/search.py@2353-3911",
+          "labels": []
+        },
+        {
+          "chars": 618,
+          "key": "src/capicove/search.py@1410-2028",
+          "labels": []
+        },
+        {
+          "chars": 1630,
+          "key": "src/capicove/mcp/__init__.py@0-1630",
+          "labels": []
+        },
+        {
+          "chars": 1758,
+          "key": "src/capicove/mcp/__init__.py@1630-3388",
+          "labels": []
+        },
+        {
+          "chars": 198,
+          "key": "src/capicove/cli/commands/search.py@1954-2152",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/text_search.py#TextSearchService": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/text_search.py#TextSearchService"
+        ],
+        "size": 30
+      },
+      "query_id": "id-10",
+      "ranked": [
+        {
+          "chars": 1560,
+          "key": "src/capicove/retrieval/text_search.py@0-1560",
+          "labels": [
+            "src/capicove/retrieval/text_search.py#TextSearchService"
+          ]
+        },
+        {
+          "chars": 1165,
+          "key": "src/capicove/retrieval/memory_text_search.py@0-1165",
+          "labels": []
+        },
+        {
+          "chars": 1198,
+          "key": "src/capicove/retrieval/text_search.py@6365-7563",
+          "labels": [
+            "src/capicove/retrieval/text_search.py#TextSearchService"
+          ]
+        },
+        {
+          "chars": 791,
+          "key": "src/capicove/retrieval/__init__.py@1805-2596",
+          "labels": []
+        },
+        {
+          "chars": 1450,
+          "key": "src/capicove/runtime/local_retrieval.py@20900-22350",
+          "labels": []
+        },
+        {
+          "chars": 1773,
+          "key": "src/capicove/retrieval/__init__.py@2596-4369",
+          "labels": []
+        },
+        {
+          "chars": 1660,
+          "key": "src/capicove/runtime/local_retrieval.py@19240-20900",
+          "labels": []
+        },
+        {
+          "chars": 1161,
+          "key": "src/capicove/retrieval/memory_text_search.py@1165-2326",
+          "labels": []
+        },
+        {
+          "chars": 1410,
+          "key": "src/capicove/search.py@0-1410",
+          "labels": []
+        },
+        {
+          "chars": 1783,
+          "key": "src/capicove/cli/commands/wiki.py@2356-4139",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/tools/evidence.py#EvidenceToolHandler": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/tools/evidence.py#EvidenceToolHandler"
+        ],
+        "size": 30
+      },
+      "query_id": "id-11",
+      "ranked": [
+        {
+          "chars": 1167,
+          "key": "src/capicove/tools/evidence.py@1643-2810",
+          "labels": [
+            "src/capicove/tools/evidence.py#EvidenceToolHandler"
+          ]
+        },
+        {
+          "chars": 1328,
+          "key": "src/capicove/runtime/video_search.py@4152-5480",
+          "labels": []
+        },
+        {
+          "chars": 1660,
+          "key": "src/capicove/runtime/local_retrieval.py@19240-20900",
+          "labels": []
+        },
+        {
+          "chars": 1433,
+          "key": "src/capicove/runtime/local_retrieval.py@0-1433",
+          "labels": []
+        },
+        {
+          "chars": 1684,
+          "key": "src/capicove/runtime/video_search.py@0-1684",
+          "labels": []
+        },
+        {
+          "chars": 1452,
+          "key": "src/capicove/mcp/evidence.py@0-1452",
+          "labels": []
+        },
+        {
+          "chars": 1720,
+          "key": "src/capicove/tools/video_filter.py@7827-9547",
+          "labels": []
+        },
+        {
+          "chars": 873,
+          "key": "src/capicove/api/search.py@1163-2036",
+          "labels": []
+        },
+        {
+          "chars": 1163,
+          "key": "src/capicove/api/search.py@0-1163",
+          "labels": []
+        },
+        {
+          "chars": 1293,
+          "key": "src/capicove/runtime/retrieval_mcp.py@970-2263",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/mcp_host.py#compose_mcp_host": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/mcp_host.py#compose_mcp_host"
+        ],
+        "size": 30
+      },
+      "query_id": "id-12",
+      "ranked": [
+        {
+          "chars": 1443,
+          "key": "src/capicove/runtime/mcp_host.py@0-1443",
+          "labels": [
+            "src/capicove/runtime/mcp_host.py#compose_mcp_host"
+          ]
+        },
+        {
+          "chars": 1735,
+          "key": "src/capicove/cli/commands/mcp.py@1318-3053",
+          "labels": []
+        },
+        {
+          "chars": 1318,
+          "key": "src/capicove/cli/commands/mcp.py@0-1318",
+          "labels": []
+        },
+        {
+          "chars": 235,
+          "key": "src/capicove/cli/commands/setup.py@15822-16057",
+          "labels": []
+        },
+        {
+          "chars": 1668,
+          "key": "src/capicove/runtime/__init__.py@0-1668",
+          "labels": []
+        },
+        {
+          "chars": 1065,
+          "key": "src/capicove/cli/commands/local_retrieval.py@3599-4664",
+          "labels": []
+        },
+        {
+          "chars": 734,
+          "key": "src/capicove/api/workspace_server.py@9670-10404",
+          "labels": []
+        },
+        {
+          "chars": 1498,
+          "key": "src/capicove/cli/configured.py@0-1498",
+          "labels": []
+        },
+        {
+          "chars": 1713,
+          "key": "src/capicove/cli/commands/setup.py@16057-17770",
+          "labels": []
+        },
+        {
+          "chars": 1459,
+          "key": "src/capicove/cli/commands/local_retrieval.py@2140-3599",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/configuration.py#load_configuration": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/configuration.py#load_configuration"
+        ],
+        "size": 30
+      },
+      "query_id": "id-13",
+      "ranked": [
+        {
+          "chars": 1676,
+          "key": "src/capicove/model/configuration.py@8648-10324",
+          "labels": [
+            "src/capicove/model/configuration.py#load_configuration"
+          ]
+        },
+        {
+          "chars": 1552,
+          "key": "src/capicove/model/__init__.py@0-1552",
+          "labels": []
+        },
+        {
+          "chars": 277,
+          "key": "src/capicove/cli/commands/model_server.py@0-277",
+          "labels": []
+        },
+        {
+          "chars": 566,
+          "key": "src/capicove/runtime/knowledge_prepare.py@1784-2350",
+          "labels": []
+        },
+        {
+          "chars": 563,
+          "key": "src/capicove/runtime/knowledge_prepare.py@5568-6131",
+          "labels": []
+        },
+        {
+          "chars": 1457,
+          "key": "src/capicove/cli/commands/video_filter.py@3862-5319",
+          "labels": []
+        },
+        {
+          "chars": 807,
+          "key": "src/capicove/runtime/knowledge_doctor.py@0-807",
+          "labels": []
+        },
+        {
+          "chars": 1763,
+          "key": "src/capicove/cli/commands/book.py@4318-6081",
+          "labels": []
+        },
+        {
+          "chars": 1256,
+          "key": "src/capicove/runtime/knowledge_models.py@0-1256",
+          "labels": []
+        },
+        {
+          "chars": 873,
+          "key": "src/capicove/runtime/knowledge_graph.py@1475-2348",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/contracts/retrieval.py#TemporalRange": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/contracts/retrieval.py#TemporalRange"
+        ],
+        "size": 30
+      },
+      "query_id": "id-14",
+      "ranked": [
+        {
+          "chars": 1791,
+          "key": "src/capicove/contracts/retrieval.py@6964-8755",
+          "labels": [
+            "src/capicove/contracts/retrieval.py#TemporalRange"
+          ]
+        },
+        {
+          "chars": 1597,
+          "key": "src/capicove/retrieval/_adapters/sqlite_video_units.py@23002-24599",
+          "labels": []
+        },
+        {
+          "chars": 1731,
+          "key": "src/capicove/contracts/retrieval.py@44307-46038",
+          "labels": [
+            "src/capicove/contracts/retrieval.py#TemporalRange"
+          ]
+        },
+        {
+          "chars": 1400,
+          "key": "src/capicove/retrieval/temporal.py@0-1400",
+          "labels": []
+        },
+        {
+          "chars": 859,
+          "key": "src/capicove/retrieval/_adapters/sqlite_unit_catalog.py@44482-45341",
+          "labels": []
+        },
+        {
+          "chars": 1693,
+          "key": "src/capicove/tools/image_search.py@59015-60708",
+          "labels": []
+        },
+        {
+          "chars": 1793,
+          "key": "src/capicove/tools/image_search.py@40396-42189",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@6673-8441",
+          "labels": []
+        },
+        {
+          "chars": 1632,
+          "key": "src/capicove/contracts/retrieval.py@10503-12135",
+          "labels": [
+            "src/capicove/contracts/retrieval.py#TemporalRange"
+          ]
+        },
+        {
+          "chars": 1002,
+          "key": "src/capicove/tools/search.py@7906-8908",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "qualified",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/contracts/retrieval.py#from_manifest": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/contracts/retrieval.py#from_manifest"
+        ],
+        "size": 30
+      },
+      "query_id": "qual-01",
+      "ranked": [
+        {
+          "chars": 1298,
+          "key": "src/capicove/contracts/retrieval.py@13855-15153",
+          "labels": [
+            "src/capicove/contracts/retrieval.py#from_manifest"
+          ]
+        },
+        {
+          "chars": 873,
+          "key": "src/capicove/runtime/reverse_image.py@19757-20630",
+          "labels": []
+        },
+        {
+          "chars": 703,
+          "key": "src/capicove/processing/video/retrieval/segments.py@4617-5320",
+          "labels": []
+        },
+        {
+          "chars": 1769,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@13349-15118",
+          "labels": []
+        },
+        {
+          "chars": 1737,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@8294-10031",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@6673-8441",
+          "labels": []
+        },
+        {
+          "chars": 1734,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@9955-11689",
+          "labels": []
+        },
+        {
+          "chars": 1784,
+          "key": "src/capicove/processing/video/retrieval/text_units.py@391-2175",
+          "labels": []
+        },
+        {
+          "chars": 1379,
+          "key": "src/capicove/processing/video/retrieval/shared_ocr.py@1458-2837",
+          "labels": []
+        },
+        {
+          "chars": 1734,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@5009-6743",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "qualified",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py#reserve": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/remote_sessions.py#reserve"
+        ],
+        "size": 30
+      },
+      "query_id": "qual-02",
+      "ranked": [
+        {
+          "chars": 1782,
+          "key": "src/capicove/runtime/remote_sessions.py@3528-5310",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py#reserve"
+          ]
+        },
+        {
+          "chars": 1749,
+          "key": "src/capicove/runtime/remote_sessions.py@1779-3528",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py#reserve"
+          ]
+        },
+        {
+          "chars": 1767,
+          "key": "src/capicove/mcp/remote.py@13679-15446",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/runtime/remote_sessions.py@0-1779",
+          "labels": []
+        },
+        {
+          "chars": 1265,
+          "key": "src/capicove/mcp/remote_catalog.py@5553-6818",
+          "labels": []
+        },
+        {
+          "chars": 1760,
+          "key": "src/capicove/mcp/remote.py@2061-3821",
+          "labels": []
+        },
+        {
+          "chars": 1069,
+          "key": "src/capicove/runtime/remote_sessions.py@5310-6379",
+          "labels": []
+        },
+        {
+          "chars": 1536,
+          "key": "src/capicove/retrieval/search_models.py@19499-21035",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/mcp/remote.py@11976-13755",
+          "labels": []
+        },
+        {
+          "chars": 1526,
+          "key": "src/capicove/mcp/remote.py@6755-8281",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "split_identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/fusion.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/fusion.py"
+        ],
+        "size": 30
+      },
+      "query_id": "split-01",
+      "ranked": [
+        {
+          "chars": 663,
+          "key": "src/capicove/retrieval/text_fusion.py@2196-2859",
+          "labels": []
+        },
+        {
+          "chars": 1773,
+          "key": "src/capicove/retrieval/text_fusion.py@501-2274",
+          "labels": []
+        },
+        {
+          "chars": 1309,
+          "key": "src/capicove/retrieval/fusion.py@0-1309",
+          "labels": [
+            "src/capicove/retrieval/fusion.py"
+          ]
+        },
+        {
+          "chars": 961,
+          "key": "src/capicove/retrieval/fusion.py@5057-6018",
+          "labels": [
+            "src/capicove/retrieval/fusion.py"
+          ]
+        },
+        {
+          "chars": 501,
+          "key": "src/capicove/retrieval/text_fusion.py@0-501",
+          "labels": []
+        },
+        {
+          "chars": 1753,
+          "key": "src/capicove/retrieval/video_fusion.py@0-1753",
+          "labels": []
+        },
+        {
+          "chars": 1762,
+          "key": "src/capicove/retrieval/video_fusion.py@2036-3798",
+          "labels": []
+        },
+        {
+          "chars": 198,
+          "key": "src/capicove/retrieval/__init__.py@4299-4497",
+          "labels": []
+        },
+        {
+          "chars": 791,
+          "key": "src/capicove/retrieval/__init__.py@1805-2596",
+          "labels": []
+        },
+        {
+          "chars": 786,
+          "key": "src/capicove/retrieval/fusion.py@1309-2095",
+          "labels": [
+            "src/capicove/retrieval/fusion.py"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "split_identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/remote_sessions.py"
+        ],
+        "size": 30
+      },
+      "query_id": "split-02",
+      "ranked": [
+        {
+          "chars": 1767,
+          "key": "src/capicove/mcp/remote.py@13679-15446",
+          "labels": []
+        },
+        {
+          "chars": 1749,
+          "key": "src/capicove/runtime/remote_sessions.py@1779-3528",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1782,
+          "key": "src/capicove/runtime/remote_sessions.py@3528-5310",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/runtime/remote_sessions.py@0-1779",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1069,
+          "key": "src/capicove/runtime/remote_sessions.py@5310-6379",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1526,
+          "key": "src/capicove/mcp/remote.py@6755-8281",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/mcp/remote.py@11976-13755",
+          "labels": []
+        },
+        {
+          "chars": 1265,
+          "key": "src/capicove/mcp/remote_catalog.py@5553-6818",
+          "labels": []
+        },
+        {
+          "chars": 1536,
+          "key": "src/capicove/retrieval/search_models.py@19499-21035",
+          "labels": []
+        },
+        {
+          "chars": 1763,
+          "key": "src/capicove/mcp/remote_catalog.py@3886-5649",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/remote_sessions.py"
+        ],
+        "size": 30
+      },
+      "query_id": "path-01",
+      "ranked": [
+        {
+          "chars": 1779,
+          "key": "src/capicove/runtime/remote_sessions.py@0-1779",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1782,
+          "key": "src/capicove/runtime/remote_sessions.py@3528-5310",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1069,
+          "key": "src/capicove/runtime/remote_sessions.py@5310-6379",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1749,
+          "key": "src/capicove/runtime/remote_sessions.py@1779-3528",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1765,
+          "key": "src/capicove/mcp/remote.py@0-1765",
+          "labels": []
+        },
+        {
+          "chars": 1520,
+          "key": "src/capicove/mcp/remote.py@18443-19963",
+          "labels": []
+        },
+        {
+          "chars": 296,
+          "key": "src/capicove/mcp/remote.py@1765-2061",
+          "labels": []
+        },
+        {
+          "chars": 1673,
+          "key": "src/capicove/mcp/remote.py@3655-5328",
+          "labels": []
+        },
+        {
+          "chars": 1378,
+          "key": "src/capicove/mcp/remote.py@8281-9659",
+          "labels": []
+        },
+        {
+          "chars": 1526,
+          "key": "src/capicove/mcp/remote.py@6755-8281",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/factory.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/factory.py"
+        ],
+        "size": 30
+      },
+      "query_id": "path-02",
+      "ranked": [
+        {
+          "chars": 1318,
+          "key": "src/capicove/model/factory.py@0-1318",
+          "labels": [
+            "src/capicove/model/factory.py"
+          ]
+        },
+        {
+          "chars": 1387,
+          "key": "src/capicove/model/factory.py@7864-9251",
+          "labels": [
+            "src/capicove/model/factory.py"
+          ]
+        },
+        {
+          "chars": 1624,
+          "key": "src/capicove/model/factory.py@3024-4648",
+          "labels": [
+            "src/capicove/model/factory.py"
+          ]
+        },
+        {
+          "chars": 1589,
+          "key": "src/capicove/model/factory.py@4648-6237",
+          "labels": [
+            "src/capicove/model/factory.py"
+          ]
+        },
+        {
+          "chars": 1706,
+          "key": "src/capicove/model/factory.py@1318-3024",
+          "labels": [
+            "src/capicove/model/factory.py"
+          ]
+        },
+        {
+          "chars": 1627,
+          "key": "src/capicove/model/factory.py@6237-7864",
+          "labels": [
+            "src/capicove/model/factory.py"
+          ]
+        },
+        {
+          "chars": 1739,
+          "key": "src/capicove/api/model_server.py@1478-3217",
+          "labels": []
+        },
+        {
+          "chars": 1171,
+          "key": "src/capicove/runtime/model_mcp.py@4740-5911",
+          "labels": []
+        },
+        {
+          "chars": 1784,
+          "key": "src/capicove/runtime/model_mcp.py@5911-7695",
+          "labels": []
+        },
+        {
+          "chars": 722,
+          "key": "src/capicove/runtime/model_mcp.py@7695-8417",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "scripts/check_remote_mcp_coverage.py": 1
+      },
+      "pool": {
+        "labels": [
+          "scripts/check_remote_mcp_coverage.py"
+        ],
+        "size": 30
+      },
+      "query_id": "path-03",
+      "ranked": [
+        {
+          "chars": 1789,
+          "key": "scripts/check_remote_mcp_coverage.py@622-2411",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1773,
+          "key": "scripts/check_remote_mcp_coverage.py@2377-4150",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1509,
+          "key": "scripts/check_remote_mcp_coverage.py@17286-18795",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 879,
+          "key": "scripts/check_remote_mcp_coverage.py@11119-11998",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1305,
+          "key": "scripts/check_remote_mcp_coverage.py@15981-17286",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1799,
+          "key": "scripts/check_remote_mcp_coverage.py@62486-64285",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1304,
+          "key": "scripts/check_remote_mcp_coverage.py@26403-27707",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1758,
+          "key": "scripts/check_remote_mcp_coverage.py@20729-22487",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1746,
+          "key": "scripts/check_remote_mcp_coverage.py@18795-20541",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        },
+        {
+          "chars": 1210,
+          "key": "scripts/check_remote_mcp_coverage.py@11998-13208",
+          "labels": [
+            "scripts/check_remote_mcp_coverage.py"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/processing/audio/clip_models.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/processing/audio/clip_models.py"
+        ],
+        "size": 30
+      },
+      "query_id": "path-04",
+      "ranked": [
+        {
+          "chars": 261,
+          "key": "src/capicove/processing/audio/clip_models.py@3263-3524",
+          "labels": [
+            "src/capicove/processing/audio/clip_models.py"
+          ]
+        },
+        {
+          "chars": 1565,
+          "key": "src/capicove/processing/audio/clip_models.py@0-1565",
+          "labels": [
+            "src/capicove/processing/audio/clip_models.py"
+          ]
+        },
+        {
+          "chars": 1698,
+          "key": "src/capicove/processing/audio/clip_models.py@1565-3263",
+          "labels": [
+            "src/capicove/processing/audio/clip_models.py"
+          ]
+        },
+        {
+          "chars": 1105,
+          "key": "src/capicove/processing/audio/clip_models.py@5149-6254",
+          "labels": [
+            "src/capicove/processing/audio/clip_models.py"
+          ]
+        },
+        {
+          "chars": 1774,
+          "key": "src/capicove/processing/audio/clip_models.py@3524-5298",
+          "labels": [
+            "src/capicove/processing/audio/clip_models.py"
+          ]
+        },
+        {
+          "chars": 604,
+          "key": "src/capicove/processing/audio/_adapters/audio_clip.py@0-604",
+          "labels": []
+        },
+        {
+          "chars": 1430,
+          "key": "src/capicove/tools/audio_clip.py@9038-10468",
+          "labels": []
+        },
+        {
+          "chars": 484,
+          "key": "src/capicove/tools/audio_clip.py@6842-7326",
+          "labels": []
+        },
+        {
+          "chars": 1799,
+          "key": "src/capicove/tools/audio_clip.py@2032-3831",
+          "labels": []
+        },
+        {
+          "chars": 1793,
+          "key": "src/capicove/cli/commands/audio_clip.py@3306-5099",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/mcp/remote.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/mcp/remote.py"
+        ],
+        "size": 30
+      },
+      "query_id": "en-01",
+      "ranked": [
+        {
+          "chars": 1765,
+          "key": "src/capicove/mcp/remote.py@0-1765",
+          "labels": [
+            "src/capicove/mcp/remote.py"
+          ]
+        },
+        {
+          "chars": 1378,
+          "key": "src/capicove/mcp/remote.py@8281-9659",
+          "labels": [
+            "src/capicove/mcp/remote.py"
+          ]
+        },
+        {
+          "chars": 1594,
+          "key": "src/capicove/mcp/bindings.py@6130-7724",
+          "labels": []
+        },
+        {
+          "chars": 1492,
+          "key": "src/capicove/mcp/remote.py@16951-18443",
+          "labels": [
+            "src/capicove/mcp/remote.py"
+          ]
+        },
+        {
+          "chars": 1767,
+          "key": "src/capicove/mcp/remote.py@13679-15446",
+          "labels": [
+            "src/capicove/mcp/remote.py"
+          ]
+        },
+        {
+          "chars": 772,
+          "key": "src/capicove/graph_build/profiles.py@18341-19113",
+          "labels": []
+        },
+        {
+          "chars": 296,
+          "key": "src/capicove/mcp/remote.py@1765-2061",
+          "labels": [
+            "src/capicove/mcp/remote.py"
+          ]
+        },
+        {
+          "chars": 1331,
+          "key": "src/capicove/mcp/server.py@1665-2996",
+          "labels": []
+        },
+        {
+          "chars": 1687,
+          "key": "src/capicove/graph_build/remote_generation.py@0-1687",
+          "labels": []
+        },
+        {
+          "chars": 1676,
+          "key": "src/capicove/retrieval/scale_codec.py@29306-30982",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/contracts/retrieval.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/contracts/retrieval.py"
+        ],
+        "size": 30
+      },
+      "query_id": "en-02",
+      "ranked": [
+        {
+          "chars": 1791,
+          "key": "src/capicove/contracts/retrieval.py@6964-8755",
+          "labels": [
+            "src/capicove/contracts/retrieval.py"
+          ]
+        },
+        {
+          "chars": 1394,
+          "key": "src/capicove/processing/video/models.py@3475-4869",
+          "labels": []
+        },
+        {
+          "chars": 1750,
+          "key": "src/capicove/contracts/retrieval.py@38412-40162",
+          "labels": [
+            "src/capicove/contracts/retrieval.py"
+          ]
+        },
+        {
+          "chars": 1564,
+          "key": "src/capicove/contracts/documents.py@1602-3166",
+          "labels": []
+        },
+        {
+          "chars": 1204,
+          "key": "scripts/benchmark_video_search.py@9034-10238",
+          "labels": []
+        },
+        {
+          "chars": 1515,
+          "key": "scripts/benchmark_video_search.py@2839-4354",
+          "labels": []
+        },
+        {
+          "chars": 1400,
+          "key": "src/capicove/retrieval/temporal.py@0-1400",
+          "labels": []
+        },
+        {
+          "chars": 1699,
+          "key": "src/capicove/retrieval/video_evaluation.py@30724-32423",
+          "labels": []
+        },
+        {
+          "chars": 860,
+          "key": "src/capicove/retrieval/video_evaluation.py@2936-3796",
+          "labels": []
+        },
+        {
+          "chars": 1796,
+          "key": "src/capicove/tools/image_search.py@1817-3613",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/remote_sessions.py"
+        ],
+        "size": 30
+      },
+      "query_id": "en-03",
+      "ranked": [
+        {
+          "chars": 1779,
+          "key": "src/capicove/runtime/remote_sessions.py@0-1779",
+          "labels": [
+            "src/capicove/runtime/remote_sessions.py"
+          ]
+        },
+        {
+          "chars": 1114,
+          "key": "src/capicove/runtime/remote_auth.py@0-1114",
+          "labels": []
+        },
+        {
+          "chars": 1767,
+          "key": "src/capicove/mcp/remote.py@13679-15446",
+          "labels": []
+        },
+        {
+          "chars": 762,
+          "key": "src/capicove/runtime/_remote/policy_store.py@0-762",
+          "labels": []
+        },
+        {
+          "chars": 1760,
+          "key": "src/capicove/mcp/remote.py@2061-3821",
+          "labels": []
+        },
+        {
+          "chars": 1765,
+          "key": "src/capicove/mcp/remote.py@0-1765",
+          "labels": []
+        },
+        {
+          "chars": 1766,
+          "key": "src/capicove/api/bge_m3.py@4415-6181",
+          "labels": []
+        },
+        {
+          "chars": 1081,
+          "key": "src/capicove/mcp/remote_catalog.py@0-1081",
+          "labels": []
+        },
+        {
+          "chars": 807,
+          "key": "src/capicove/api/workspace_server.py@4559-5366",
+          "labels": []
+        },
+        {
+          "chars": 1472,
+          "key": "src/capicove/api/workspace_server.py@0-1472",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/local_retrieval.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/runtime/local_retrieval.py"
+        ],
+        "size": 30
+      },
+      "query_id": "en-04",
+      "ranked": [
+        {
+          "chars": 1660,
+          "key": "src/capicove/runtime/local_retrieval.py@19240-20900",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py"
+          ]
+        },
+        {
+          "chars": 1372,
+          "key": "src/capicove/wiki/indexing.py@1267-2639",
+          "labels": []
+        },
+        {
+          "chars": 1754,
+          "key": "src/capicove/wiki/maintenance/sources.py@6644-8398",
+          "labels": []
+        },
+        {
+          "chars": 1312,
+          "key": "src/capicove/graph_build/representations.py@5753-7065",
+          "labels": []
+        },
+        {
+          "chars": 636,
+          "key": "src/capicove/wiki/filesystem.py@12662-13298",
+          "labels": []
+        },
+        {
+          "chars": 1728,
+          "key": "src/capicove/cli/commands/video_split.py@544-2272",
+          "labels": []
+        },
+        {
+          "chars": 1004,
+          "key": "src/capicove/runtime/local_retrieval.py@10839-11843",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py"
+          ]
+        },
+        {
+          "chars": 1308,
+          "key": "src/capicove/processing/video/strategies/duration.py@0-1308",
+          "labels": []
+        },
+        {
+          "chars": 1738,
+          "key": "src/capicove/runtime/local_retrieval.py@17502-19240",
+          "labels": [
+            "src/capicove/runtime/local_retrieval.py"
+          ]
+        },
+        {
+          "chars": 993,
+          "key": "src/capicove/wiki/maintenance/validation.py@17206-18199",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/fusion.py": 1
+      },
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "zh-01",
+      "ranked": [],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/runtime/remote_sessions.py": 1
+      },
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "zh-02",
+      "ranked": [],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 30
+      },
+      "query_id": "none-01",
+      "ranked": [
+        {
+          "chars": 989,
+          "key": "src/capicove/tools/image_search.py@31513-32502",
+          "labels": []
+        },
+        {
+          "chars": 1181,
+          "key": "src/capicove/tools/__init__.py@2766-3947",
+          "labels": []
+        },
+        {
+          "chars": 1041,
+          "key": "src/capicove/tools/audio_transcribe.py@12838-13879",
+          "labels": []
+        },
+        {
+          "chars": 198,
+          "key": "src/capicove/cli/commands/search.py@1954-2152",
+          "labels": []
+        },
+        {
+          "chars": 1283,
+          "key": "src/capicove/mcp/audio_transcribe.py@3825-5108",
+          "labels": []
+        },
+        {
+          "chars": 583,
+          "key": "src/capicove/retrieval/_adapters/sqlite_unit_catalog.py@36175-36758",
+          "labels": []
+        },
+        {
+          "chars": 761,
+          "key": "src/capicove/cli/tracing.py@0-761",
+          "labels": []
+        },
+        {
+          "chars": 1163,
+          "key": "src/capicove/api/search.py@0-1163",
+          "labels": []
+        },
+        {
+          "chars": 1729,
+          "key": "src/capicove/cli/commands/batch.py@7011-8740",
+          "labels": []
+        },
+        {
+          "chars": 309,
+          "key": "src/capicove/tools/video_filter.py@0-309",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 30
+      },
+      "query_id": "none-02",
+      "ranked": [
+        {
+          "chars": 1778,
+          "key": "src/capicove/tools/video_filter.py@14718-16496",
+          "labels": []
+        },
+        {
+          "chars": 1794,
+          "key": "src/capicove/tools/video_filter.py@18025-19819",
+          "labels": []
+        },
+        {
+          "chars": 1782,
+          "key": "src/capicove/retrieval/scale_codec.py@14146-15928",
+          "labels": []
+        },
+        {
+          "chars": 420,
+          "key": "src/capicove/tools/video_filter.py@21441-21861",
+          "labels": []
+        },
+        {
+          "chars": 1715,
+          "key": "src/capicove/retrieval/scale_codec.py@22414-24129",
+          "labels": []
+        },
+        {
+          "chars": 1789,
+          "key": "src/capicove/contracts/retrieval.py@40162-41951",
+          "labels": []
+        },
+        {
+          "chars": 1580,
+          "key": "src/capicove/retrieval/scale_codec.py@24129-25709",
+          "labels": []
+        },
+        {
+          "chars": 1684,
+          "key": "src/capicove/tools/video_filter.py@16341-18025",
+          "labels": []
+        },
+        {
+          "chars": 699,
+          "key": "src/capicove/tools/video_filter.py@28625-29324",
+          "labels": []
+        },
+        {
+          "chars": 1780,
+          "key": "src/capicove/retrieval/scale_codec.py@18956-20736",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    }
+  ],
+  "results_sha256": "1659a052d95b619b1e957819eab31403a7a4339978fe3d25211e091cf6f9e1a4",
+  "schema": "capicove.retrieval-eval-run.v1",
+  "stack": "code",
+  "timing": {
+    "build_ms": 16593.675957,
+    "query_ms": {
+      "en-01": 7961.852431,
+      "en-02": 8606.624811,
+      "en-03": 3861.804044,
+      "en-04": 5490.389929,
+      "id-01": 11523.453736,
+      "id-02": 11655.457915,
+      "id-03": 11866.520071,
+      "id-04": 11803.485652,
+      "id-05": 11192.683468,
+      "id-06": 12014.003581,
+      "id-07": 11509.48314,
+      "id-08": 9529.638013,
+      "id-09": 11835.406203,
+      "id-10": 6733.742663,
+      "id-11": 6608.455694,
+      "id-12": 11169.685433,
+      "id-13": 4719.13761,
+      "id-14": 9996.619104,
+      "none-01": 6525.625495,
+      "none-02": 11529.081248,
+      "path-01": 3951.479858,
+      "path-02": 7703.738927,
+      "path-03": 10211.325023,
+      "path-04": 7461.580853,
+      "qual-01": 9379.451634,
+      "qual-02": 2838.919965,
+      "split-01": 1506.319597,
+      "split-02": 1286.557591,
+      "zh-01": 406.881791,
+      "zh-02": 425.263017
+    },
+    "search_ms": {
+      "en-01": 539.399686,
+      "en-02": 528.659749,
+      "en-03": 458.127277,
+      "en-04": 464.999175,
+      "id-01": 482.660451,
+      "id-02": 470.644824,
+      "id-03": 510.977347,
+      "id-04": 473.706432,
+      "id-05": 518.144768,
+      "id-06": 496.636901,
+      "id-07": 407.969748,
+      "id-08": 494.424966,
+      "id-09": 445.899814,
+      "id-10": 472.947695,
+      "id-11": 430.981381,
+      "id-12": 504.179808,
+      "id-13": 493.558174,
+      "id-14": 418.585859,
+      "none-01": 413.736399,
+      "none-02": 609.77857,
+      "path-01": 520.233055,
+      "path-02": 482.846521,
+      "path-03": 447.447922,
+      "path-04": 493.437589,
+      "qual-01": 449.860849,
+      "qual-02": 408.863804,
+      "split-01": 426.955058,
+      "split-02": 497.058033,
+      "zh-01": 406.816684,
+      "zh-02": 425.188747
+    },
+    "search_stats": {
+      "count": 30,
+      "max_ms": 609.77857,
+      "mean_ms": 473.15757620000005,
+      "p50_ms": 472.947695,
+      "p95_ms": 539.399686
+    },
+    "stats": {
+      "count": 30,
+      "max_ms": 12014.003581,
+      "mean_ms": 7710.155616566667,
+      "p50_ms": 7961.852431,
+      "p95_ms": 11866.520071
+    }
+  }
+}
