@@ -1,0 +1,728 @@
+{
+  "schema": "capicove.retrieval-eval.v1",
+  "dataset_id": "multihop-graph-eval-v1",
+  "stacks": [
+    "offline-text",
+    "kb",
+    "graphrag-local",
+    "graphrag-global"
+  ],
+  "frozen_at": "2026-10-29",
+  "provenance": "Authored synthetic multi-hop corpus with 20 documents, including distractors that share entity names or question words. Each document carries authored entity and relation annotations replayed by the scripted fake graph generator; labels name the exact supporting sentence. Not a model-extracted graph.",
+  "corpus": {
+    "documents": [
+      {
+        "id": "alice",
+        "path": "people/alice-moreau.md",
+        "text": "Alice Moreau works at Helix Labs as a field engineer.\n\nAlice Moreau mentors Ben Ortiz during his doctoral research.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Alice Moreau",
+              "type": "PERSON"
+            },
+            {
+              "name": "Helix Labs",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Ben Ortiz",
+              "type": "PERSON"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Alice Moreau",
+              "target": "Helix Labs",
+              "description": "works at",
+              "quote": "Alice Moreau works at Helix Labs"
+            },
+            {
+              "source": "Alice Moreau",
+              "target": "Ben Ortiz",
+              "description": "mentors",
+              "quote": "Alice Moreau mentors Ben Ortiz"
+            }
+          ]
+        }
+      },
+      {
+        "id": "helix",
+        "path": "orgs/helix-labs.md",
+        "text": "Helix Labs is headquartered in Porto.\n\nHelix Labs builds the Tidepool sensor for coastal monitoring.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Helix Labs",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Porto",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Tidepool sensor",
+              "type": "RESOURCE"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Helix Labs",
+              "target": "Porto",
+              "description": "is headquartered in",
+              "quote": "Helix Labs is headquartered in Porto"
+            },
+            {
+              "source": "Helix Labs",
+              "target": "Tidepool sensor",
+              "description": "builds",
+              "quote": "Helix Labs builds the Tidepool sensor"
+            }
+          ]
+        }
+      },
+      {
+        "id": "tidepool",
+        "path": "devices/tidepool.md",
+        "text": "The Tidepool sensor measures ocean salinity every ten minutes.\n\nThe Tidepool sensor was tested at Cape Verde Station in 2025.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Tidepool sensor",
+              "type": "RESOURCE"
+            },
+            {
+              "name": "ocean salinity",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Cape Verde Station",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Tidepool sensor",
+              "target": "ocean salinity",
+              "description": "measures",
+              "quote": "Tidepool sensor measures ocean salinity"
+            },
+            {
+              "source": "Tidepool sensor",
+              "target": "Cape Verde Station",
+              "description": "was tested at",
+              "quote": "Tidepool sensor was tested at Cape Verde Station"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ben",
+        "path": "people/ben-ortiz.md",
+        "text": "Ben Ortiz studies coral reef recovery.\n\nBen Ortiz collaborates with Dr. Sato on reef surveys.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Ben Ortiz",
+              "type": "PERSON"
+            },
+            {
+              "name": "coral reef recovery",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Dr. Sato",
+              "type": "PERSON"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Ben Ortiz",
+              "target": "coral reef recovery",
+              "description": "studies",
+              "quote": "Ben Ortiz studies coral reef recovery"
+            },
+            {
+              "source": "Ben Ortiz",
+              "target": "Dr. Sato",
+              "description": "collaborates with",
+              "quote": "Ben Ortiz collaborates with Dr. Sato"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sato",
+        "path": "people/dr-sato.md",
+        "text": "Dr. Sato leads the Kelp Restoration Project.\n\nThe Kelp Restoration Project is funded by the Blue Fund.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Dr. Sato",
+              "type": "PERSON"
+            },
+            {
+              "name": "Kelp Restoration Project",
+              "type": "PROJECT"
+            },
+            {
+              "name": "Blue Fund",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Dr. Sato",
+              "target": "Kelp Restoration Project",
+              "description": "leads",
+              "quote": "Dr. Sato leads the Kelp Restoration Project"
+            },
+            {
+              "source": "Kelp Restoration Project",
+              "target": "Blue Fund",
+              "description": "is funded by",
+              "quote": "Kelp Restoration Project is funded by the Blue Fund"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bluefund",
+        "path": "orgs/blue-fund.md",
+        "text": "The Blue Fund was founded by Marta Silva in 2019.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Blue Fund",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Marta Silva",
+              "type": "PERSON"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Blue Fund",
+              "target": "Marta Silva",
+              "description": "was founded by",
+              "quote": "Blue Fund was founded by Marta Silva"
+            }
+          ]
+        }
+      },
+      {
+        "id": "porto",
+        "path": "places/porto.md",
+        "text": "Porto hosts the Atlantic Science Fair every June.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Porto",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Atlantic Science Fair",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Porto",
+              "target": "Atlantic Science Fair",
+              "description": "hosts",
+              "quote": "Porto hosts the Atlantic Science Fair"
+            }
+          ]
+        }
+      },
+      {
+        "id": "kelpsoup",
+        "path": "recipes/kelp-soup.md",
+        "text": "Kelp soup needs dried kelp, miso and spring onions. Simmer the kelp for ten minutes.\n",
+        "graph": {
+          "entities": [],
+          "relations": []
+        }
+      },
+      {
+        "id": "fair",
+        "path": "events/science-fair-notes.md",
+        "text": "The science fair judges praised a salinity poster from a local school.\n",
+        "graph": {
+          "entities": [],
+          "relations": []
+        }
+      },
+      {
+        "id": "alice-hobbies",
+        "path": "people/alice-hobbies.md",
+        "text": "Alice Moreau enjoys sailing on weekends.\n\nAlice Moreau owns a red kayak.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Alice Moreau",
+              "type": "PERSON"
+            },
+            {
+              "name": "sailing",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "red kayak",
+              "type": "RESOURCE"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Alice Moreau",
+              "target": "sailing",
+              "description": "enjoys",
+              "quote": "Alice Moreau enjoys sailing"
+            },
+            {
+              "source": "Alice Moreau",
+              "target": "red kayak",
+              "description": "owns",
+              "quote": "Alice Moreau owns a red kayak"
+            }
+          ]
+        }
+      },
+      {
+        "id": "helix-cafeteria",
+        "path": "orgs/helix-cafeteria.md",
+        "text": "The cafeteria at Helix Labs serves lunch from noon.\n\nHelix Labs sponsors a chess club for employees.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Helix Labs",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "chess club",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Helix Labs",
+              "target": "chess club",
+              "description": "sponsors",
+              "quote": "Helix Labs sponsors a chess club"
+            }
+          ]
+        }
+      },
+      {
+        "id": "porto-weather",
+        "path": "places/porto-weather.md",
+        "text": "Porto has mild winters and rainy springs.\n\nThe Douro river flows through Porto.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Porto",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "Douro river",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Douro river",
+              "target": "Porto",
+              "description": "flows through",
+              "quote": "Douro river flows through Porto"
+            }
+          ]
+        }
+      },
+      {
+        "id": "tidepool-manual",
+        "path": "devices/tidepool-manual.md",
+        "text": "The Tidepool sensor uses a lithium battery.\n\nThe battery should be replaced every year.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Tidepool sensor",
+              "type": "RESOURCE"
+            },
+            {
+              "name": "lithium battery",
+              "type": "RESOURCE"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Tidepool sensor",
+              "target": "lithium battery",
+              "description": "uses",
+              "quote": "Tidepool sensor uses a lithium battery"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ben-cv",
+        "path": "people/ben-ortiz-cv.md",
+        "text": "Ben Ortiz graduated from the University of Lisbon.\n\nBen Ortiz speaks three languages.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Ben Ortiz",
+              "type": "PERSON"
+            },
+            {
+              "name": "University of Lisbon",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Ben Ortiz",
+              "target": "University of Lisbon",
+              "description": "graduated from",
+              "quote": "Ben Ortiz graduated from the University of Lisbon"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sato-talks",
+        "path": "people/sato-talks.md",
+        "text": "Dr. Sato gave a keynote at the Atlantic Science Fair.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Dr. Sato",
+              "type": "PERSON"
+            },
+            {
+              "name": "Atlantic Science Fair",
+              "type": "CONCEPT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Dr. Sato",
+              "target": "Atlantic Science Fair",
+              "description": "gave a keynote at",
+              "quote": "Dr. Sato gave a keynote at the Atlantic Science Fair"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fund-grants",
+        "path": "orgs/blue-fund-grants.md",
+        "text": "The Blue Fund also supports a seagrass mapping project.\n",
+        "graph": {
+          "entities": [
+            {
+              "name": "Blue Fund",
+              "type": "CONCEPT"
+            },
+            {
+              "name": "seagrass mapping project",
+              "type": "PROJECT"
+            }
+          ],
+          "relations": [
+            {
+              "source": "Blue Fund",
+              "target": "seagrass mapping project",
+              "description": "supports",
+              "quote": "Blue Fund also supports a seagrass mapping project"
+            }
+          ]
+        }
+      },
+      {
+        "id": "salinity-primer",
+        "path": "notes/salinity-primer.md",
+        "text": "Ocean salinity is reported in practical salinity units and varies with temperature.\n",
+        "graph": {
+          "entities": [],
+          "relations": []
+        }
+      },
+      {
+        "id": "hq-memo",
+        "path": "notes/headquarters-memo.md",
+        "text": "The memo lists which teams moved headquarters last year; the city office kept its employer badge policy.\n",
+        "graph": {
+          "entities": [],
+          "relations": []
+        }
+      },
+      {
+        "id": "mentoring",
+        "path": "notes/mentoring-tips.md",
+        "text": "Good mentors meet weekly with the students they mentor and help them choose what to study.\n",
+        "graph": {
+          "entities": [],
+          "relations": []
+        }
+      },
+      {
+        "id": "founders",
+        "path": "notes/founders.md",
+        "text": "Many funds were founded by retired scientists who want to finance coastal projects.\n",
+        "graph": {
+          "entities": [],
+          "relations": []
+        }
+      }
+    ]
+  },
+  "queries": [
+    {
+      "id": "mh01",
+      "category": "two-hop",
+      "text": "In which city is the employer of Alice Moreau headquartered?",
+      "relevant": [
+        {
+          "label": "alice-helix",
+          "document": "alice",
+          "contains": "Alice Moreau works at Helix Labs",
+          "grade": 2
+        },
+        {
+          "label": "helix-porto",
+          "document": "helix",
+          "contains": "Helix Labs is headquartered in Porto",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh02",
+      "category": "two-hop",
+      "text": "What does the sensor built by Helix Labs measure?",
+      "relevant": [
+        {
+          "label": "helix-tidepool",
+          "document": "helix",
+          "contains": "Helix Labs builds the Tidepool sensor",
+          "grade": 2
+        },
+        {
+          "label": "tidepool-salinity",
+          "document": "tidepool",
+          "contains": "Tidepool sensor measures ocean salinity",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh03",
+      "category": "two-hop",
+      "text": "Who founded the fund that finances the project led by Dr. Sato?",
+      "relevant": [
+        {
+          "label": "kelp-fund",
+          "document": "sato",
+          "contains": "Kelp Restoration Project is funded by the Blue Fund",
+          "grade": 2
+        },
+        {
+          "label": "fund-marta",
+          "document": "bluefund",
+          "contains": "Blue Fund was founded by Marta Silva",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh04",
+      "category": "two-hop",
+      "text": "What does the student mentored by Alice Moreau study?",
+      "relevant": [
+        {
+          "label": "alice-ben",
+          "document": "alice",
+          "contains": "Alice Moreau mentors Ben Ortiz",
+          "grade": 2
+        },
+        {
+          "label": "ben-coral",
+          "document": "ben",
+          "contains": "Ben Ortiz studies coral reef recovery",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh05",
+      "category": "two-hop",
+      "text": "Who does the person Alice Moreau mentors collaborate with?",
+      "relevant": [
+        {
+          "label": "alice-ben",
+          "document": "alice",
+          "contains": "Alice Moreau mentors Ben Ortiz",
+          "grade": 2
+        },
+        {
+          "label": "ben-sato",
+          "document": "ben",
+          "contains": "Ben Ortiz collaborates with Dr. Sato",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh06",
+      "category": "two-hop",
+      "text": "Which event takes place in the city where Helix Labs is headquartered?",
+      "relevant": [
+        {
+          "label": "helix-porto",
+          "document": "helix",
+          "contains": "Helix Labs is headquartered in Porto",
+          "grade": 2
+        },
+        {
+          "label": "porto-fair",
+          "document": "porto",
+          "contains": "Porto hosts the Atlantic Science Fair",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh07",
+      "category": "three-hop",
+      "text": "Where was the sensor built by Alice Moreau's employer tested?",
+      "relevant": [
+        {
+          "label": "alice-helix",
+          "document": "alice",
+          "contains": "Alice Moreau works at Helix Labs",
+          "grade": 2
+        },
+        {
+          "label": "helix-tidepool",
+          "document": "helix",
+          "contains": "Helix Labs builds the Tidepool sensor",
+          "grade": 2
+        },
+        {
+          "label": "tidepool-cape",
+          "document": "tidepool",
+          "contains": "Tidepool sensor was tested at Cape Verde Station",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh08",
+      "category": "three-hop",
+      "text": "Which project is led by the collaborator of Ben Ortiz, and who funds it?",
+      "relevant": [
+        {
+          "label": "ben-sato",
+          "document": "ben",
+          "contains": "Ben Ortiz collaborates with Dr. Sato",
+          "grade": 2
+        },
+        {
+          "label": "sato-kelp",
+          "document": "sato",
+          "contains": "Dr. Sato leads the Kelp Restoration Project",
+          "grade": 2
+        },
+        {
+          "label": "kelp-fund",
+          "document": "sato",
+          "contains": "Kelp Restoration Project is funded by the Blue Fund",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh09",
+      "category": "three-hop",
+      "text": "What does the device made by the company in Porto measure?",
+      "relevant": [
+        {
+          "label": "helix-porto",
+          "document": "helix",
+          "contains": "Helix Labs is headquartered in Porto",
+          "grade": 2
+        },
+        {
+          "label": "helix-tidepool",
+          "document": "helix",
+          "contains": "Helix Labs builds the Tidepool sensor",
+          "grade": 2
+        },
+        {
+          "label": "tidepool-salinity",
+          "document": "tidepool",
+          "contains": "Tidepool sensor measures ocean salinity",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh10",
+      "category": "one-hop",
+      "text": "Who founded the Blue Fund?",
+      "relevant": [
+        {
+          "label": "fund-marta",
+          "document": "bluefund",
+          "contains": "Blue Fund was founded by Marta Silva",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh11",
+      "category": "one-hop",
+      "text": "Where is Helix Labs headquartered?",
+      "relevant": [
+        {
+          "label": "helix-porto",
+          "document": "helix",
+          "contains": "Helix Labs is headquartered in Porto",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh12",
+      "category": "global",
+      "text": "Summarize the organizations and the funding relationships in the corpus.",
+      "relevant": [
+        {
+          "label": "kelp-fund",
+          "document": "sato",
+          "contains": "Kelp Restoration Project is funded by the Blue Fund",
+          "grade": 2
+        },
+        {
+          "label": "fund-marta",
+          "document": "bluefund",
+          "contains": "Blue Fund was founded by Marta Silva",
+          "grade": 2
+        },
+        {
+          "label": "helix-porto",
+          "document": "helix",
+          "contains": "Helix Labs is headquartered in Porto",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "mh13",
+      "category": "no_answer",
+      "text": "What is the boiling point of liquid nitrogen?",
+      "relevant": []
+    }
+  ]
+}

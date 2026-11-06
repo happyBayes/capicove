@@ -53,7 +53,7 @@ _PRIVATE_SUFFIXES = {
 }
 
 
-def _private_path(path: PurePosixPath) -> bool:
+def _private_path(path: PurePosixPath, *, directory: bool) -> bool:
     name = str(path)
     if any(
         name == directory or name.startswith(directory + "/")
@@ -61,7 +61,11 @@ def _private_path(path: PurePosixPath) -> bool:
     ):
         return True
     if name.startswith("docs/development/"):
-        return name.removeprefix("docs/development/") not in _POLICY["public_development_files"]
+        relative = name.removeprefix("docs/development/")
+        allowed = _POLICY["public_development_files"]
+        if directory:
+            return not any(entry.startswith(relative + "/") for entry in allowed)
+        return relative not in allowed
     return name.startswith("assets/") and name not in _POLICY["public_assets"]
 
 
@@ -101,7 +105,7 @@ def inspect_snapshot(payload: bytes) -> dict[str, str]:
                 or "\\" in member.name
                 or ":" in member.name
                 or set(path.parts) & _PRIVATE_PARTS
-                or _private_path(path)
+                or _private_path(path, directory=member.isdir())
                 or path.suffix.lower() in _PRIVATE_SUFFIXES
                 or path.parts[0] == "reference"
                 or str(path).startswith(("tests/datasets/", "docs/reports/"))

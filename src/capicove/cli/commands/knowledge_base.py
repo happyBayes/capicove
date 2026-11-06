@@ -20,6 +20,19 @@ def add_parser(parent: argparse._SubParsersAction[argparse.ArgumentParser]) -> N
         init.add_argument("--" + name, type=Path)
     init.add_argument("--graph", action="store_true")
     init.add_argument("--allow-network", action="store_true")
+    graph = commands.add_parser(
+        "graph-query",
+        help="Experimental GraphRAG local/global query over the active graph (RFC-0035).",
+    )
+    graph.add_argument("--config", type=Path, required=True)
+    graph.add_argument("--mode", choices=("local", "global"), default="local")
+    graph.add_argument("--profile", type=Path, help="Graph query profile JSON.")
+    graph.add_argument(
+        "--answer",
+        action="store_true",
+        help="Opt in to generation with the configured generation profile.",
+    )
+    graph.add_argument("question")
     for name in ("status", "doctor", "rebuild", "update", "forget", "search", "ask", "evidence"):
         command = commands.add_parser(name)
         command.add_argument("--config", type=Path, required=True)
@@ -28,6 +41,11 @@ def add_parser(parent: argparse._SubParsersAction[argparse.ArgumentParser]) -> N
             command.add_argument("path")
         if name in {"search", "ask"}:
             command.add_argument("question")
+            command.add_argument(
+                "--profile",
+                type=Path,
+                help="Experimental kb pipeline profile JSON (RFC-0034, Proposed).",
+            )
         if name == "evidence":
             command.add_argument("evidence_id")
 
@@ -113,7 +131,29 @@ def run(arguments: argparse.Namespace) -> int:
             result = initialize(arguments)
         else:
             config = KnowledgeConfiguration.load(arguments.config.absolute())
-            with KnowledgeBase(config) as kb:
+            profile = None
+            if arguments.kb_command == "graph-query":
+                if arguments.profile is not None:
+                    from capicove.graph_build.graphrag import load_graph_query_profile
+
+                    try:
+                        graph_profile = load_graph_query_profile(arguments.profile.absolute())
+                    except OSError:
+                        raise ValueError("graph_query_profile_unreadable") from None
+                    except ValueError:
+                        raise ValueError("invalid_graph_query_profile") from None
+                else:
+                    graph_profile = None
+            elif getattr(arguments, "profile", None) is not None:
+                from capicove.retrieval.pipeline_profiles import load_pipeline_profile
+
+                try:
+                    profile = load_pipeline_profile(arguments.profile.absolute(), "kb")
+                except OSError:
+                    raise ValueError("pipeline_profile_unreadable") from None
+                except ValueError:
+                    raise ValueError("invalid_pipeline_profile") from None
+            with KnowledgeBase(config, profile=profile) as kb:
                 command = arguments.kb_command
                 if command in {"status", "doctor"}:
                     result = kb.status()
@@ -127,6 +167,13 @@ def run(arguments: argparse.Namespace) -> int:
                     result = getattr(kb, command)(arguments.root, arguments.path)
                 elif command in {"search", "ask"}:
                     result = getattr(kb, command)(arguments.question)
+                elif command == "graph-query":
+                    result = kb.graph_query(
+                        arguments.question,
+                        mode=arguments.mode,
+                        profile=graph_profile,
+                        answer=arguments.answer,
+                    )
                 else:
                     result = kb.evidence(arguments.evidence_id)
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))

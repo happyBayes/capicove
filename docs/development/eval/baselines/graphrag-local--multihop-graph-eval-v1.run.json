@@ -1,0 +1,706 @@
+{
+  "adapter": {
+    "id": "graphrag-local",
+    "version": "2"
+  },
+  "dataset": {
+    "id": "multihop-graph-eval-v1",
+    "queries": 13,
+    "schema": "capicove.retrieval-eval.v1",
+    "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+  },
+  "environment": {
+    "capicove_version": "0.1.0",
+    "cpus": 10,
+    "machine": "arm64",
+    "platform": "darwin",
+    "python": "3.11.14"
+  },
+  "experimental": true,
+  "index": {
+    "completeness": "complete",
+    "entities": 34,
+    "graph_profile_fingerprint": "2b279d49e5740ea5c49389821c82bc4c87bd291e84a00c92e09747cd9e0227f2",
+    "kind": "graph-snapshot",
+    "manifest_sha256": "2465c0a8a16c46830439e01ec27b5bc0b2035df12a30a1337868e77726e9774c",
+    "relationships": 20,
+    "reports": 35,
+    "snapshot_id": "graph:2465c0a8a16c46830439e01ec27b5bc0b2035df12a30a1337868e77726e9774c"
+  },
+  "model": {
+    "components": [
+      "generator:capicove/scripted-graph-generator",
+      "embedder:capicove-deterministic-fake:hashed-text-64",
+      "partitioner:capicove/fixture-components"
+    ],
+    "generator_calls": 41,
+    "kind": "deterministic-fake",
+    "real_model_validation": "not_run"
+  },
+  "options": {
+    "fake_dense": false,
+    "k": 5,
+    "reranker": "none"
+  },
+  "profile": {
+    "fingerprint": "86b88b9778e58fb7d2dc11d2d3f303a6f4f4a2784c24bb033475769ae71fbb59",
+    "id": "graphrag-default-v1",
+    "version": 1
+  },
+  "results": [
+    {
+      "category": "two-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "alice-helix": 2,
+        "helix-porto": 2
+      },
+      "pool": {
+        "labels": [
+          "alice-helix",
+          "helix-porto"
+        ],
+        "size": 10
+      },
+      "query_id": "mh01",
+      "ranked": [
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": [
+            "alice-helix"
+          ]
+        },
+        {
+          "chars": 36,
+          "key": "helix@0-36",
+          "labels": [
+            "helix-porto"
+          ]
+        },
+        {
+          "chars": 30,
+          "key": "alice@55-85",
+          "labels": []
+        },
+        {
+          "chars": 27,
+          "key": "alice-hobbies@0-27",
+          "labels": []
+        },
+        {
+          "chars": 29,
+          "key": "alice-hobbies@42-71",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "two-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "helix-tidepool": 2,
+        "tidepool-salinity": 2
+      },
+      "pool": {
+        "labels": [
+          "helix-tidepool",
+          "tidepool-salinity"
+        ],
+        "size": 12
+      },
+      "query_id": "mh02",
+      "ranked": [
+        {
+          "chars": 37,
+          "key": "helix@39-76",
+          "labels": [
+            "helix-tidepool"
+          ]
+        },
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": []
+        },
+        {
+          "chars": 32,
+          "key": "helix-cafeteria@53-85",
+          "labels": []
+        },
+        {
+          "chars": 36,
+          "key": "helix@0-36",
+          "labels": []
+        },
+        {
+          "chars": 30,
+          "key": "alice@55-85",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "two-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "fund-marta": 2,
+        "kelp-fund": 2
+      },
+      "pool": {
+        "labels": [
+          "fund-marta",
+          "kelp-fund"
+        ],
+        "size": 10
+      },
+      "query_id": "mh03",
+      "ranked": [
+        {
+          "chars": 43,
+          "key": "sato@0-43",
+          "labels": []
+        },
+        {
+          "chars": 51,
+          "key": "sato@50-101",
+          "labels": [
+            "kelp-fund"
+          ]
+        },
+        {
+          "chars": 36,
+          "key": "bluefund@4-40",
+          "labels": [
+            "fund-marta"
+          ]
+        },
+        {
+          "chars": 52,
+          "key": "sato-talks@0-52",
+          "labels": []
+        },
+        {
+          "chars": 50,
+          "key": "fund-grants@4-54",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "two-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "alice-ben": 2,
+        "ben-coral": 2
+      },
+      "pool": {
+        "labels": [
+          "alice-ben",
+          "ben-coral"
+        ],
+        "size": 10
+      },
+      "query_id": "mh04",
+      "ranked": [
+        {
+          "chars": 30,
+          "key": "alice@55-85",
+          "labels": [
+            "alice-ben"
+          ]
+        },
+        {
+          "chars": 37,
+          "key": "ben@0-37",
+          "labels": [
+            "ben-coral"
+          ]
+        },
+        {
+          "chars": 49,
+          "key": "ben-cv@0-49",
+          "labels": []
+        },
+        {
+          "chars": 36,
+          "key": "ben@40-76",
+          "labels": []
+        },
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "two-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "alice-ben": 2,
+        "ben-sato": 2
+      },
+      "pool": {
+        "labels": [
+          "alice-ben",
+          "ben-sato"
+        ],
+        "size": 10
+      },
+      "query_id": "mh05",
+      "ranked": [
+        {
+          "chars": 30,
+          "key": "alice@55-85",
+          "labels": [
+            "alice-ben"
+          ]
+        },
+        {
+          "chars": 49,
+          "key": "ben-cv@0-49",
+          "labels": []
+        },
+        {
+          "chars": 37,
+          "key": "ben@0-37",
+          "labels": []
+        },
+        {
+          "chars": 36,
+          "key": "ben@40-76",
+          "labels": [
+            "ben-sato"
+          ]
+        },
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "two-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "helix-porto": 2,
+        "porto-fair": 2
+      },
+      "pool": {
+        "labels": [
+          "helix-porto",
+          "porto-fair"
+        ],
+        "size": 12
+      },
+      "query_id": "mh06",
+      "ranked": [
+        {
+          "chars": 36,
+          "key": "helix@0-36",
+          "labels": [
+            "helix-porto"
+          ]
+        },
+        {
+          "chars": 37,
+          "key": "porto@0-37",
+          "labels": [
+            "porto-fair"
+          ]
+        },
+        {
+          "chars": 31,
+          "key": "porto-weather@47-78",
+          "labels": []
+        },
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": []
+        },
+        {
+          "chars": 37,
+          "key": "helix@39-76",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "three-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "alice-helix": 2,
+        "helix-tidepool": 2,
+        "tidepool-cape": 2
+      },
+      "pool": {
+        "labels": [
+          "alice-helix",
+          "helix-tidepool",
+          "tidepool-cape"
+        ],
+        "size": 13
+      },
+      "query_id": "mh07",
+      "ranked": [
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": [
+            "alice-helix"
+          ]
+        },
+        {
+          "chars": 37,
+          "key": "helix@39-76",
+          "labels": [
+            "helix-tidepool"
+          ]
+        },
+        {
+          "chars": 30,
+          "key": "alice@55-85",
+          "labels": []
+        },
+        {
+          "chars": 48,
+          "key": "tidepool@68-116",
+          "labels": [
+            "tidepool-cape"
+          ]
+        },
+        {
+          "chars": 27,
+          "key": "alice-hobbies@0-27",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "three-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "ben-sato": 2,
+        "kelp-fund": 2,
+        "sato-kelp": 2
+      },
+      "pool": {
+        "labels": [
+          "ben-sato",
+          "kelp-fund",
+          "sato-kelp"
+        ],
+        "size": 12
+      },
+      "query_id": "mh08",
+      "ranked": [
+        {
+          "chars": 51,
+          "key": "sato@50-101",
+          "labels": [
+            "kelp-fund"
+          ]
+        },
+        {
+          "chars": 36,
+          "key": "ben@40-76",
+          "labels": [
+            "ben-sato"
+          ]
+        },
+        {
+          "chars": 43,
+          "key": "sato@0-43",
+          "labels": [
+            "sato-kelp"
+          ]
+        },
+        {
+          "chars": 30,
+          "key": "alice@55-85",
+          "labels": []
+        },
+        {
+          "chars": 50,
+          "key": "fund-grants@4-54",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "three-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "helix-porto": 2,
+        "helix-tidepool": 2,
+        "tidepool-salinity": 2
+      },
+      "pool": {
+        "labels": [
+          "helix-porto",
+          "helix-tidepool"
+        ],
+        "size": 7
+      },
+      "query_id": "mh09",
+      "ranked": [
+        {
+          "chars": 37,
+          "key": "porto@0-37",
+          "labels": []
+        },
+        {
+          "chars": 31,
+          "key": "porto-weather@47-78",
+          "labels": []
+        },
+        {
+          "chars": 36,
+          "key": "helix@0-36",
+          "labels": [
+            "helix-porto"
+          ]
+        },
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": []
+        },
+        {
+          "chars": 37,
+          "key": "helix@39-76",
+          "labels": [
+            "helix-tidepool"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "one-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "fund-marta": 2
+      },
+      "pool": {
+        "labels": [
+          "fund-marta"
+        ],
+        "size": 4
+      },
+      "query_id": "mh10",
+      "ranked": [
+        {
+          "chars": 36,
+          "key": "bluefund@4-40",
+          "labels": [
+            "fund-marta"
+          ]
+        },
+        {
+          "chars": 51,
+          "key": "sato@50-101",
+          "labels": []
+        },
+        {
+          "chars": 50,
+          "key": "fund-grants@4-54",
+          "labels": []
+        },
+        {
+          "chars": 43,
+          "key": "sato@0-43",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "one-hop",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "helix-porto": 2
+      },
+      "pool": {
+        "labels": [
+          "helix-porto"
+        ],
+        "size": 12
+      },
+      "query_id": "mh11",
+      "ranked": [
+        {
+          "chars": 36,
+          "key": "helix@0-36",
+          "labels": [
+            "helix-porto"
+          ]
+        },
+        {
+          "chars": 37,
+          "key": "porto@0-37",
+          "labels": []
+        },
+        {
+          "chars": 31,
+          "key": "porto-weather@47-78",
+          "labels": []
+        },
+        {
+          "chars": 32,
+          "key": "alice@0-32",
+          "labels": []
+        },
+        {
+          "chars": 37,
+          "key": "helix@39-76",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "global",
+      "diagnostics": {
+        "status": "succeeded"
+      },
+      "judgments": {
+        "fund-marta": 2,
+        "helix-porto": 2,
+        "kelp-fund": 2
+      },
+      "pool": {
+        "labels": [
+          "fund-marta",
+          "kelp-fund"
+        ],
+        "size": 4
+      },
+      "query_id": "mh12",
+      "ranked": [
+        {
+          "chars": 36,
+          "key": "bluefund@4-40",
+          "labels": [
+            "fund-marta"
+          ]
+        },
+        {
+          "chars": 51,
+          "key": "sato@50-101",
+          "labels": [
+            "kelp-fund"
+          ]
+        },
+        {
+          "chars": 50,
+          "key": "fund-grants@4-54",
+          "labels": []
+        },
+        {
+          "chars": 43,
+          "key": "sato@0-43",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {
+        "status": "no_entity_match"
+      },
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "mh13",
+      "ranked": [],
+      "status": "succeeded"
+    }
+  ],
+  "results_sha256": "0e606b74c93080590cace956cb4241bf631507ea3a9ba3f094415d2870fbbc0a",
+  "schema": "capicove.retrieval-eval-run.v1",
+  "stack": "graphrag-local",
+  "timing": {
+    "build_ms": 2329.961333,
+    "query_ms": {
+      "mh01": 0.312167,
+      "mh02": 0.312958,
+      "mh03": 0.273042,
+      "mh04": 0.251875,
+      "mh05": 0.29425,
+      "mh06": 0.304917,
+      "mh07": 0.295625,
+      "mh08": 0.286625,
+      "mh09": 0.198125,
+      "mh10": 0.140709,
+      "mh11": 0.254792,
+      "mh12": 0.140666,
+      "mh13": 0.056583
+    },
+    "search_ms": {
+      "mh01": 0.293416,
+      "mh02": 0.301416,
+      "mh03": 0.263291,
+      "mh04": 0.24325,
+      "mh05": 0.282,
+      "mh06": 0.294375,
+      "mh07": 0.284333,
+      "mh08": 0.275292,
+      "mh09": 0.190709,
+      "mh10": 0.135625,
+      "mh11": 0.246,
+      "mh12": 0.135125,
+      "mh13": 0.054792
+    },
+    "search_stats": {
+      "count": 13,
+      "max_ms": 0.301416,
+      "mean_ms": 0.23074030769230772,
+      "p50_ms": 0.263291,
+      "p95_ms": 0.301416
+    },
+    "stats": {
+      "count": 13,
+      "max_ms": 0.312958,
+      "mean_ms": 0.2401795384615385,
+      "p50_ms": 0.273042,
+      "p95_ms": 0.312958
+    }
+  }
+}

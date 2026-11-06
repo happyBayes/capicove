@@ -1,0 +1,331 @@
+{
+  "schema": "capicove.retrieval-eval.v1",
+  "dataset_id": "personal-notes-eval-v1",
+  "stacks": [
+    "offline-text",
+    "kb",
+    "unified"
+  ],
+  "frozen_at": "2026-10-29",
+  "provenance": "Authored synthetic personal notes for engineering evaluation; no personal or third-party data. Labels name a document and an exact quote, never a chunk ID.",
+  "corpus": {
+    "documents": [
+      {
+        "id": "garden",
+        "path": "notes/garden.md",
+        "text": "# Garden journal\n\nThe tomato seedlings were moved to the greenhouse on March 3. They need watering every morning and a weak fertilizer once a week.\n\nAphids appeared on the roses in late May. A soap spray removed most of them within ten days.\n\nThe compost bin is turned every Sunday; it reached 60 degrees Celsius in June.\n"
+      },
+      {
+        "id": "bike",
+        "path": "notes/bike-repair.md",
+        "text": "# Bicycle maintenance\n\nThe rear derailleur skipped gears because the cable had stretched. Turning the barrel adjuster a quarter turn counterclockwise fixed the shifting.\n\nTire pressure for the commuter bike is 65 psi front and 75 psi rear.\n\nThe chain was replaced at 3,200 kilometres after the wear gauge showed 0.75 percent elongation.\n"
+      },
+      {
+        "id": "sourdough",
+        "path": "recipes/sourdough.md",
+        "text": "# Sourdough bread\n\nFeed the starter twice a day with equal weights of flour and water. It is ready when it doubles within six hours.\n\nMix 500 g flour, 350 g water, 100 g starter and 10 g salt. Bulk fermentation takes about five hours at 24 degrees.\n\nBake in a covered Dutch oven at 250 degrees for twenty minutes, then uncovered for twenty-five minutes.\n"
+      },
+      {
+        "id": "travel",
+        "path": "travel/lisbon.md",
+        "text": "# Lisbon trip\n\nThe flight to Lisbon departs on 14 September at 07:40 from terminal 2. The booking reference is QX7P2L.\n\nTram 28 runs through Alfama; buy a Viva Viagem card at the metro station to save on fares.\n\nThe hotel near Rossio square offers breakfast from 7 until 10.\n"
+      },
+      {
+        "id": "finance",
+        "path": "admin/finances.md",
+        "text": "# Household finances\n\nThe electricity bill rose by 18 percent after the winter tariff change. The supplier contract renews on 1 November.\n\nThe emergency fund target is three months of expenses, about 9,000 euros.\n\nInvoice 2026-114 for the roof repair was paid by bank transfer on 2 October.\n"
+      },
+      {
+        "id": "health",
+        "path": "health/running.md",
+        "text": "# Running log\n\nThe half marathon plan has four runs per week, with one long run on Saturday.\n\nShin pain after the interval session was treated with rest and ice; the physiotherapist recommended calf raises.\n\nA new pair of shoes was bought at 640 kilometres on the old pair.\n"
+      },
+      {
+        "id": "work",
+        "path": "work/project-atlas.md",
+        "text": "# Project Atlas\n\nProject Atlas migrates the billing service to the new event queue. The cut-over is scheduled for the second week of December.\n\nRisks: duplicate events during replay and missing idempotency keys in the legacy client.\n\nThe weekly status meeting moved to Thursday at 15:00.\n"
+      },
+      {
+        "id": "books",
+        "path": "reading/books.md",
+        "text": "# Reading list\n\nFinished The Left Hand of Darkness; the theme of trust between Genly Ai and Estraven stood out.\n\nStarted a history of the printing press that explains how movable type spread across Europe after 1450.\n\nNext on the list is a field guide to mushrooms of the northern forests.\n"
+      },
+      {
+        "id": "car",
+        "path": "admin/car.md",
+        "text": "# Car\n\nThe car is due for its annual inspection in April. The last oil change was at 48,500 kilometres.\n\nWinter tyres are stored at the garage on Mill Road and are swapped in late October.\n"
+      },
+      {
+        "id": "kitchen",
+        "path": "home/kitchen.md",
+        "text": "# Kitchen renovation\n\nThe new countertop is quartz, 3 centimetres thick. Installation is booked for 20 November.\n\nThe dishwasher leaked from the inlet hose; tightening the clamp stopped the leak.\n"
+      }
+    ]
+  },
+  "queries": [
+    {
+      "id": "q01",
+      "category": "keyword",
+      "text": "tomato greenhouse",
+      "relevant": [
+        {
+          "label": "garden-tomato",
+          "document": "garden",
+          "contains": "tomato seedlings",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "category": "keyword",
+      "text": "derailleur cable",
+      "relevant": [
+        {
+          "label": "bike-cable",
+          "document": "bike",
+          "contains": "barrel adjuster",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "category": "keyword",
+      "text": "Dutch oven bake temperature",
+      "relevant": [
+        {
+          "label": "bread-bake",
+          "document": "sourdough",
+          "contains": "Dutch oven",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "category": "identifier",
+      "text": "QX7P2L",
+      "relevant": [
+        {
+          "label": "travel-booking",
+          "document": "travel",
+          "contains": "QX7P2L",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "category": "identifier",
+      "text": "invoice 2026-114",
+      "relevant": [
+        {
+          "label": "finance-invoice",
+          "document": "finance",
+          "contains": "2026-114",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "category": "keyword",
+      "text": "tire pressure psi",
+      "relevant": [
+        {
+          "label": "bike-pressure",
+          "document": "bike",
+          "contains": "65 psi",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "category": "paraphrase",
+      "text": "how did I get rid of the bugs on the flowers",
+      "relevant": [
+        {
+          "label": "garden-aphids",
+          "document": "garden",
+          "contains": "Aphids appeared",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "category": "paraphrase",
+      "text": "when should I swap to cold weather wheels",
+      "relevant": [
+        {
+          "label": "car-tyres",
+          "document": "car",
+          "contains": "Winter tyres",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "category": "paraphrase",
+      "text": "why did my shins hurt and what helped",
+      "relevant": [
+        {
+          "label": "health-shin",
+          "document": "health",
+          "contains": "Shin pain",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "category": "multi",
+      "text": "electricity bill tariff contract renewal",
+      "relevant": [
+        {
+          "label": "finance-electricity",
+          "document": "finance",
+          "contains": "electricity bill",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "category": "multi",
+      "text": "billing service event queue migration risks",
+      "relevant": [
+        {
+          "label": "work-atlas",
+          "document": "work",
+          "contains": "event queue",
+          "grade": 3
+        },
+        {
+          "label": "work-risks",
+          "document": "work",
+          "contains": "idempotency keys",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "category": "keyword",
+      "text": "starter flour water feeding",
+      "relevant": [
+        {
+          "label": "bread-starter",
+          "document": "sourdough",
+          "contains": "Feed the starter",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "category": "keyword",
+      "text": "Alfama tram card",
+      "relevant": [
+        {
+          "label": "travel-tram",
+          "document": "travel",
+          "contains": "Tram 28",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "category": "multi",
+      "text": "chain wear replacement kilometres",
+      "relevant": [
+        {
+          "label": "bike-chain",
+          "document": "bike",
+          "contains": "chain was replaced",
+          "grade": 3
+        },
+        {
+          "label": "health-shoes",
+          "document": "health",
+          "contains": "640 kilometres",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "category": "keyword",
+      "text": "dishwasher leak hose",
+      "relevant": [
+        {
+          "label": "kitchen-leak",
+          "document": "kitchen",
+          "contains": "inlet hose",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "category": "paraphrase",
+      "text": "novel about trust on a cold planet",
+      "relevant": [
+        {
+          "label": "books-lefthand",
+          "document": "books",
+          "contains": "Left Hand of Darkness",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "category": "multi",
+      "text": "November renewal installation dates",
+      "relevant": [
+        {
+          "label": "finance-renew",
+          "document": "finance",
+          "contains": "1 November",
+          "grade": 2
+        },
+        {
+          "label": "kitchen-install",
+          "document": "kitchen",
+          "contains": "20 November",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "category": "keyword",
+      "text": "compost temperature",
+      "relevant": [
+        {
+          "label": "garden-compost",
+          "document": "garden",
+          "contains": "compost bin",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "category": "no_answer",
+      "text": "quantum chromodynamics lattice gauge",
+      "relevant": []
+    },
+    {
+      "id": "q20",
+      "category": "no_answer",
+      "text": "zxqv blorft",
+      "relevant": []
+    }
+  ]
+}

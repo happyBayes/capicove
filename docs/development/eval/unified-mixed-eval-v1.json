@@ -1,0 +1,410 @@
+{
+  "schema": "capicove.retrieval-eval.v1",
+  "dataset_id": "unified-mixed-eval-v1",
+  "stacks": [
+    "unified"
+  ],
+  "frozen_at": "2026-10-29",
+  "provenance": "Authored synthetic notes plus procedurally rendered single-color PNG images (rendered at run time from specs; no media committed). Image relevance is by authored color only.",
+  "corpus": {
+    "documents": [
+      {
+        "id": "garden",
+        "path": "notes/garden.md",
+        "text": "# Garden journal\n\nThe tomato seedlings were moved to the greenhouse on March 3. They need watering every morning and a weak fertilizer once a week.\n\nAphids appeared on the roses in late May. A soap spray removed most of them within ten days.\n\nThe compost bin is turned every Sunday; it reached 60 degrees Celsius in June.\n"
+      },
+      {
+        "id": "bike",
+        "path": "notes/bike-repair.md",
+        "text": "# Bicycle maintenance\n\nThe rear derailleur skipped gears because the cable had stretched. Turning the barrel adjuster a quarter turn counterclockwise fixed the shifting.\n\nTire pressure for the commuter bike is 65 psi front and 75 psi rear.\n\nThe chain was replaced at 3,200 kilometres after the wear gauge showed 0.75 percent elongation.\n"
+      },
+      {
+        "id": "sourdough",
+        "path": "recipes/sourdough.md",
+        "text": "# Sourdough bread\n\nFeed the starter twice a day with equal weights of flour and water. It is ready when it doubles within six hours.\n\nMix 500 g flour, 350 g water, 100 g starter and 10 g salt. Bulk fermentation takes about five hours at 24 degrees.\n\nBake in a covered Dutch oven at 250 degrees for twenty minutes, then uncovered for twenty-five minutes.\n"
+      },
+      {
+        "id": "travel",
+        "path": "travel/lisbon.md",
+        "text": "# Lisbon trip\n\nThe flight to Lisbon departs on 14 September at 07:40 from terminal 2. The booking reference is QX7P2L.\n\nTram 28 runs through Alfama; buy a Viva Viagem card at the metro station to save on fares.\n\nThe hotel near Rossio square offers breakfast from 7 until 10.\n"
+      },
+      {
+        "id": "finance",
+        "path": "admin/finances.md",
+        "text": "# Household finances\n\nThe electricity bill rose by 18 percent after the winter tariff change. The supplier contract renews on 1 November.\n\nThe emergency fund target is three months of expenses, about 9,000 euros.\n\nInvoice 2026-114 for the roof repair was paid by bank transfer on 2 October.\n"
+      },
+      {
+        "id": "health",
+        "path": "health/running.md",
+        "text": "# Running log\n\nThe half marathon plan has four runs per week, with one long run on Saturday.\n\nShin pain after the interval session was treated with rest and ice; the physiotherapist recommended calf raises.\n\nA new pair of shoes was bought at 640 kilometres on the old pair.\n"
+      },
+      {
+        "id": "work",
+        "path": "work/project-atlas.md",
+        "text": "# Project Atlas\n\nProject Atlas migrates the billing service to the new event queue. The cut-over is scheduled for the second week of December.\n\nRisks: duplicate events during replay and missing idempotency keys in the legacy client.\n\nThe weekly status meeting moved to Thursday at 15:00.\n"
+      },
+      {
+        "id": "books",
+        "path": "reading/books.md",
+        "text": "# Reading list\n\nFinished The Left Hand of Darkness; the theme of trust between Genly Ai and Estraven stood out.\n\nStarted a history of the printing press that explains how movable type spread across Europe after 1450.\n\nNext on the list is a field guide to mushrooms of the northern forests.\n"
+      },
+      {
+        "id": "car",
+        "path": "admin/car.md",
+        "text": "# Car\n\nThe car is due for its annual inspection in April. The last oil change was at 48,500 kilometres.\n\nWinter tyres are stored at the garage on Mill Road and are swapped in late October.\n"
+      },
+      {
+        "id": "kitchen",
+        "path": "home/kitchen.md",
+        "text": "# Kitchen renovation\n\nThe new countertop is quartz, 3 centimetres thick. Installation is booked for 20 November.\n\nThe dishwasher leaked from the inlet hose; tightening the clamp stopped the leak.\n"
+      }
+    ],
+    "images": [
+      {
+        "id": "img-red-1",
+        "path": "images/red-1.png",
+        "spec": {
+          "color": "red",
+          "variant": 1,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-red-2",
+        "path": "images/red-2.png",
+        "spec": {
+          "color": "red",
+          "variant": 2,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-green-1",
+        "path": "images/green-1.png",
+        "spec": {
+          "color": "green",
+          "variant": 1,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-green-2",
+        "path": "images/green-2.png",
+        "spec": {
+          "color": "green",
+          "variant": 2,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-blue-1",
+        "path": "images/blue-1.png",
+        "spec": {
+          "color": "blue",
+          "variant": 1,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-blue-2",
+        "path": "images/blue-2.png",
+        "spec": {
+          "color": "blue",
+          "variant": 2,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-yellow-1",
+        "path": "images/yellow-1.png",
+        "spec": {
+          "color": "yellow",
+          "variant": 1,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-yellow-2",
+        "path": "images/yellow-2.png",
+        "spec": {
+          "color": "yellow",
+          "variant": 2,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-purple-1",
+        "path": "images/purple-1.png",
+        "spec": {
+          "color": "purple",
+          "variant": 1,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-purple-2",
+        "path": "images/purple-2.png",
+        "spec": {
+          "color": "purple",
+          "variant": 2,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-orange-1",
+        "path": "images/orange-1.png",
+        "spec": {
+          "color": "orange",
+          "variant": 1,
+          "size": 64
+        }
+      },
+      {
+        "id": "img-orange-2",
+        "path": "images/orange-2.png",
+        "spec": {
+          "color": "orange",
+          "variant": 2,
+          "size": 64
+        }
+      }
+    ]
+  },
+  "queries": [
+    {
+      "id": "t01",
+      "category": "keyword",
+      "text": "tomato greenhouse",
+      "relevant": [
+        {
+          "label": "garden-tomato",
+          "document": "garden",
+          "contains": "tomato seedlings",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "t02",
+      "category": "keyword",
+      "text": "derailleur cable",
+      "relevant": [
+        {
+          "label": "bike-cable",
+          "document": "bike",
+          "contains": "barrel adjuster",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "t04",
+      "category": "identifier",
+      "text": "QX7P2L",
+      "relevant": [
+        {
+          "label": "travel-booking",
+          "document": "travel",
+          "contains": "QX7P2L",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "t07",
+      "category": "paraphrase",
+      "text": "how did I get rid of the bugs on the flowers",
+      "relevant": [
+        {
+          "label": "garden-aphids",
+          "document": "garden",
+          "contains": "Aphids appeared",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "t11",
+      "category": "multi",
+      "text": "billing service event queue migration risks",
+      "relevant": [
+        {
+          "label": "work-atlas",
+          "document": "work",
+          "contains": "event queue",
+          "grade": 3
+        },
+        {
+          "label": "work-risks",
+          "document": "work",
+          "contains": "idempotency keys",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "t15",
+      "category": "keyword",
+      "text": "dishwasher leak hose",
+      "relevant": [
+        {
+          "label": "kitchen-leak",
+          "document": "kitchen",
+          "contains": "inlet hose",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "t17",
+      "category": "multi",
+      "text": "November renewal installation dates",
+      "relevant": [
+        {
+          "label": "finance-renew",
+          "document": "finance",
+          "contains": "1 November",
+          "grade": 2
+        },
+        {
+          "label": "kitchen-install",
+          "document": "kitchen",
+          "contains": "20 November",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "id": "t19",
+      "category": "no_answer",
+      "text": "quantum chromodynamics lattice gauge",
+      "relevant": []
+    },
+    {
+      "id": "i-red",
+      "category": "image-color",
+      "text": "red image",
+      "relevant": [
+        {
+          "label": "img-red-1",
+          "document": "img-red-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "img-red-2",
+          "document": "img-red-2",
+          "contains": null,
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "i-green",
+      "category": "image-color",
+      "text": "green image",
+      "relevant": [
+        {
+          "label": "img-green-1",
+          "document": "img-green-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "img-green-2",
+          "document": "img-green-2",
+          "contains": null,
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "i-blue",
+      "category": "image-color",
+      "text": "blue image",
+      "relevant": [
+        {
+          "label": "img-blue-1",
+          "document": "img-blue-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "img-blue-2",
+          "document": "img-blue-2",
+          "contains": null,
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "i-yellow",
+      "category": "image-color",
+      "text": "yellow image",
+      "relevant": [
+        {
+          "label": "img-yellow-1",
+          "document": "img-yellow-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "img-yellow-2",
+          "document": "img-yellow-2",
+          "contains": null,
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "i-purple-photo",
+      "category": "image-paraphrase",
+      "text": "a purple picture",
+      "relevant": [
+        {
+          "label": "img-purple-1",
+          "document": "img-purple-1",
+          "contains": null,
+          "grade": 3
+        },
+        {
+          "label": "img-purple-2",
+          "document": "img-purple-2",
+          "contains": null,
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "x-orange-notes",
+      "category": "cross-modal",
+      "text": "orange image and the kitchen dishwasher hose",
+      "relevant": [
+        {
+          "label": "img-orange-1",
+          "document": "img-orange-1",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "img-orange-2",
+          "document": "img-orange-2",
+          "contains": null,
+          "grade": 2
+        },
+        {
+          "label": "kitchen-leak",
+          "document": "kitchen",
+          "contains": "inlet hose",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "id": "i-none",
+      "category": "no_answer",
+      "text": "zxqv blorft",
+      "relevant": []
+    }
+  ]
+}

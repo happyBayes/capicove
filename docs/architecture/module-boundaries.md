@@ -290,3 +290,17 @@ codec and model-neutral generator ports. Structural decoding is not evidence
 verification, reviewer authentication or publication authorization. Runtime owns
 provider composition; Wiki does not import runtime, model SDKs or memory-private
 adapters. W0 does not activate schema v3, migrate a workspace or publish changes.
+
+
+## Video media quality inspection
+
+Under accepted RFC-0035 and ADR-0039, `processing.video.quality` owns immutable
+inspection values, intake/probe/scan ports, full selected-stream coverage and
+explicit delivery-policy evaluation. Private FFmpeg/FFprobe adapters perform
+bounded offline analysis. `tools.video_quality` owns canonical validation,
+permission and trace integration; standalone CLI/MCP only translate the same
+contract. No default 1–10 grading, source repair or semantic synchronization is
+implied. S2 runtime composition adapts its authority-owned staged source through
+the public intake port without a second unmanaged copy. The capability never
+imports runtime internals. Configured execution retains Linux descriptor and
+executable pinning; filter v1 is unchanged.

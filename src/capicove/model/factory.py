@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from capicove.model.multimodal_embedding import SharedSpaceEncoder
     from capicove.model.ports import ConfiguredTextEncoder
     from capicove.model.vlm import VlmProvider
+    from capicove.processing.audio.synthesis import SpeechProvider
     from capicove.processing.image.ocr_configuration import ConfiguredImageOcrProvider
     from capicove.retrieval.ports import MultimodalEmbeddingProvider
     from capicove.retrieval.reranking import TextReranker
@@ -39,6 +40,7 @@ class _Instance:
 
 def _require_port(value: object, capability: ModelCapability) -> None:
     methods = {
+        ModelCapability.AUDIO_SYNTHESIS: ("synthesize", "close"),
         ModelCapability.AUDIO_TRANSCRIPTION: ("transcribe", "close"),
         ModelCapability.TEXT_EMBEDDING: ("encode",),
         ModelCapability.TEXT_RERANKING: ("rerank",),
@@ -57,6 +59,7 @@ def _require_port(value: object, capability: ModelCapability) -> None:
     if any(not callable(getattr(value, name, None)) for name in methods):
         raise TypeError("model provider returned an incompatible inference port")
     attributes = {
+        ModelCapability.AUDIO_SYNTHESIS: ("model_id", "features", "lineage"),
         ModelCapability.AUDIO_TRANSCRIPTION: ("model_id",),
         ModelCapability.TEXT_EMBEDDING: ("space",),
         ModelCapability.TEXT_RERANKING: ("model_id", "model_revision"),
@@ -185,6 +188,13 @@ class ModelFactory:
         return cast(
             "AbstractContextManager[DocumentParserBackend]",
             self.acquire(binding, ModelCapability.DOCUMENT_PARSER),
+        )
+
+    def speech(self, binding: str = "tts") -> AbstractContextManager[SpeechProvider]:
+        """Borrow a configured offline speech provider."""
+        return cast(
+            "AbstractContextManager[SpeechProvider]",
+            self.acquire(binding, ModelCapability.AUDIO_SYNTHESIS),
         )
 
     def audio_transcriber(self, binding: str) -> AbstractContextManager[AudioTranscriptionProvider]:

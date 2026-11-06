@@ -1635,3 +1635,21 @@ def test_source_manifest_ignores_local_environments_and_hidden_directories(
     (root / "src/.cache/state.json").write_text("{}\n")
     assert checker().source_manifest(root) == baseline
     assert "src/capicove/mcp/server.py" in baseline
+
+
+def test_standalone_quality_is_inventoried_without_remote_qualification() -> None:
+    module, data, core = checker(), inventory(), core_manifest()
+    identity = "tool:capicove.video.quality@1"
+    candidate = next(row for row in data["operations"] if row["operation_id"] == identity)
+    assert candidate["capability_id"] == "C03"
+    assert candidate["planning"] is None
+    assert candidate["state"] == "inventoried"
+    assert candidate["acceptance_receipt"] is None
+    assert any(row["operation_id"] == identity for row in core["unresolved_candidates"])
+    assert not any(
+        row.get("local_tool_id") == "capicove.video.quality" for row in core["operations"]
+    )
+    assert module.validate_core_manifest(core, ROOT) == []
+    assert any(
+        "capicove.video.quality" in error for error in module.validate(data, ROOT, "planned", None)
+    )

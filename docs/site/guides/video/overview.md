@@ -3,6 +3,7 @@
 Choose a video workflow:
 
 - [splitting](splitting.md) by duration, keyframes, or scenes;
+- [media quality inspection](quality.md) for full-file decoding, temporal events and audio measurements;
 - [filtering](filtering.md) across metadata, visual, text, tag, and model criteria;
 - [exact-file deduplication](../../cli/video-deduplicate.md) using the `video-dedup` extra;
 - [retrieval](retrieval.md), a locally qualified experimental workflow requiring explicit index,

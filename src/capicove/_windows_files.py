@@ -515,3 +515,42 @@ def read_windows_secure_file(
                 raise ValueError("MCP Windows file could not be read completely")
             offset += read.value
         return buffer.raw
+
+
+@contextmanager
+def open_windows_secure_stream(path: Path) -> Iterator[Any]:
+    """Stream a large regular file through a verified no-follow Windows handle."""
+    import importlib
+
+    msvcrt = importlib.import_module("msvcrt")
+
+    with _windows_checked_handle(path, directory=False) as (kernel32, handle):
+        kernel32.GetCurrentProcess.restype = wintypes.HANDLE
+        kernel32.DuplicateHandle.argtypes = [
+            wintypes.HANDLE,
+            wintypes.HANDLE,
+            wintypes.HANDLE,
+            ctypes.POINTER(wintypes.HANDLE),
+            wintypes.DWORD,
+            wintypes.BOOL,
+            wintypes.DWORD,
+        ]
+        kernel32.DuplicateHandle.restype = wintypes.BOOL
+        process = kernel32.GetCurrentProcess()
+        duplicate = wintypes.HANDLE()
+        if not kernel32.DuplicateHandle(
+            process, handle, process, ctypes.byref(duplicate), 0, False, 2
+        ):
+            raise WindowsPathPolicyError("Windows read handle duplication failed")
+        try:
+            if duplicate.value is None:
+                raise WindowsPathPolicyError("Windows read handle duplication returned null")
+            binary_mode = getattr(os, "O_BINARY", None)
+            if binary_mode is None:
+                raise WindowsPathPolicyError("Windows binary file mode is unavailable")
+            descriptor = msvcrt.open_osfhandle(duplicate.value, os.O_RDONLY | binary_mode)
+        except BaseException:
+            kernel32.CloseHandle(duplicate)
+            raise
+        with os.fdopen(descriptor, "rb") as stream:
+            yield stream

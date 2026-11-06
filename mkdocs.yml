@@ -10,6 +10,7 @@ site_dir: site
 
 theme:
   name: material
+  custom_dir: docs/theme
   language: en
   features:
     - content.action.edit
@@ -38,6 +39,9 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/presentation.js
 
 plugins:
   - search
@@ -112,6 +116,7 @@ nav:
           - Overview: guides/video/overview.md
           - Splitting: guides/video/splitting.md
           - Filtering: guides/video/filtering.md
+          - Media quality: guides/video/quality.md
           - Retrieval (experimental): guides/video/retrieval.md
       - Image:
           - Overview: guides/image/overview.md
@@ -123,6 +128,7 @@ nav:
           - Local SigLIP2 retrieval: guides/image/siglip2-local-retrieval.md
           - Reverse-image search: guides/image/reverse-search.md
       - Audio:
+          - Local speech synthesis: guides/audio/speech-setup.md
           - Overview: guides/audio/overview.md
           - Evidence import: guides/audio/import.md
           - Transcription: guides/audio/transcription.md
@@ -135,6 +141,7 @@ nav:
       - Trace export: cli/traces.md
       - Video split: cli/video-split.md
       - Video filter: cli/video-filter.md
+      - Video quality: cli/video-quality.md
       - Video deduplication: cli/video-deduplicate.md
       - Audio: cli/audio.md
       - Image: cli/image.md
@@ -142,6 +149,7 @@ nav:
       - Wiki: cli/wiki.md
       - Memory: cli/memory.md
       - Offline search: cli/retrieval.md
+      - Retrieval evaluation (experimental): cli/eval.md
       - HTTP serve: cli/http.md
   - Python API:
       - Contracts: api/contracts.md

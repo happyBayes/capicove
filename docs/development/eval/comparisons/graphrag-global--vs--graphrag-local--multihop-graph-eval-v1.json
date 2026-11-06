@@ -1,0 +1,342 @@
+{
+  "baseline": {
+    "dataset": {
+      "id": "multihop-graph-eval-v1",
+      "queries": 13,
+      "schema": "capicove.retrieval-eval.v1",
+      "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+    },
+    "index": {
+      "completeness": "complete",
+      "entities": 34,
+      "graph_profile_fingerprint": "2b279d49e5740ea5c49389821c82bc4c87bd291e84a00c92e09747cd9e0227f2",
+      "kind": "graph-snapshot",
+      "manifest_sha256": "579053c36852ea36623186c12b5c294e794e7c14e090c5c014d74eeba883da35",
+      "relationships": 20,
+      "reports": 35,
+      "snapshot_id": "graph:579053c36852ea36623186c12b5c294e794e7c14e090c5c014d74eeba883da35"
+    },
+    "model": {
+      "components": [
+        "generator:capicove/scripted-graph-generator",
+        "embedder:capicove-deterministic-fake:hashed-text-64",
+        "partitioner:capicove/fixture-components"
+      ],
+      "generator_calls": 41,
+      "kind": "deterministic-fake",
+      "real_model_validation": "not_run"
+    },
+    "options": {
+      "fake_dense": false,
+      "k": 5,
+      "reranker": "none"
+    },
+    "profile": {
+      "fingerprint": "86b88b9778e58fb7d2dc11d2d3f303a6f4f4a2784c24bb033475769ae71fbb59",
+      "id": "graphrag-default-v1",
+      "version": 1
+    },
+    "results_sha256": "6a83926baedda24fc3f8ad611e2bb371f543aa232b9d6c16c022cc56ace1afc2",
+    "stack": "graphrag-global"
+  },
+  "bootstrap": {
+    "groups": "query",
+    "samples": 2000,
+    "seed": 0
+  },
+  "candidate": {
+    "dataset": {
+      "id": "multihop-graph-eval-v1",
+      "queries": 13,
+      "schema": "capicove.retrieval-eval.v1",
+      "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+    },
+    "index": {
+      "completeness": "complete",
+      "entities": 34,
+      "graph_profile_fingerprint": "2b279d49e5740ea5c49389821c82bc4c87bd291e84a00c92e09747cd9e0227f2",
+      "kind": "graph-snapshot",
+      "manifest_sha256": "2465c0a8a16c46830439e01ec27b5bc0b2035df12a30a1337868e77726e9774c",
+      "relationships": 20,
+      "reports": 35,
+      "snapshot_id": "graph:2465c0a8a16c46830439e01ec27b5bc0b2035df12a30a1337868e77726e9774c"
+    },
+    "model": {
+      "components": [
+        "generator:capicove/scripted-graph-generator",
+        "embedder:capicove-deterministic-fake:hashed-text-64",
+        "partitioner:capicove/fixture-components"
+      ],
+      "generator_calls": 41,
+      "kind": "deterministic-fake",
+      "real_model_validation": "not_run"
+    },
+    "options": {
+      "fake_dense": false,
+      "k": 5,
+      "reranker": "none"
+    },
+    "profile": {
+      "fingerprint": "86b88b9778e58fb7d2dc11d2d3f303a6f4f4a2784c24bb033475769ae71fbb59",
+      "id": "graphrag-default-v1",
+      "version": 1
+    },
+    "results_sha256": "0e606b74c93080590cace956cb4241bf631507ea3a9ba3f094415d2870fbbc0a",
+    "stack": "graphrag-local"
+  },
+  "dataset": {
+    "id": "multihop-graph-eval-v1",
+    "queries": 13,
+    "schema": "capicove.retrieval-eval.v1",
+    "sha256": "339501364a43384da28734212b2923d0fca50530efecfd6b56631af9af019604"
+  },
+  "experimental": true,
+  "interpretation": "Engineering comparison over a frozen set; deterministic fakes are not model quality",
+  "latency": {
+    "baseline": {
+      "count": 13,
+      "max_ms": 0.481041,
+      "mean_ms": 0.3977436923076923,
+      "p50_ms": 0.412,
+      "p95_ms": 0.481041
+    },
+    "candidate": {
+      "count": 13,
+      "max_ms": 0.312958,
+      "mean_ms": 0.2401795384615385,
+      "p50_ms": 0.273042,
+      "p95_ms": 0.312958
+    }
+  },
+  "metrics": {
+    "candidate_pool_recall": {
+      "baseline": 0.75,
+      "candidate": 0.9444444444444443,
+      "delta": 0.1944444444444443,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.06944444444444445,
+        0.3333333333333333
+      ],
+      "sign_test_p": 0.0625,
+      "ties": 7,
+      "wins": 5
+    },
+    "complete_support@1": {
+      "baseline": 0.16666666666666666,
+      "candidate": 0.16666666666666666,
+      "delta": 0.0,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.0,
+        0.0
+      ],
+      "sign_test_p": 1.0,
+      "ties": 12,
+      "wins": 0
+    },
+    "complete_support@3": {
+      "baseline": 0.16666666666666666,
+      "candidate": 0.5833333333333334,
+      "delta": 0.41666666666666674,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.16666666666666666,
+        0.6666666666666666
+      ],
+      "sign_test_p": 0.0625,
+      "ties": 7,
+      "wins": 5
+    },
+    "complete_support@5": {
+      "baseline": 0.25,
+      "candidate": 0.75,
+      "delta": 0.5,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.25,
+        0.75
+      ],
+      "sign_test_p": 0.03125,
+      "ties": 6,
+      "wins": 6
+    },
+    "context_chars@1": {
+      "baseline": 35.0,
+      "candidate": 36.333333333333336,
+      "delta": 1.3333333333333357,
+      "losses": 1,
+      "ties": 7,
+      "wins": 4
+    },
+    "context_chars@3": {
+      "baseline": 109.75,
+      "candidate": 114.66666666666667,
+      "delta": 4.916666666666671,
+      "losses": 4,
+      "ties": 4,
+      "wins": 4
+    },
+    "context_chars@5": {
+      "baseline": 186.5,
+      "candidate": 182.0,
+      "delta": -4.5,
+      "losses": 6,
+      "ties": 1,
+      "wins": 5
+    },
+    "mrr": {
+      "baseline": 0.7777777777777777,
+      "candidate": 0.9027777777777777,
+      "delta": 0.125,
+      "losses": 1,
+      "paired_bootstrap_95ci": [
+        -0.01388888888888889,
+        0.27777777777777785
+      ],
+      "sign_test_p": 0.625,
+      "ties": 8,
+      "wins": 3
+    },
+    "ndcg@1": {
+      "baseline": 0.5833333333333334,
+      "candidate": 0.8333333333333334,
+      "delta": 0.25,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.0,
+        0.5
+      ],
+      "sign_test_p": 0.25,
+      "ties": 9,
+      "wins": 3
+    },
+    "ndcg@3": {
+      "baseline": 0.5810681966351844,
+      "candidate": 0.807090118844734,
+      "delta": 0.22602192220954964,
+      "losses": 1,
+      "paired_bootstrap_95ci": [
+        0.09002326757098437,
+        0.3798252428629192
+      ],
+      "sign_test_p": 0.0703125,
+      "ties": 4,
+      "wins": 7
+    },
+    "ndcg@5": {
+      "baseline": 0.6182023562276797,
+      "candidate": 0.861066557312275,
+      "delta": 0.24286420108459528,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.11849509201642756,
+        0.3762117752315584
+      ],
+      "sign_test_p": 0.00390625,
+      "ties": 3,
+      "wins": 9
+    },
+    "recall@1": {
+      "baseline": 0.3611111111111111,
+      "candidate": 0.4583333333333333,
+      "delta": 0.09722222222222221,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.0,
+        0.20833333333333334
+      ],
+      "sign_test_p": 0.25,
+      "ties": 9,
+      "wins": 3
+    },
+    "recall@3": {
+      "baseline": 0.5833333333333334,
+      "candidate": 0.8055555555555555,
+      "delta": 0.2222222222222221,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.08333333333333333,
+        0.36111111111111116
+      ],
+      "sign_test_p": 0.0625,
+      "ties": 7,
+      "wins": 5
+    },
+    "recall@5": {
+      "baseline": 0.6527777777777778,
+      "candidate": 0.9027777777777777,
+      "delta": 0.2499999999999999,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.125,
+        0.375
+      ],
+      "sign_test_p": 0.015625,
+      "ties": 5,
+      "wins": 7
+    },
+    "single_credit_recall@1": {
+      "baseline": 0.3611111111111111,
+      "candidate": 0.4583333333333333,
+      "delta": 0.09722222222222221,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.0,
+        0.20833333333333334
+      ],
+      "sign_test_p": 0.25,
+      "ties": 9,
+      "wins": 3
+    },
+    "single_credit_recall@3": {
+      "baseline": 0.5833333333333334,
+      "candidate": 0.8055555555555555,
+      "delta": 0.2222222222222221,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.08333333333333333,
+        0.36111111111111116
+      ],
+      "sign_test_p": 0.0625,
+      "ties": 7,
+      "wins": 5
+    },
+    "single_credit_recall@5": {
+      "baseline": 0.6527777777777778,
+      "candidate": 0.9027777777777777,
+      "delta": 0.2499999999999999,
+      "losses": 0,
+      "paired_bootstrap_95ci": [
+        0.125,
+        0.375
+      ],
+      "sign_test_p": 0.015625,
+      "ties": 5,
+      "wins": 7
+    }
+  },
+  "no_answer": {
+    "baseline_false_positive_queries": 0,
+    "candidate_false_positive_queries": 0
+  },
+  "paired_queries": 12,
+  "rankings": {
+    "changed_queries": [
+      "mh01",
+      "mh02",
+      "mh03",
+      "mh04",
+      "mh05",
+      "mh06",
+      "mh07",
+      "mh08",
+      "mh09",
+      "mh10",
+      "mh11",
+      "mh12"
+    ],
+    "results_identical": false
+  },
+  "schema": "capicove.retrieval-eval-comparison.v1"
+}

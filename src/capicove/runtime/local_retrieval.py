@@ -40,6 +40,8 @@ from capicove.tools.search import CAPICOVE_SEARCH_SPEC, SearchToolHandler
 
 if TYPE_CHECKING:
     from capicove.retrieval._adapters.sqlite_fts import Fts5TextBackend
+    from capicove.retrieval.pipeline_profiles import OfflineTextSearchProfile
+    from capicove.retrieval.reranking import TextReranker
 
 
 # The shared Search contract allows networked providers; this binding is offline.
@@ -482,12 +484,29 @@ class LocalRetrievalRuntime:
 
 
 def open_local_retrieval(
-    config: WorkspaceHostConfiguration, settings: RetrievalSettings | None = None
+    config: WorkspaceHostConfiguration,
+    settings: RetrievalSettings | None = None,
+    *,
+    pipeline_profile: OfflineTextSearchProfile | None = None,
+    reranker: TextReranker | None = None,
 ) -> LocalRetrievalRuntime:
-    """Compose read-only handlers; this never creates storage or builds an index."""
+    """Compose read-only handlers; this never creates storage or builds an index.
+
+    ``pipeline_profile`` (experimental, RFC-0034) defaults to
+    ``offline-text-default-v1``, the historic inline settings. An enabled rerank
+    policy without ``reranker`` fails or degrades as the profile states.
+    """
+    from capicove.retrieval.pipeline_profiles import (
+        OfflineTextSearchProfile,
+        default_offline_text_profile,
+    )
+
     resolved = settings or retrieval_settings(config)
+    profile = pipeline_profile or default_offline_text_profile()
+    if not isinstance(profile, OfflineTextSearchProfile):
+        raise TypeError("pipeline_profile must be an OfflineTextSearchProfile")
     return LocalRetrievalRuntime(
-        SearchToolHandler(_LocalSearchOperation(resolved)),
+        SearchToolHandler(_LocalSearchOperation(resolved, profile, reranker)),
         EvidenceToolHandler(_LocalEvidenceReader(resolved)),
     )
 
@@ -507,8 +526,15 @@ def chunk_markdown(text: str) -> tuple[tuple[int, int], ...]:
 
 
 class _LocalSearchOperation:
-    def __init__(self, settings: RetrievalSettings) -> None:
+    def __init__(
+        self,
+        settings: RetrievalSettings,
+        profile: OfflineTextSearchProfile,
+        reranker: TextReranker | None,
+    ) -> None:
         self._settings = settings
+        self._profile = profile
+        self._reranker = reranker
 
     def search(self, request: SearchRequest) -> SearchResult:
         from capicove.retrieval._adapters.sqlite_fts import Fts5TextBackend
@@ -525,8 +551,9 @@ class _LocalSearchOperation:
             SqliteTextIndexGenerationCatalog,
         )
 
+        backend = Fts5TextBackend(self._settings.index_root)
         service = TextSearchService(
-            backend=Fts5TextBackend(self._settings.index_root),
+            backend=backend,
             catalog=SqliteTextIndexGenerationCatalog(catalog),
             profiles=StaticTextRetrievalProfileRegistry(
                 (
@@ -536,13 +563,20 @@ class _LocalSearchOperation:
                         dense_weight=0.0,
                         lexical_required=True,
                         dense_required=False,
-                        lexical_candidate_count=100,
+                        lexical_candidate_count=self._profile.lexical_candidate_count,
                         dense_candidate_count=1,
+                        rrf_k=self._profile.rrf_k,
                     ),
                 )
             ),
             query_embedder=_NoQueryEmbedder(),
             query_id_factory=lambda: f"query-{uuid.uuid4().hex}",
+            rerank_policy=self._profile.rerank,
+            reranker=self._reranker,
+            rerank_texts=lambda generation, candidates: tuple(
+                backend.read_evidence(generation, candidate.evidence_ref).text or candidate.snippet
+                for candidate in candidates
+            ),
         )
         return service.search(request)
 

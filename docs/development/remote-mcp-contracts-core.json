@@ -50944,6 +50944,262 @@
       "source_entrypoints": [
         "src/capicove/processing/video/retrieval/_adapters/sampled_frames.py:VideoProbe"
       ]
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/video_quality.py:quality",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/video_quality.py:quality"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/video_quality.py:add_parser",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/video_quality.py:add_parser"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/video_quality.py:run",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/video_quality.py:run"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_contracts.py:QualityInspection.to_dict",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_contracts.py:QualityInspection.to_dict"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_contracts.py:QualityRequest.from_mapping",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_contracts.py:QualityRequest.from_mapping"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_pipeline.py:VideoQualityPipeline.inspect",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_pipeline.py:VideoQualityPipeline.inspect"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_ports.py:QualityBackend.probe",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_ports.py:QualityBackend.probe"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_ports.py:QualityBackend.scan",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_ports.py:QualityBackend.scan"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_ports.py:QualityIntake.stage",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_ports.py:QualityIntake.stage"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_rules.py:evaluate_policy",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_rules.py:evaluate_policy"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_rules.py:metric",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_rules.py:metric"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/video/quality/video_quality_rules.py:union_duration",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/processing/video/quality/video_quality_rules.py:union_duration"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/tools/video_quality.py:build_video_quality_tool_handler",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/tools/video_quality.py:build_video_quality_tool_handler"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/tools/video_quality.py:register_video_quality_tool",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/tools/video_quality.py:register_video_quality_tool"
+      ]
+    },
+    {
+      "operation_id": "tool:capicove.video.quality@1",
+      "provider_profile": "builtin",
+      "capability_id": "C03",
+      "source_entrypoints": [
+        "src/capicove/tools/video_quality.py:VIDEO_QUALITY_SPEC"
+      ]
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/audio_synthesis.py:speech-capabilities",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/audio_synthesis.py:speech-capabilities"
+      ]
+    },
+    {
+      "operation_id": "provider:src/capicove/processing/audio/_adapters/llama_tts.py:LlamaSpeechProvider",
+      "provider_profile": "LlamaSpeechProvider",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/_adapters/llama_tts.py:LlamaSpeechProvider"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/audio_synthesis.py:add_parsers",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/audio_synthesis.py:add_parsers"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/audio_synthesis.py:run",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/audio_synthesis.py:run"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:SpeechProvider.close",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:SpeechProvider.close"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:SpeechProvider.synthesize",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:SpeechProvider.synthesize"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:SpeechService.generate",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:SpeechService.generate"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:canonical",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:canonical"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:file_digest",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:file_digest"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:open_regular",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:open_regular"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis.py:verify_provenance",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis.py:verify_provenance"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/processing/audio/synthesis_runtime.py:create_local_speech",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/processing/audio/synthesis_runtime.py:create_local_speech"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/tools/audio_synthesis.py:speech_spec",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/tools/audio_synthesis.py:speech_spec"
+      ]
+    },
+    {
+      "operation_id": "tool:capicove.audio.clone@1",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/tools/audio_synthesis.py:AUDIO_CLONE_SPEC"
+      ]
+    },
+    {
+      "operation_id": "tool:capicove.audio.synthesize@1",
+      "provider_profile": "builtin",
+      "capability_id": "C05",
+      "source_entrypoints": [
+        "src/capicove/tools/audio_synthesis.py:AUDIO_SYNTHESIZE_SPEC"
+      ]
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/knowledge_base.py:graph-query",
+      "provider_profile": "builtin",
+      "capability_id": "C08",
+      "source_entrypoints": [
+        "src/capicove/cli/commands/knowledge_base.py:graph-query"
+      ]
+    },
+    {
+      "operation_id": "public:src/capicove/runtime/native_knowledge.py:KnowledgeBase.graph_query",
+      "provider_profile": "builtin",
+      "capability_id": "C08",
+      "source_entrypoints": [
+        "src/capicove/runtime/native_knowledge.py:KnowledgeBase.graph_query"
+      ]
     }
   ],
   "source_manifest": {
@@ -50952,7 +51208,7 @@
     "src/capicove/tools/audio_transcribe.py": "1c315de1477b95bbb38d69e6720f453397bbc2a841fa6d68ecf4bc460fefffd7",
     "src/capicove/tools/image.py": "fa2f09622d8a9f811aa2ade4e88c514cde99e1d0d647b3f6706e08e5bc53951f",
     "src/capicove/runtime/knowledge_mcp.py": "37823c39b6b9a3210881379eb61507d5b40a18a3abc480a48985a36edfe92585",
-    "src/capicove/runtime/native_knowledge.py": "a5d9a6ab1b9946d4e1df143fd4f8501ea32637c5506954c6a612a50d8078cdde",
+    "src/capicove/runtime/native_knowledge.py": "837bde430f0d0658c5f497689bf420ecbffde7424679d8f2bdb40fad253dfec8",
     "src/capicove/tools/memory_tools.py": "461eab8637c89639448356d7c2a4ba63f3b17af67a8360b54efb70e6b2c3028d",
     "src/capicove/agent/memory_service.py": "f830808634f039464058ec2f49e4b55e959acd69a397bd436a902a867f473e20",
     "src/capicove/tools/video_filter.py": "d67a9343f065dcb9578037ebfa7e02cfac746b5dce23482aac4a12c4ccdcc198",
@@ -50961,7 +51217,7 @@
     "src/capicove/processing/video/models.py": "ce77fd755c3c15c37d66875d2615e48fe88e7c78297d3e7693b65e7569468a5d",
     "src/capicove/tools/video_deduplicate.py": "fcd0ed1e9339c9c6d2e08b32ef60964b1bfd0b6897de43ed2fc79356488cee5e",
     "src/capicove/tools/search.py": "4e06bf578395141f608c7f6f3f74d3de6016056a32b2e703bb0a8bf3a9d68676",
-    "src/capicove/runtime/local_retrieval.py": "633b3bdd0face90565fc4d74ad4946ed26140243c624b370eb05dd833fa1e228",
+    "src/capicove/runtime/local_retrieval.py": "9c1409c464ae2f6ef0d197548ca617b6bd93be4d922899ab8455c5986b5f05ab",
     "src/capicove/retrieval/video_search.py": "f437833785334f3d9716ad25c396ba59c04e319fe5e0e1303afdfdbf3e30420b",
     "src/capicove/runtime/video_search.py": "4a8e2499a424b105bc5475b6b7595931e41055d96a519a45dc891b2305e13dcd",
     "src/capicove/tools/image_search.py": "a9fbc3183197c51904fddd608f6ced845913c744a5cb2cdc495231f8132ee5a4",
@@ -50970,7 +51226,7 @@
     "src/capicove/processing/video/retrieval/pipeline.py": "bd20c67eac6da395bb7f4cb9b21130d2ef4588853da427b8116b061614379f5e",
     "src/capicove/knowledge/service.py": "738989f6a585376dd8c406688f32dfe87c7bcfcbde85323c4d79187e3d4f01c0",
     "src/capicove/agent/context_assembly.py": "494d02c8882a8e873fb35f9224027218a914a8f0534836a7224705fc8ddd9232",
-    "src/capicove/cli/commands/knowledge_base.py": "2e720a4bea95b34d09e5803a92bb63736c7985d061059f0e79c5b6da465d2a04",
+    "src/capicove/cli/commands/knowledge_base.py": "81e2e82ce859986aba3d5c13a6fea4cc1ccc859cdde5ee5f264795e157e5730d",
     "src/capicove/retrieval/generation_service.py": "feb78e70bd7c4e94735f350c094257ae73142d449fe678d4b0c29b83ff359265",
     "src/capicove/runtime/retrieval_build.py": "97cd5fc4a95cb358e341acfa30cec3cd1906f562128d3e72b3b6e4579a1bf3e6",
     "src/capicove/retrieval/video_generations.py": "01cb7c474a1e01e42c2362f7d9b04489c248e7df13243d40438b4c7b46265586",
@@ -50991,7 +51247,7 @@
     "plugins/retriever-elasticsearch/src/capicove_retriever_elasticsearch/plugin.py": "c8afb84d3fc37dcfc811db64976c39bfbaa974eafbe82cdf93dfd4be36ba854d",
     "plugins/retriever-faiss/src/capicove_retriever_faiss/plugin.py": "42d373661c09bb04e039f8250126f0689db47d75f0dd62db6a87864c67992ec2",
     "src/capicove/processing/video/retrieval/local.py": "1e0775b027f11456752e487ab285e440671554cb3ecf5c0eff1a957705aa71e7",
-    "src/capicove/runtime/video_mcp.py": "58d391a3fb0b9e7ad1ca60d9c805522750ea15b668a0c425e9c92485341db31f",
+    "src/capicove/runtime/video_mcp.py": "e1d733231f474b59fb003f727ae4bbae0b9214511190eda8775e600c5da9f946",
     "src/capicove/processing/video/splitter.py": "1c01731c8cc09c772a963275b78dbf5eec17ca55d8db91f0fc74832a9a7106bd",
     "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py": "050f2080fa7956974cbc97517fda341607db2b1b2077d5b37a4f81d856894d49",
     "src/capicove/processing/video/filtering/_adapters/opencv_farneback_motion.py": "0980ecb12c983fa180a75ec6ee0f47b737fbfb79421b92fafbb96e40c4cca040",
@@ -51096,7 +51352,7 @@
     "src/capicove/knowledge/entity_resolution.py": "cd132b0a6f57eea066058b5a586215cc77e0074e9d850cb250fa20e8014ea3a0",
     "src/capicove/retrieval/generations.py": "69661ad19bbcd0f0d3fea415ea97f2e82c828effa18e45dfa99a0324a1a387c0",
     "src/capicove/runtime/knowledge_prepare.py": "bde00219f8379692bdc58a03255bc82e05f1a41d615b062978b7264ace90004f",
-    "src/capicove/graph_build/native.py": "118782423727f0c6578d198b024cd974b786ceb2caa72452836c487c9217a52b",
+    "src/capicove/graph_build/native.py": "a0ba0adc5b9b7795a0b3853761012076608126c4f11f84672c6d24c315ce7249",
     "src/capicove/contracts/knowledge.py": "1c98d05dd93ee44af72b063ffd672bf245c47273d74d5885bbcc0e946f24546e",
     "src/capicove/retrieval/_adapters/filesystem_generations.py": "1e799c46b4a8fca2b39aa03deb6880f40f3629199bd07b47485b5405f2506ca3",
     "src/capicove/retrieval/_adapters/sqlite_video_generations.py": "874dbb5b4853dcbb13dea694d7389932e1587f2d71fc4a96173b075a974b9235",

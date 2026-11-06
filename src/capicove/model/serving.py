@@ -9,6 +9,7 @@ from capicove.model.http_profile import HttpModelProfile
 
 
 ROUTES = {
+    ModelCapability.AUDIO_SYNTHESIS: (),
     ModelCapability.TEXT_EMBEDDING: ("/v1/embeddings",),
     ModelCapability.TEXT_RERANKING: ("/v1/rerank",),
     ModelCapability.AUDIO_TRANSCRIPTION: ("/v1/audio/transcriptions",),
