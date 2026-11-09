@@ -1,0 +1,930 @@
+{
+  "adapter": {
+    "id": "video",
+    "version": "1"
+  },
+  "dataset": {
+    "id": "video-retrieval-fixtures-v1",
+    "queries": 30,
+    "schema": "capicove.video-retrieval-fixture.v1",
+    "sha256": "fe4fbb905afbd4434e7af19cd63032545ee62bd8d09317ab127cb1e53f5f819b"
+  },
+  "environment": {
+    "capicove_version": "0.1.0",
+    "cpus": 4,
+    "machine": "x86_64",
+    "platform": "linux",
+    "python": "3.11.15"
+  },
+  "experimental": true,
+  "index": {
+    "kind": "authored-video-lane-fixture",
+    "unit_manifest_sha256": "333ddbc56135a31def7b9bcbbd2ecf29d4daf082b0b61ea12c76fd848ff038fe"
+  },
+  "model": {
+    "components": [
+      "authored-lane-candidates"
+    ],
+    "kind": "none",
+    "real_model_validation": "not_run"
+  },
+  "options": {
+    "fake_dense": false,
+    "k": 20,
+    "reranker": "none"
+  },
+  "profile": {
+    "fingerprint": "af81794b52b9783539bb256330c14740d7f8e267155ce73073e8e067003b1d72",
+    "id": "video-local-ann",
+    "version": 1
+  },
+  "results": [
+    {
+      "category": "text-keyframe",
+      "diagnostics": {},
+      "judgments": {
+        "k1": 3,
+        "k2": 2
+      },
+      "pool": {
+        "labels": [
+          "k1",
+          "k2"
+        ],
+        "size": 2
+      },
+      "query_id": "text-keyframe-0",
+      "ranked": [
+        {
+          "key": "k1",
+          "labels": [
+            "k1"
+          ]
+        },
+        {
+          "key": "k2",
+          "labels": [
+            "k2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-keyframe",
+      "diagnostics": {},
+      "judgments": {
+        "k1": 2,
+        "k2": 3
+      },
+      "pool": {
+        "labels": [
+          "k1",
+          "k2"
+        ],
+        "size": 2
+      },
+      "query_id": "image-keyframe-0",
+      "ranked": [
+        {
+          "key": "k2",
+          "labels": [
+            "k2"
+          ]
+        },
+        {
+          "key": "k1",
+          "labels": [
+            "k1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "text-segment",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3,
+        "s2": 2
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "text-segment-0",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        },
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-segment",
+      "diagnostics": {},
+      "judgments": {
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s2"
+        ],
+        "size": 1
+      },
+      "query_id": "image-segment-0",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "asr-only",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "s1"
+        ],
+        "size": 1
+      },
+      "query_id": "asr-only-0",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "ocr-only",
+      "diagnostics": {},
+      "judgments": {
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s2"
+        ],
+        "size": 1
+      },
+      "query_id": "ocr-only-0",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "visual-asr",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 2,
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "visual-asr-0",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        },
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "visual-ocr",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 2,
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "visual-ocr-0",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        },
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "overlap-deduplication",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "s1"
+        ],
+        "size": 1
+      },
+      "query_id": "overlap-deduplication-0",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "source-isolation",
+      "diagnostics": {},
+      "judgments": {
+        "other": 2,
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "other",
+          "s1"
+        ],
+        "size": 2
+      },
+      "query_id": "source-isolation-0",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        },
+        {
+          "key": "other",
+          "labels": [
+            "other"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "text-keyframe",
+      "diagnostics": {},
+      "judgments": {
+        "k1": 3,
+        "k2": 2
+      },
+      "pool": {
+        "labels": [
+          "k1",
+          "k2"
+        ],
+        "size": 2
+      },
+      "query_id": "text-keyframe-20000",
+      "ranked": [
+        {
+          "key": "k1",
+          "labels": [
+            "k1"
+          ]
+        },
+        {
+          "key": "k2",
+          "labels": [
+            "k2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-keyframe",
+      "diagnostics": {},
+      "judgments": {
+        "k1": 2,
+        "k2": 3
+      },
+      "pool": {
+        "labels": [
+          "k1",
+          "k2"
+        ],
+        "size": 2
+      },
+      "query_id": "image-keyframe-20000",
+      "ranked": [
+        {
+          "key": "k2",
+          "labels": [
+            "k2"
+          ]
+        },
+        {
+          "key": "k1",
+          "labels": [
+            "k1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "text-segment",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3,
+        "s2": 2
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "text-segment-20000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        },
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-segment",
+      "diagnostics": {},
+      "judgments": {
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s2"
+        ],
+        "size": 1
+      },
+      "query_id": "image-segment-20000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "asr-only",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "s1"
+        ],
+        "size": 1
+      },
+      "query_id": "asr-only-20000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "ocr-only",
+      "diagnostics": {},
+      "judgments": {
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s2"
+        ],
+        "size": 1
+      },
+      "query_id": "ocr-only-20000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "visual-asr",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 2,
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "visual-asr-20000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        },
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "visual-ocr",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 2,
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "visual-ocr-20000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        },
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "overlap-deduplication",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "s1"
+        ],
+        "size": 1
+      },
+      "query_id": "overlap-deduplication-20000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "source-isolation",
+      "diagnostics": {},
+      "judgments": {
+        "other": 2,
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "other",
+          "s1"
+        ],
+        "size": 2
+      },
+      "query_id": "source-isolation-20000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        },
+        {
+          "key": "other",
+          "labels": [
+            "other"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "text-keyframe",
+      "diagnostics": {},
+      "judgments": {
+        "k1": 3,
+        "k2": 2
+      },
+      "pool": {
+        "labels": [
+          "k1",
+          "k2"
+        ],
+        "size": 2
+      },
+      "query_id": "text-keyframe-40000",
+      "ranked": [
+        {
+          "key": "k1",
+          "labels": [
+            "k1"
+          ]
+        },
+        {
+          "key": "k2",
+          "labels": [
+            "k2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-keyframe",
+      "diagnostics": {},
+      "judgments": {
+        "k1": 2,
+        "k2": 3
+      },
+      "pool": {
+        "labels": [
+          "k1",
+          "k2"
+        ],
+        "size": 2
+      },
+      "query_id": "image-keyframe-40000",
+      "ranked": [
+        {
+          "key": "k2",
+          "labels": [
+            "k2"
+          ]
+        },
+        {
+          "key": "k1",
+          "labels": [
+            "k1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "text-segment",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3,
+        "s2": 2
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "text-segment-40000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        },
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-segment",
+      "diagnostics": {},
+      "judgments": {
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s2"
+        ],
+        "size": 1
+      },
+      "query_id": "image-segment-40000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "asr-only",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "s1"
+        ],
+        "size": 1
+      },
+      "query_id": "asr-only-40000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "ocr-only",
+      "diagnostics": {},
+      "judgments": {
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s2"
+        ],
+        "size": 1
+      },
+      "query_id": "ocr-only-40000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "visual-asr",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 2,
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "visual-asr-40000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        },
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "visual-ocr",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 2,
+        "s2": 3
+      },
+      "pool": {
+        "labels": [
+          "s1",
+          "s2"
+        ],
+        "size": 2
+      },
+      "query_id": "visual-ocr-40000",
+      "ranked": [
+        {
+          "key": "s2",
+          "labels": [
+            "s2"
+          ]
+        },
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "overlap-deduplication",
+      "diagnostics": {},
+      "judgments": {
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "s1"
+        ],
+        "size": 1
+      },
+      "query_id": "overlap-deduplication-40000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "source-isolation",
+      "diagnostics": {},
+      "judgments": {
+        "other": 2,
+        "s1": 3
+      },
+      "pool": {
+        "labels": [
+          "other",
+          "s1"
+        ],
+        "size": 2
+      },
+      "query_id": "source-isolation-40000",
+      "ranked": [
+        {
+          "key": "s1",
+          "labels": [
+            "s1"
+          ]
+        },
+        {
+          "key": "other",
+          "labels": [
+            "other"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    }
+  ],
+  "results_sha256": "dfefff4baf21aec091a010f3ca6092d1066e0f5932fcd6f844c569265448acc4",
+  "schema": "capicove.retrieval-eval-run.v1",
+  "stack": "video",
+  "timing": {
+    "build_ms": 0.310282,
+    "query_ms": {
+      "asr-only-0": 0.226907,
+      "asr-only-20000": 0.191038,
+      "asr-only-40000": 0.448483,
+      "image-keyframe-0": 0.234326,
+      "image-keyframe-20000": 0.172528,
+      "image-keyframe-40000": 0.267969,
+      "image-segment-0": 0.257853,
+      "image-segment-20000": 0.285606,
+      "image-segment-40000": 0.317978,
+      "ocr-only-0": 0.202014,
+      "ocr-only-20000": 0.180239,
+      "ocr-only-40000": 0.459902,
+      "overlap-deduplication-0": 0.182455,
+      "overlap-deduplication-20000": 0.284511,
+      "overlap-deduplication-40000": 0.241648,
+      "source-isolation-0": 0.310361,
+      "source-isolation-20000": 0.297577,
+      "source-isolation-40000": 0.176434,
+      "text-keyframe-0": 0.486307,
+      "text-keyframe-20000": 0.3576,
+      "text-keyframe-40000": 0.278923,
+      "text-segment-0": 0.328476,
+      "text-segment-20000": 0.224887,
+      "text-segment-40000": 0.313653,
+      "visual-asr-0": 0.277571,
+      "visual-asr-20000": 0.230051,
+      "visual-asr-40000": 0.272668,
+      "visual-ocr-0": 0.210892,
+      "visual-ocr-20000": 0.333392,
+      "visual-ocr-40000": 0.275964
+    },
+    "search_ms": {},
+    "search_stats": {
+      "count": 0,
+      "max_ms": null,
+      "mean_ms": null,
+      "p50_ms": null,
+      "p95_ms": null
+    },
+    "stats": {
+      "count": 30,
+      "max_ms": 0.486307,
+      "mean_ms": 0.2776071,
+      "p50_ms": 0.272668,
+      "p95_ms": 0.459902
+    }
+  }
+}

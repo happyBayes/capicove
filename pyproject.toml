@@ -244,6 +244,7 @@ path = "src/capicove/__about__.py"
 [tool.hatch.build.targets.sdist]
 include = [
   "/src",
+  "/scripts/setup_speech.py",
   "/scripts/vlm",
   "/LICENSE",
   "/README.md",

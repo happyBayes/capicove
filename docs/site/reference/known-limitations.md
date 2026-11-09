@@ -14,6 +14,13 @@ Code relation expansion remains opt-in. Real-media retrieval quality, installed
 model journeys and platform support require separate measurements with the
 selected assets and runtime.
 
+## GraphRAG and retrieval evaluation
+
+Local and global GraphRAG queries and configurable reranking are experimental.
+Queries require a verified active graph snapshot. The offline baselines use
+authored fixtures and deterministic substitutes where a model is needed.
+They do not establish real-model quality or production readiness.
+
 ## Remote control
 
 Remote MCP is a controlled preview. Reported defects concern storage accounting

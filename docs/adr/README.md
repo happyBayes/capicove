@@ -61,6 +61,10 @@ the earlier record as superseded.
 - [0028: Explicit deployment and compatible generation](0028-explicit-deployment-and-compatible-generation.md)
 - [0029: Native knowledge workspace](0029-native-knowledge-workspace.md)
 
+- [0039: Keep video media quality inspection evidence-based and offline](0039-video-media-quality-inspection.md)
+
 ## Proposed decisions
 
 - [0020: Route personal reverse-image search by Agent intent](0020-intent-routed-reverse-image-search.md)
+- [0038: Evaluate offline through one harness and keep query policy in fingerprinted profiles](0038-offline-evaluation-and-pipeline-profiles.md)
+- [0040: Answer GraphRAG queries from verified snapshots and cite only source quotes](0040-graphrag-queries-over-verified-snapshots.md)

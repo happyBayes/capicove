@@ -60,6 +60,8 @@ from capicove.runtime.mcp_config import WorkspaceHostConfiguration
 if TYPE_CHECKING:
     from capicove.model.factory import ModelFactory
     from capicove.processing.audio.retrieval import AudioWindowPreparer
+    from capicove.retrieval.pipeline_profiles import UnifiedSearchProfile
+    from capicove.retrieval.reranking import TextReranker
 
 
 FORMAT_VERSION = "unified-generation-v1"
@@ -1303,10 +1305,26 @@ def _lease(settings: UnifiedSettings) -> Iterator[_Lease]:
 class UnifiedRetrievalService:
     """Search and Evidence over the active shared-space generation."""
 
-    def __init__(self, settings: UnifiedSettings, models: ModelFactory | None) -> None:
+    def __init__(
+        self,
+        settings: UnifiedSettings,
+        models: ModelFactory | None,
+        *,
+        pipeline_profile: UnifiedSearchProfile | None = None,
+        reranker: TextReranker | None = None,
+    ) -> None:
+        from capicove.retrieval.pipeline_profiles import (
+            UnifiedSearchProfile,
+            default_unified_profile,
+        )
+
         self._settings = settings
         self._models = models
         self._owned: ModelFactory | None = None
+        self._profile = pipeline_profile or default_unified_profile()
+        if not isinstance(self._profile, UnifiedSearchProfile):
+            raise TypeError("pipeline_profile must be a UnifiedSearchProfile")
+        self._reranker = reranker
 
     def _factory(self) -> ModelFactory:
         """Keep one resident model factory for this service's lifetime."""
@@ -1390,12 +1408,32 @@ class UnifiedRetrievalService:
                     if error.code == "deadline_exceeded"
                     else SearchFailureCode.PROVIDER_UNAVAILABLE
                 ) from None
-            dense = _dense_lane(eligible, vector, space.dimension)
+            pipeline = self._profile
+            dense = _dense_lane(eligible, vector, space.dimension, pipeline.candidate_depth)
             lexical: list[tuple[str, float]] = []
-            if isinstance(request.query, TextQuery) and TargetType.TEXT_CHUNK in request.targets:
-                lexical = _lexical_lane(lease.connection, request.query.text, eligible)
-            fused = _fuse({"shared_dense": dense, "lexical": lexical})
+            if (
+                isinstance(request.query, TextQuery)
+                and TargetType.TEXT_CHUNK in request.targets
+                and pipeline.lexical_weight > 0
+            ):
+                lexical = _lexical_lane(
+                    lease.connection,
+                    request.query.text,
+                    eligible,
+                    pipeline.candidate_depth,
+                    pipeline.max_lexical_tokens,
+                )
+            fused = _fuse(
+                {"shared_dense": dense, "lexical": lexical},
+                rrf_k=pipeline.rrf_k,
+                weights={"shared_dense": pipeline.dense_weight, "lexical": pipeline.lexical_weight},
+            )
             by_id = {row["unit_id"]: row for row in eligible}
+            warnings = [SearchWarningCode.RETRIEVAL_PREVIEW]
+            if pipeline.rerank.enabled and isinstance(request.query, TextQuery):
+                fused, degraded = self._rerank(request.query.text, fused, by_id)
+                if degraded:
+                    warnings.append(SearchWarningCode.RETRIEVAL_LANE_UNAVAILABLE)
             hits = tuple(
                 self._hit(request, by_id[unit_id], rank, observations, lease, space)
                 for rank, (unit_id, observations) in enumerate(fused[: request.top_k], start=1)
@@ -1403,9 +1441,36 @@ class UnifiedRetrievalService:
         return SearchResult(
             SearchStatus.SUCCEEDED,
             query_id,
-            warning_codes=(SearchWarningCode.RETRIEVAL_PREVIEW,),
+            degraded=len(warnings) > 1,
+            warning_codes=tuple(warnings),
             hits=hits,
         )
+
+    def _rerank(
+        self,
+        query: str,
+        fused: list[tuple[str, dict[str, tuple[int, float]]]],
+        by_id: Mapping[str, sqlite3.Row],
+    ) -> tuple[list[tuple[str, dict[str, tuple[int, float]]]], bool]:
+        """Rerank text chunks in the fused head; other targets keep their positions."""
+        from capicove.retrieval.rerank_stage import RerankUnavailableError, rerank_fused
+
+        policy = self._profile.rerank
+        head = fused[: policy.candidate_depth]
+        slots = [
+            position
+            for position, (unit_id, _) in enumerate(head)
+            if by_id[unit_id]["target_type"] == TargetType.TEXT_CHUNK.value
+        ]
+        texts = [by_id[head[position][0]]["text"] for position in slots]
+        try:
+            outcome = rerank_fused(query, texts, policy, self._reranker)
+        except RerankUnavailableError:
+            raise _SearchFailure(SearchFailureCode.PROVIDER_UNAVAILABLE) from None
+        reordered = list(head)
+        for slot, index in zip(slots, outcome.order, strict=True):
+            reordered[slot] = head[slots[index]]
+        return [*reordered, *fused[policy.candidate_depth :]], outcome.status == "degraded"
 
     def _hit(
         self,
@@ -1654,9 +1719,12 @@ class _SearchFailure(Exception):
 
 
 def _dense_lane(
-    eligible: list[sqlite3.Row], vector: Sequence[float], dimension: int
+    eligible: list[sqlite3.Row],
+    vector: Sequence[float],
+    dimension: int,
+    depth: int = CANDIDATE_DEPTH,
 ) -> list[tuple[str, float]]:
-    """Exact cosine over eligible normalized vectors, deepest CANDIDATE_DEPTH, unit-ID ties."""
+    """Exact cosine over eligible normalized vectors, deepest ``depth``, unit-ID ties."""
     import numpy as np
 
     if any(hashlib.sha256(row["vector"]).hexdigest() != row["vector_sha256"] for row in eligible):
@@ -1669,14 +1737,18 @@ def _dense_lane(
         ((row["unit_id"], float(score)) for row, score in zip(eligible, scores, strict=True)),
         key=lambda item: (-item[1], item[0]),
     )
-    return ranked[:CANDIDATE_DEPTH]
+    return ranked[:depth]
 
 
 def _lexical_lane(
-    connection: sqlite3.Connection, text: str, eligible: list[sqlite3.Row]
+    connection: sqlite3.Connection,
+    text: str,
+    eligible: list[sqlite3.Row],
+    depth: int = CANDIDATE_DEPTH,
+    max_tokens: int = 64,
 ) -> list[tuple[str, float]]:
     """FTS5 bm25 over eligible text chunks; tokens are quoted so input is never syntax."""
-    tokens = re.findall(r"\w+", text)[:64]
+    tokens = re.findall(r"\w+", text)[:max_tokens]
     if not tokens:
         return []
     allowed = {row["unit_id"] for row in eligible if row["text"] is not None}
@@ -1687,18 +1759,22 @@ def _lexical_lane(
         (expression, MAX_UNITS),
     ).fetchall()
     ranked = [(row["unit_id"], -float(row["score"])) for row in rows if row["unit_id"] in allowed]
-    return ranked[:CANDIDATE_DEPTH]
+    return ranked[:depth]
 
 
 def _fuse(
     lanes: Mapping[str, list[tuple[str, float]]],
+    *,
+    rrf_k: int = RRF_K,
+    weights: Mapping[str, float] | None = None,
 ) -> list[tuple[str, dict[str, tuple[int, float]]]]:
-    """Weighted RRF (all weights 1.0, k=60) over ranks; raw scores never cross lanes."""
+    """Weighted RRF over ranks (default weights 1.0, k=60); raw scores never cross lanes."""
     scores: dict[str, float] = {}
     observations: dict[str, dict[str, tuple[int, float]]] = {}
     for lane, ranked in lanes.items():
+        weight = 1.0 if weights is None else weights[lane]
         for rank, (unit_id, raw) in enumerate(ranked, start=1):
-            scores[unit_id] = scores.get(unit_id, 0.0) + 1.0 / (RRF_K + rank)
+            scores[unit_id] = scores.get(unit_id, 0.0) + weight / (rrf_k + rank)
             observations.setdefault(unit_id, {})[lane] = (rank, raw)
     ordered = sorted(scores, key=lambda unit_id: (-scores[unit_id], unit_id))
     return [(unit_id, observations[unit_id]) for unit_id in ordered]
@@ -1775,9 +1851,18 @@ class UnifiedRetrievalRuntime:
 
 
 def open_unified_retrieval(
-    config: WorkspaceHostConfiguration, *, models: ModelFactory | None = None
+    config: WorkspaceHostConfiguration,
+    *,
+    models: ModelFactory | None = None,
+    pipeline_profile: UnifiedSearchProfile | None = None,
+    reranker: TextReranker | None = None,
 ) -> UnifiedRetrievalRuntime:
-    """Compose read-only handlers; this never creates storage or builds an index."""
+    """Compose read-only handlers; this never creates storage or builds an index.
+
+    ``pipeline_profile`` (experimental, RFC-0034) defaults to
+    ``unified-default-v1``, the historic constants. Reranking, when enabled,
+    reorders text-chunk results of text queries only.
+    """
     from capicove.tools.evidence import EvidenceToolHandler
     from capicove.tools.multimodal_search import (
         CAPICOVE_MULTIMODAL_EVIDENCE_SPEC,
@@ -1785,7 +1870,9 @@ def open_unified_retrieval(
     )
 
     settings = unified_settings(config)
-    service = UnifiedRetrievalService(settings, models)
+    service = UnifiedRetrievalService(
+        settings, models, pipeline_profile=pipeline_profile, reranker=reranker
+    )
     return UnifiedRetrievalRuntime(
         service,
         MultimodalSearchToolHandler(service, profile=settings.profile.profile_id),

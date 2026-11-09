@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "scope": "standalone development smoke, not a public runtime contract",
+  "llama_cpp_revision": "e0f142d5ddc1461ce721644d92af33db23545105",
+  "model_repository": "ggml-org/Qwen3-TTS-12Hz-1.7B-Base-GGUF",
+  "model_revision": "ca27d74bc954b73dadab5b71ca265d87fc861a7c",
+  "platforms": {
+    "darwin": {
+      "executable": "build/bin/llama-tts",
+      "gpu_layers": 99,
+      "cmake_options": ["-DGGML_METAL=ON"],
+      "status": "M4 file-generation smokes passed; human quality acceptance pending"
+    },
+    "linux": {
+      "executable": "build/bin/llama-tts",
+      "gpu_layers": 0,
+      "cmake_options": ["-DGGML_METAL=OFF", "-DGGML_CUDA=OFF"],
+      "status": "configured, real platform untested"
+    },
+    "windows": {
+      "executable": "build/bin/Release/llama-tts.exe",
+      "gpu_layers": 0,
+      "cmake_options": ["-DGGML_METAL=OFF", "-DGGML_CUDA=OFF"],
+      "status": "configured for Visual Studio multi-config build, real platform untested"
+    }
+  }
+}

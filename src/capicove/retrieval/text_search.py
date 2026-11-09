@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
+from typing import TYPE_CHECKING
 
 from capicove.contracts import (
     CompactHit,
@@ -21,8 +22,19 @@ from capicove.retrieval.ports import (
     TextQueryEmbeddingProvider,
     TextRetrieverBackend,
 )
-from capicove.retrieval.text_fusion import weighted_reciprocal_rank_fusion
+from capicove.retrieval.text_fusion import FusedTextCandidate, weighted_reciprocal_rank_fusion
 from capicove.retrieval.text_profiles import StaticTextRetrievalProfileRegistry
+
+
+if TYPE_CHECKING:
+    from capicove.retrieval.generations import PinnedTextIndexGeneration
+    from capicove.retrieval.pipeline_profiles import RerankPolicy
+    from capicove.retrieval.reranking import TextReranker
+
+# Resolve the full text of fused candidates for reranking; defaults to snippets.
+RerankTextSource = Callable[
+    ["PinnedTextIndexGeneration", tuple[TextCandidate, ...]], tuple[str, ...]
+]
 
 
 class TextSearchError(RuntimeError):
@@ -44,7 +56,19 @@ class TextSearchService:
         profiles: StaticTextRetrievalProfileRegistry,
         query_embedder: TextQueryEmbeddingProvider,
         query_id_factory: Callable[[], str],
+        rerank_policy: RerankPolicy | None = None,
+        reranker: TextReranker | None = None,
+        rerank_texts: RerankTextSource | None = None,
     ) -> None:
+        """Bind ports; an enabled ``rerank_policy`` reranks the fused head.
+
+        Without a policy (or with reranking disabled) the service behaves exactly
+        as before. ``rerank_texts`` supplies full candidate text; snippets are
+        used otherwise.
+        """
+        self._rerank_policy = rerank_policy
+        self._reranker = reranker
+        self._rerank_texts = rerank_texts
         self._backend = backend
         self._catalog = catalog
         self._profiles = profiles
@@ -147,14 +171,26 @@ class TextSearchService:
                         or candidate.provider_id != self._backend.provider_id
                     ):
                         raise ValueError("candidate does not belong to the pinned backend")
+            reranking = self._rerank_policy is not None and self._rerank_policy.enabled
+            depth = request.top_k
+            if reranking:
+                assert self._rerank_policy is not None
+                depth = min(100, max(request.top_k, self._rerank_policy.candidate_depth))
             fused = weighted_reciprocal_rank_fusion(
                 lexical=lexical,
                 dense=dense,
                 profile=profile,
-                top_k=request.top_k,
+                top_k=depth,
             )
         except (TypeError, ValueError):
             raise TextSearchError("index_corrupt") from None
+        if reranking:
+            fused, rerank_warning = self._rerank(query, fused, generation)
+            fused = fused[: request.top_k]
+            if rerank_warning:
+                # The canonical warning set has no rerank code; a dedicated one
+                # is proposed in RFC-0034 rather than changing Tool schemas here.
+                warnings.append(SearchWarningCode.RETRIEVAL_LANE_UNAVAILABLE)
         hits = tuple(
             CompactHit(
                 id=item.candidate.unit_id,
@@ -173,6 +209,31 @@ class TextSearchService:
             warning_codes=tuple(warnings),
             hits=hits,
         )
+
+    def _rerank(
+        self, query: TextQuery, fused: tuple[FusedTextCandidate, ...], generation: object
+    ) -> tuple[tuple[FusedTextCandidate, ...], bool]:
+        """Reorder the fused head; return whether the fused order was kept degraded."""
+        from capicove.retrieval.rerank_stage import RerankUnavailableError, rerank_fused
+
+        assert self._rerank_policy is not None
+        candidates = tuple(item.candidate for item in fused)
+        try:
+            if self._rerank_texts is None:
+                texts = tuple(candidate.snippet for candidate in candidates)
+            else:
+                texts = self._rerank_texts(generation, candidates)  # type: ignore[arg-type]
+                if len(texts) != len(candidates):
+                    raise ValueError("rerank text count mismatch")
+        except Exception:
+            if self._rerank_policy.on_unavailable == "fail":
+                raise TextSearchError("provider_unavailable") from None
+            return fused, True
+        try:
+            outcome = rerank_fused(query.text, texts, self._rerank_policy, self._reranker)
+        except RerankUnavailableError:
+            raise TextSearchError("provider_unavailable") from None
+        return tuple(fused[index] for index in outcome.order), outcome.status == "degraded"
 
     @staticmethod
     def _validate_request(request: SearchRequest) -> TextQuery:

@@ -13,10 +13,10 @@ import os
 import stat
 from collections.abc import Callable, Iterator, Mapping
 from contextlib import contextmanager
-from dataclasses import dataclass, replace
-from datetime import UTC, datetime
+from dataclasses import asdict, dataclass, field, replace
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import NoReturn
+from typing import Any, NoReturn
 
 from capicove.contracts import (
     InvocationContext,
@@ -34,6 +34,8 @@ from capicove.processing.video.ports import (
     StoredOutput,
     WrittenClip,
 )
+from capicove.processing.video.quality import QualityLimits, QualityRequest
+from capicove.processing.video.quality.video_quality_ports import QualitySource
 from capicove.runtime.executables import ExecutableChanged, PinnedExecutables
 from capicove.runtime.mcp_config import WorkspaceHostConfiguration
 from capicove.runtime.media_handoff import (
@@ -51,6 +53,7 @@ from capicove.runtime.media_handoff import (
 SPLIT = "capicove.video.split"
 FILTER = "capicove.video.filter"
 DEDUPLICATE = "capicove.video.deduplicate"
+QUALITY = "capicove.video.quality"
 MAX_INPUT_BYTES = 64 * 1024**3
 HOST_FILTER_CRITERIA = frozenset({"metadata", "motion"})
 _FIELDS = frozenset(
@@ -63,9 +66,10 @@ _FIELDS = frozenset(
         "ffmpeg",
         "ffprobe",
         "max_input_bytes",
+        "quality_limits",
     }
 )
-_REQUIRED = _FIELDS - {"output_root"}
+_REQUIRED = _FIELDS - {"output_root", "quality_limits"}
 _POLICY = "workspace-video"
 
 
@@ -84,6 +88,7 @@ class VideoSettings:
     ffmpeg: Path | None
     ffprobe: Path | None
     max_input_bytes: int
+    quality_limits: QualityLimits = field(default_factory=QualityLimits)
 
 
 def video_settings(config: WorkspaceHostConfiguration) -> VideoSettings:
@@ -124,9 +129,30 @@ def video_settings(config: WorkspaceHostConfiguration) -> VideoSettings:
     limit = raw["max_input_bytes"]
     if type(limit) is not int or not 1 <= limit <= MAX_INPUT_BYTES:
         raise ValueError("video max_input_bytes must be an integer from 1 through 64 GiB")
-    settings = VideoSettings(read_roots, staging, output, backend, ffmpeg, ffprobe, limit)
+    settings = VideoSettings(
+        read_roots,
+        staging,
+        output,
+        backend,
+        ffmpeg,
+        ffprobe,
+        limit,
+        _quality_limits(raw.get("quality_limits", {}), limit),
+    )
     _check_dependencies(settings, selected)
     return settings
+
+
+def _quality_limits(value: object, input_limit: int) -> QualityLimits:
+    ceilings = asdict(QualityLimits())
+    ceilings["max_input_bytes"] = min(ceilings["max_input_bytes"], input_limit)
+    if not isinstance(value, Mapping) or set(value) - set(ceilings):
+        raise ValueError("video quality_limits must contain only documented budget fields")
+    options: dict[str, Any] = {**ceilings, **dict(value)}
+    limits = QualityLimits(**options)
+    if any(getattr(limits, name) > ceiling for name, ceiling in ceilings.items()):
+        raise ValueError("video quality_limits may narrow but not exceed the host ceilings")
+    return limits
 
 
 def _check_dependencies(settings: VideoSettings, selected: set[str]) -> None:
@@ -147,6 +173,13 @@ def _check_dependencies(settings: VideoSettings, selected: set[str]) -> None:
             raise VideoDependencyError("video filter needs a configured ffprobe")
         _require_executable(settings.ffprobe)
         _require_modules("av", "cv2", "numpy")
+    if QUALITY in selected:
+        if settings.ffmpeg is None or settings.ffprobe is None:
+            raise VideoDependencyError(
+                "video quality needs configured ffmpeg and ffprobe executables"
+            )
+        _require_executable(settings.ffmpeg)
+        _require_executable(settings.ffprobe)
     if DEDUPLICATE in selected:
         _require_modules("xxhash")
 
@@ -168,12 +201,14 @@ def compose_video_mcp(
     """Validate video authority and bind the selected Tools."""
     from capicove.tools.video_deduplicate import VIDEO_DEDUPLICATE_SPEC
     from capicove.tools.video_filter import VIDEO_FILTER_SPEC
+    from capicove.tools.video_quality import VIDEO_QUALITY_SPEC
     from capicove.tools.video_split import VIDEO_SPLIT_SPEC
 
     specs = {
         SPLIT: VIDEO_SPLIT_SPEC,
         FILTER: VIDEO_FILTER_SPEC,
         DEDUPLICATE: VIDEO_DEDUPLICATE_SPEC,
+        QUALITY: VIDEO_QUALITY_SPEC,
     }
     if any(tool_id not in specs for tool_id in config.enabled_tools):
         raise ValueError("video profile includes an unavailable Tool")
@@ -187,6 +222,14 @@ def compose_video_mcp(
         for tool_id, executables in (
             (SPLIT, _split_executables(settings)),
             (FILTER, {"ffprobe": settings.ffprobe} if settings.ffprobe else {}),
+            (
+                QUALITY,
+                {
+                    name: path
+                    for name, path in (("ffmpeg", settings.ffmpeg), ("ffprobe", settings.ffprobe))
+                    if path is not None
+                },
+            ),
         )
         if tool_id in config.enabled_tools
     }
@@ -194,6 +237,7 @@ def compose_video_mcp(
         SPLIT: lambda: _split_handler(settings, pins[SPLIT]),
         FILTER: lambda: _filter_handler(settings, pins[FILTER]),
         DEDUPLICATE: lambda: _deduplicate_handler(settings),
+        QUALITY: lambda: _quality_handler(settings, pins[QUALITY]),
     }
     yield tuple(
         McpToolBinding(
@@ -350,6 +394,84 @@ def _filter_handler(settings: VideoSettings, pins: PinnedExecutables) -> ToolHan
     return handler
 
 
+class _HostQualityIntake:
+    """Adapt the authority-owned media handoff to the public quality intake port."""
+
+    def __init__(self, source: StagedFile) -> None:
+        self._source = source
+
+    @contextmanager
+    def stage(self, path: Path, deadline: datetime) -> Iterator[QualitySource]:
+        from capicove.processing.video.quality import QualityError
+
+        if path != self._source.original:
+            raise QualityError("permission_denied", "The staged source does not match the request.")
+        yield QualitySource(
+            self._source.staged,
+            self._source.original,
+            self._source.sha256,
+            self._source.size_bytes,
+            "",
+        )
+
+
+def _quality_handler(settings: VideoSettings, pins: PinnedExecutables) -> ToolHandler:
+    from capicove.tools.video_quality import VIDEO_QUALITY_SPEC, build_video_quality_tool_handler
+
+    intake = _intake(replace(settings, max_input_bytes=settings.quality_limits.max_input_bytes))
+
+    def handler(context: InvocationContext, arguments: Mapping[str, object], /) -> ToolResult:
+        if VIDEO_QUALITY_SPEC.required_permissions.difference(context.permissions):
+            return _failure(VIDEO_QUALITY_SPEC, context, ToolErrorCode.PERMISSION_DENIED)
+        try:
+            request = QualityRequest.from_mapping(arguments)
+        except ValueError:
+            return _failure(VIDEO_QUALITY_SPEC, context, ToolErrorCode.INVALID_INPUT)
+        deadline = min(
+            context.deadline,
+            datetime.now(UTC) + timedelta(seconds=VIDEO_QUALITY_SPEC.timeout_seconds),
+        )
+        bounded_context = replace(context, deadline=deadline)
+
+        def check_deadline() -> None:
+            if datetime.now(UTC) >= deadline:
+                raise TimeoutError("video quality deadline expired during intake")
+
+        def run(staged: tuple[StagedFile, ...], executables: Mapping[str, str]) -> ToolResult:
+            result = build_video_quality_tool_handler(
+                _POLICY,
+                (),
+                limits=settings.quality_limits,
+                ffmpeg=executables["ffmpeg"],
+                ffprobe=executables["ffprobe"],
+                intake=_HostQualityIntake(staged[0]),
+            )(bounded_context, arguments)
+            if result.result is not None:
+                source = result.result.get("source")
+                if (
+                    not isinstance(source, Mapping)
+                    or source.get("sha256") != staged[0].sha256
+                    or source.get("path") != str(staged[0].original)
+                    or source.get("size_bytes") != staged[0].size_bytes
+                ):
+                    return _failure(
+                        VIDEO_QUALITY_SPEC, bounded_context, ToolErrorCode.INVALID_INPUT
+                    )
+            return result
+
+        return _staged(
+            VIDEO_QUALITY_SPEC,
+            intake,
+            pins,
+            bounded_context,
+            [request.path],
+            run,
+            check_deadline=check_deadline,
+        )
+
+    return handler
+
+
 class _PinnedOutputStore:
     """Allocate, finalize, and discard outputs only through one pinned directory.
 
@@ -482,13 +604,22 @@ def _staged(
     context: InvocationContext,
     paths: list[Path],
     run: Callable[[tuple[StagedFile, ...], Mapping[str, str]], ToolResult],
+    *,
+    check_deadline: Callable[[], None] | None = None,
 ) -> ToolResult:
     if spec.required_permissions.difference(context.permissions):
         return _failure(spec, context, ToolErrorCode.PERMISSION_DENIED)
     try:
         for path in paths:
             intake.authorize(path)
-        with pins.open() as executables, intake.stage(paths) as staged:
+        with (
+            pins.open() as executables,
+            (
+                intake.stage(paths)
+                if check_deadline is None
+                else intake.stage(paths, check_deadline=check_deadline)
+            ) as staged,
+        ):
             result = run(staged, executables)
             restored = restore_originals(
                 dict(result.result) if result.result is not None else None, staged
@@ -504,6 +635,8 @@ def _staged(
             )
     except MediaDenied:
         return _failure(spec, context, ToolErrorCode.PERMISSION_DENIED)
+    except TimeoutError:
+        return _failure(spec, context, ToolErrorCode.TIMEOUT)
     except ExecutableChanged:
         return _failure(spec, context, ToolErrorCode.UNAVAILABLE)
     except (MediaInvalid, MediaChanged):
@@ -512,6 +645,7 @@ def _staged(
 
 def _failure(spec: ToolSpec, context: InvocationContext, code: ToolErrorCode) -> ToolResult:
     messages = {
+        ToolErrorCode.TIMEOUT: "Video quality inspection exceeded its deadline.",
         ToolErrorCode.UNAVAILABLE: "A configured executable changed since startup.",
         ToolErrorCode.PERMISSION_DENIED: "The video is outside the configured authority.",
         ToolErrorCode.INVALID_INPUT: "The video request or media is not accepted by this host.",

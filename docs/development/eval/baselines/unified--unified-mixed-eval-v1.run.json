@@ -1,0 +1,1049 @@
+{
+  "adapter": {
+    "id": "unified",
+    "version": "1"
+  },
+  "dataset": {
+    "id": "unified-mixed-eval-v1",
+    "queries": 15,
+    "schema": "capicove.retrieval-eval.v1",
+    "sha256": "dbbe6e0fd813f8cdadaf9d79c74274a515eadcfbf6bd5cdb05d17b4b3c625088"
+  },
+  "environment": {
+    "capicove_version": "0.1.0",
+    "cpus": 4,
+    "machine": "x86_64",
+    "platform": "linux",
+    "python": "3.11.15"
+  },
+  "experimental": true,
+  "index": {
+    "generation_id": "ug-4a70ac5001b9ab9c8de6271ddb9d8892df0355b438692e024c55e0c838247dd9",
+    "kind": "unified-generation",
+    "units": 22
+  },
+  "model": {
+    "components": [
+      "shared-space:capicove-deterministic-fake:hashed-bow-64"
+    ],
+    "kind": "deterministic-fake",
+    "real_model_validation": "not_run"
+  },
+  "options": {
+    "fake_dense": false,
+    "k": 10,
+    "reranker": "none"
+  },
+  "profile": {
+    "fingerprint": "26d189d2a5cb88cf6b27d8f505d820803fc56b9b4e3a01568fc73d3387696232",
+    "id": "unified-default-v1",
+    "version": 1
+  },
+  "results": [
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "garden-tomato": 3
+      },
+      "pool": {
+        "labels": [
+          "garden-tomato"
+        ],
+        "size": 22
+      },
+      "query_id": "t01",
+      "ranked": [
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": [
+            "garden-tomato"
+          ]
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-2#image",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "bike-cable": 3
+      },
+      "pool": {
+        "labels": [
+          "bike-cable"
+        ],
+        "size": 22
+      },
+      "query_id": "t02",
+      "ranked": [
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": [
+            "bike-cable"
+          ]
+        },
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "travel-booking": 3
+      },
+      "pool": {
+        "labels": [
+          "travel-booking"
+        ],
+        "size": 22
+      },
+      "query_id": "t04",
+      "ranked": [
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": [
+            "travel-booking"
+          ]
+        },
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": []
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "paraphrase",
+      "diagnostics": {},
+      "judgments": {
+        "garden-aphids": 3
+      },
+      "pool": {
+        "labels": [
+          "garden-aphids"
+        ],
+        "size": 22
+      },
+      "query_id": "t07",
+      "ranked": [
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": []
+        },
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": []
+        },
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": [
+            "garden-aphids"
+          ]
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        },
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": []
+        },
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "multi",
+      "diagnostics": {},
+      "judgments": {
+        "work-atlas": 3,
+        "work-risks": 2
+      },
+      "pool": {
+        "labels": [
+          "work-atlas",
+          "work-risks"
+        ],
+        "size": 22
+      },
+      "query_id": "t11",
+      "ranked": [
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": [
+            "work-atlas",
+            "work-risks"
+          ]
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": []
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "keyword",
+      "diagnostics": {},
+      "judgments": {
+        "kitchen-leak": 3
+      },
+      "pool": {
+        "labels": [
+          "kitchen-leak"
+        ],
+        "size": 22
+      },
+      "query_id": "t15",
+      "ranked": [
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": [
+            "kitchen-leak"
+          ]
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": []
+        },
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "multi",
+      "diagnostics": {},
+      "judgments": {
+        "finance-renew": 2,
+        "kitchen-install": 2
+      },
+      "pool": {
+        "labels": [
+          "finance-renew",
+          "kitchen-install"
+        ],
+        "size": 22
+      },
+      "query_id": "t17",
+      "ranked": [
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": [
+            "kitchen-install"
+          ]
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": [
+            "finance-renew"
+          ]
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 22
+      },
+      "query_id": "t19",
+      "ranked": [
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        },
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-color",
+      "diagnostics": {},
+      "judgments": {
+        "img-red-1": 3,
+        "img-red-2": 3
+      },
+      "pool": {
+        "labels": [
+          "img-red-1",
+          "img-red-2"
+        ],
+        "size": 22
+      },
+      "query_id": "i-red",
+      "ranked": [
+        {
+          "key": "img-red-2#image",
+          "labels": [
+            "img-red-2"
+          ]
+        },
+        {
+          "key": "img-red-1#image",
+          "labels": [
+            "img-red-1"
+          ]
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-color",
+      "diagnostics": {},
+      "judgments": {
+        "img-green-1": 3,
+        "img-green-2": 3
+      },
+      "pool": {
+        "labels": [
+          "img-green-1",
+          "img-green-2"
+        ],
+        "size": 22
+      },
+      "query_id": "i-green",
+      "ranked": [
+        {
+          "key": "img-green-1#image",
+          "labels": [
+            "img-green-1"
+          ]
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": [
+            "img-green-2"
+          ]
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-color",
+      "diagnostics": {},
+      "judgments": {
+        "img-blue-1": 3,
+        "img-blue-2": 3
+      },
+      "pool": {
+        "labels": [
+          "img-blue-1",
+          "img-blue-2"
+        ],
+        "size": 22
+      },
+      "query_id": "i-blue",
+      "ranked": [
+        {
+          "key": "img-blue-1#image",
+          "labels": [
+            "img-blue-1"
+          ]
+        },
+        {
+          "key": "img-blue-2#image",
+          "labels": [
+            "img-blue-2"
+          ]
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-1#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-color",
+      "diagnostics": {},
+      "judgments": {
+        "img-yellow-1": 3,
+        "img-yellow-2": 3
+      },
+      "pool": {
+        "labels": [
+          "img-yellow-1",
+          "img-yellow-2"
+        ],
+        "size": 22
+      },
+      "query_id": "i-yellow",
+      "ranked": [
+        {
+          "key": "img-yellow-2#image",
+          "labels": [
+            "img-yellow-2"
+          ]
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": [
+            "img-yellow-1"
+          ]
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "image-paraphrase",
+      "diagnostics": {},
+      "judgments": {
+        "img-purple-1": 3,
+        "img-purple-2": 3
+      },
+      "pool": {
+        "labels": [
+          "img-purple-1",
+          "img-purple-2"
+        ],
+        "size": 22
+      },
+      "query_id": "i-purple-photo",
+      "ranked": [
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": []
+        },
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": []
+        },
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": [
+            "img-purple-2"
+          ]
+        },
+        {
+          "key": "img-purple-1#image",
+          "labels": [
+            "img-purple-1"
+          ]
+        },
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "cross-modal",
+      "diagnostics": {},
+      "judgments": {
+        "img-orange-1": 2,
+        "img-orange-2": 2,
+        "kitchen-leak": 3
+      },
+      "pool": {
+        "labels": [
+          "img-orange-1",
+          "img-orange-2",
+          "kitchen-leak"
+        ],
+        "size": 22
+      },
+      "query_id": "x-orange-notes",
+      "ranked": [
+        {
+          "chars": 195,
+          "key": "kitchen@0-195",
+          "labels": [
+            "kitchen-leak"
+          ]
+        },
+        {
+          "chars": 336,
+          "key": "bike@0-336",
+          "labels": []
+        },
+        {
+          "chars": 287,
+          "key": "work@0-287",
+          "labels": []
+        },
+        {
+          "chars": 188,
+          "key": "car@0-188",
+          "labels": []
+        },
+        {
+          "chars": 273,
+          "key": "health@0-273",
+          "labels": []
+        },
+        {
+          "chars": 290,
+          "key": "finance@0-290",
+          "labels": []
+        },
+        {
+          "chars": 289,
+          "key": "books@0-289",
+          "labels": []
+        },
+        {
+          "chars": 321,
+          "key": "garden@0-321",
+          "labels": []
+        },
+        {
+          "chars": 353,
+          "key": "sourdough@0-353",
+          "labels": []
+        },
+        {
+          "chars": 274,
+          "key": "travel@0-274",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 22
+      },
+      "query_id": "i-none",
+      "ranked": [
+        {
+          "key": "img-green-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-purple-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-blue-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-green-2#image",
+          "labels": []
+        },
+        {
+          "key": "img-yellow-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-red-1#image",
+          "labels": []
+        },
+        {
+          "key": "img-orange-2#image",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    }
+  ],
+  "results_sha256": "3c99904192b240eeeca5d0ced635b995766ef4c35bd088f1c8db394eee4c7b76",
+  "schema": "capicove.retrieval-eval-run.v1",
+  "stack": "unified",
+  "timing": {
+    "build_ms": 474.937058,
+    "query_ms": {
+      "i-blue": 3.472823,
+      "i-green": 3.467795,
+      "i-none": 3.473592,
+      "i-purple-photo": 3.235129,
+      "i-red": 3.122845,
+      "i-yellow": 3.0052,
+      "t01": 31.072659,
+      "t02": 2.966673,
+      "t04": 3.226553,
+      "t07": 3.235245,
+      "t11": 2.980621,
+      "t15": 2.839718,
+      "t17": 2.561985,
+      "t19": 3.466384,
+      "x-orange-notes": 2.84144
+    },
+    "search_ms": {
+      "i-blue": 3.30787,
+      "i-green": 3.306435,
+      "i-none": 3.276747,
+      "i-purple-photo": 3.116497,
+      "i-red": 2.929603,
+      "i-yellow": 2.822444,
+      "t01": 3.960115,
+      "t02": 2.825192,
+      "t04": 3.082313,
+      "t07": 3.092365,
+      "t11": 2.833148,
+      "t15": 2.722187,
+      "t17": 2.419562,
+      "t19": 3.318863,
+      "x-orange-notes": 2.72581
+    },
+    "search_stats": {
+      "count": 15,
+      "max_ms": 3.960115,
+      "mean_ms": 3.0492767333333335,
+      "p50_ms": 3.082313,
+      "p95_ms": 3.960115
+    },
+    "stats": {
+      "count": 15,
+      "max_ms": 31.072659,
+      "mean_ms": 4.9979108,
+      "p50_ms": 3.226553,
+      "p95_ms": 31.072659
+    }
+  }
+}

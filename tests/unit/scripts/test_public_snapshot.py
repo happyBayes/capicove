@@ -44,6 +44,7 @@ def test_public_snapshot_contains_only_file_inventory() -> None:
         "docs/superpowers/plans/task.md",
         "docs/development/private-handoff.md",
         "docs/development/new-internal-record.json",
+        "docs/development/eval/unreviewed-record.json",
         "assets/concepts/design.png",
         "assets/logo-2.png",
         "outputs/recording.mp3",
@@ -81,6 +82,9 @@ def test_public_documentation_reference_is_not_private_reference_tree() -> None:
     [
         "docs/development/remote-mcp-operations.json",
         "docs/development/code-search-eval-v1.json",
+        "docs/development/eval/multihop-graph-eval-v1.json",
+        "docs/development/eval/baselines/kb--personal-notes-eval-v1.run.json",
+        "docs/development/tts-local-profiles.json",
         "docs/development/workflow.md",
         "docs/architecture/graph-pdf-adaptation.md",
         "docs/site/assets/quickstart.ppm",
@@ -91,6 +95,19 @@ def test_public_documentation_reference_is_not_private_reference_tree() -> None:
 def test_public_snapshot_keeps_contracts_and_authored_fixtures(name: str) -> None:
     module = importlib.import_module("scripts.public_snapshot")
     assert name in module.inspect_snapshot(archive(name))
+
+
+def test_public_snapshot_accepts_parents_of_nested_allowlisted_files() -> None:
+    module = importlib.import_module("scripts.public_snapshot")
+    fixture = "docs/development/eval/multihop-graph-eval-v1.json"
+    payload = io.BytesIO(archive(fixture))
+    with tarfile.open(fileobj=payload, mode="a") as output:
+        directory = tarfile.TarInfo("docs/development/eval")
+        directory.type = tarfile.DIRTYPE
+        output.addfile(directory)
+    assert fixture in module.inspect_snapshot(payload.getvalue())
+    with pytest.raises(ValueError, match="unapproved public snapshot path"):
+        module.inspect_snapshot(archive("docs/development/eval"))
 
 
 def test_public_snapshot_rejects_missing_relative_document_links() -> None:

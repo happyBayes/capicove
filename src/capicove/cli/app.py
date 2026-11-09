@@ -20,6 +20,8 @@ from capicove.cli.commands.book import run as run_book
 from capicove.cli.commands.code_search import add_parser as add_code_parser
 from capicove.cli.commands.code_search import run as run_code
 from capicove.cli.commands.doctor import run as run_doctor
+from capicove.cli.commands.evaluation import add_parser as add_eval_parser
+from capicove.cli.commands.evaluation import run as run_eval
 from capicove.cli.commands.evidence import add_parser as add_evidence_parser
 from capicove.cli.commands.evidence import run as run_evidence
 from capicove.cli.commands.evolution import add_parser as add_evolution_parser
@@ -54,6 +56,8 @@ from capicove.cli.commands.video_deduplicate import add_parser as add_video_dedu
 from capicove.cli.commands.video_deduplicate import run as run_video_deduplicate
 from capicove.cli.commands.video_filter import add_parser as add_video_filter_parser
 from capicove.cli.commands.video_filter import run as run_video_filter
+from capicove.cli.commands.video_quality import add_parser as add_video_quality_parser
+from capicove.cli.commands.video_quality import run as run_video_quality
 from capicove.cli.commands.video_split import add_parser as add_video_split_parser
 from capicove.cli.commands.video_split import run as run_video_split
 from capicove.cli.commands.wiki import add_parser as add_wiki_parser
@@ -85,11 +89,18 @@ def _build_parser() -> argparse.ArgumentParser:
     audio = subcommands.add_parser("audio", help="Process local audio evidence.")
     audio_subcommands = audio.add_subparsers(dest="audio_command")
     add_audio_parsers(audio_subcommands)
+    from capicove.cli.commands.audio_synthesis import add_parsers as add_speech_parsers
+
+    add_speech_parsers(audio_subcommands)
+    from capicove.cli.commands.speech_setup import add_parser as add_speech_setup_parser
+
+    add_speech_setup_parser(audio_subcommands)
     video = subcommands.add_parser("video", help="Process video evidence.")
     video_subcommands = video.add_subparsers(dest="video_command")
     add_video_deduplicate_parser(video_subcommands)
     add_video_filter_parser(video_subcommands)
     add_video_split_parser(video_subcommands)
+    add_video_quality_parser(video_subcommands)
     add_image_parser(subcommands)
     add_models_parser(subcommands)
     add_search_parser(subcommands)
@@ -108,6 +119,7 @@ def _build_parser() -> argparse.ArgumentParser:
     add_setup_parser(subcommands)
     add_kb_parser(subcommands)
     add_evolution_parser(subcommands)
+    add_eval_parser(subcommands)
     return parser
 
 
@@ -154,6 +166,9 @@ def _dispatch(
     if arguments.command == "evolution":
         return run_evolution(arguments)
 
+    if arguments.command == "eval":
+        return run_eval(arguments)
+
     if arguments.command == "kb":
         return run_kb(arguments)
 
@@ -165,6 +180,14 @@ def _dispatch(
 
     if arguments.command == "jobs":
         return run_jobs(arguments)
+
+    if (
+        arguments.command == "video"
+        and arguments.video_command == "quality"
+        and arguments.runtime_config is not None
+        and arguments.trace_store is not None
+    ):
+        parser.error("configured video quality uses trace_store from --runtime-config")
 
     try:
         recorder = _build_trace_recorder(arguments)
@@ -213,6 +236,20 @@ def _dispatch(
             parser.error("evidence runtime is not configured; pass --runtime-config")
         return run_evidence(arguments, evidence_handler)
 
+    if arguments.command == "audio" and arguments.audio_command == "setup-speech":
+        from capicove.cli.commands.speech_setup import run as run_speech_setup
+
+        return run_speech_setup(arguments)
+
+    if arguments.command == "audio" and arguments.audio_command in {
+        "speech-capabilities",
+        "synthesize",
+        "clone",
+    }:
+        from capicove.cli.commands.audio_synthesis import run as run_speech
+
+        return run_speech(arguments, recorder=recorder)
+
     if arguments.command == "audio" and arguments.audio_command == "transcribe":
         if recorder is None:
             return run_audio_transcribe(arguments)
@@ -240,6 +277,9 @@ def _dispatch(
         if recorder is None:
             return run_video_filter(arguments)
         return run_video_filter(arguments, recorder=recorder)
+
+    if arguments.command == "video" and arguments.video_command == "quality":
+        return run_video_quality(arguments, recorder=recorder)
 
     if arguments.command == "video" and arguments.video_command == "deduplicate":
         return run_video_deduplicate(arguments)
@@ -300,11 +340,12 @@ def _build_trace_recorder(arguments: argparse.Namespace) -> TraceRecorder | None
     traced_command = arguments.command == "memory" or (
         (
             arguments.command == "audio"
-            and getattr(arguments, "audio_command", None) in {"transcribe", "clip"}
+            and getattr(arguments, "audio_command", None)
+            in {"transcribe", "clip", "synthesize", "clone"}
         )
         or (
             arguments.command == "video"
-            and getattr(arguments, "video_command", None) in {"filter", "split"}
+            and getattr(arguments, "video_command", None) in {"filter", "split", "quality"}
         )
         or (arguments.command == "image" and getattr(arguments, "image_command", None) == "run")
         or (arguments.command == "batch" and getattr(arguments, "batch_command", None) == "run")

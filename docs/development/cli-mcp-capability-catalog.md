@@ -177,3 +177,16 @@ The first slice is covered by common-host, config, CLI, compatibility, real stdi
 and installed-wheel tests. Full repository gates remain required before technical
 completion. Fixture and transport results are not evidence of model quality or
 production capacity. See the [operator guide](../site/guides/mcp-stdio.md).
+
+
+## 2026-10-29 standalone media quality addition
+
+Accepted RFC-0035/ADR-0039 add S1 `capicove.video.quality` v1, CLI
+`capicove video quality`, and standalone MCP `capicove_video_quality`.
+The Tool reports full selected-stream media measurements and explicit policy
+verdicts, without a numerical grade. Python/MCP construction is available through
+`build_video_quality_tool_handler` and `create_video_quality_mcp_server`.
+On 2026-10-30 the maintainer authorized S2. Linux workspace `enabled_tools`,
+configured catalog/readiness, MCP stdio and `--runtime-config` now compose quality
+using host-owned staging, pinned executables and narrowing-only `quality_limits`.
+Native macOS host support and remote service qualification remain separate.

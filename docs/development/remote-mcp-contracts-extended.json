@@ -20256,6 +20256,66 @@
       "operation_id": "tool:capicove.operation.status@1",
       "provider_profile": "builtin",
       "capability_id": "C23"
+    },
+    {
+      "operation_id": "public:src/capicove/model/factory.py:ModelFactory.speech",
+      "provider_profile": "builtin",
+      "capability_id": "C21"
+    },
+    {
+      "operation_id": "public:src/capicove/model/providers/speech.py:create_speech",
+      "provider_profile": "builtin",
+      "capability_id": "C21"
+    },
+    {
+      "operation_id": "public:src/capicove/model/providers/speech.py:validate_speech",
+      "provider_profile": "builtin",
+      "capability_id": "C21"
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/speech_setup.py:setup-speech",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/speech_setup.py:add_parser",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/speech_setup.py:run",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/evaluation.py:compare",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/evaluation.py:eval",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/evaluation.py:run",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "cli:src/capicove/cli/commands/evaluation.py:score",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/evaluation.py:add_parser",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
+    },
+    {
+      "operation_id": "public:src/capicove/cli/commands/evaluation.py:run",
+      "provider_profile": "builtin",
+      "capability_id": "C23"
     }
   ],
   "source_manifest": {

@@ -1,0 +1,1955 @@
+{
+  "adapter": {
+    "id": "code",
+    "version": "1"
+  },
+  "dataset": {
+    "id": "code-search-eval-heldout-v1",
+    "queries": 29,
+    "schema": "capicove.code-search-eval.v1",
+    "sha256": "54e1e9358fa8b7a71a3f0d6a096e88854f64873d68e3c432ae37023a18824b8f"
+  },
+  "environment": {
+    "capicove_version": "0.1.0",
+    "cpus": 4,
+    "machine": "x86_64",
+    "platform": "linux",
+    "python": "3.11.15"
+  },
+  "experimental": true,
+  "index": {
+    "corpus_paths": [
+      "src",
+      "scripts"
+    ],
+    "dataset_corpus": "S3 snapshot dae90c7 (150 files of src/ and scripts/ at 53fb8e0)",
+    "generation_id": "cg-f2c51af9ad41f61519b41eeaad971b267347e9c721abe73878d7a3dff4e8659c",
+    "kind": "local-code-generation",
+    "repository_commit": "53fb8e0e020a27839243e6041237a3c8093fc17d",
+    "selected_files": 600,
+    "selection_sha256": "d1af72f65eaee5564ec258015973fc9973513f95b59b407a433ae51fd4da99f8",
+    "units": 4309
+  },
+  "model": {
+    "components": [],
+    "kind": "none",
+    "real_model_validation": "not_run"
+  },
+  "options": {
+    "fake_dense": false,
+    "k": 10,
+    "reranker": "none"
+  },
+  "profile": {
+    "code_policy_ref": "code-symbols-v1",
+    "fingerprint": "ebd1c9ba4333cf106d7025c9edb21ead11d0afa68ae3b097f47c16795f5d4353",
+    "id": "local-code-lexical-v1",
+    "version": 1
+  },
+  "results": [
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/cursor.py#HmacSearchCursorCodec": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/cursor.py#HmacSearchCursorCodec"
+        ],
+        "size": 30
+      },
+      "query_id": "h-id-01",
+      "ranked": [
+        {
+          "chars": 1237,
+          "key": "src/capicove/retrieval/cursor.py@4121-5358",
+          "labels": [
+            "src/capicove/retrieval/cursor.py#HmacSearchCursorCodec"
+          ]
+        },
+        {
+          "chars": 342,
+          "key": "src/capicove/retrieval/cursor.py@12702-13044",
+          "labels": [
+            "src/capicove/retrieval/cursor.py#HmacSearchCursorCodec"
+          ]
+        },
+        {
+          "chars": 1607,
+          "key": "src/capicove/runtime/reverse_image.py@13383-14990",
+          "labels": []
+        },
+        {
+          "chars": 1753,
+          "key": "src/capicove/runtime/reverse_image.py@377-2130",
+          "labels": []
+        },
+        {
+          "chars": 1463,
+          "key": "src/capicove/retrieval/cursor.py@5358-6821",
+          "labels": []
+        },
+        {
+          "chars": 1257,
+          "key": "src/capicove/retrieval/cursor.py@0-1257",
+          "labels": []
+        },
+        {
+          "chars": 1747,
+          "key": "src/capicove/retrieval/cursor.py@7522-9269",
+          "labels": []
+        },
+        {
+          "chars": 1800,
+          "key": "src/capicove/retrieval/search.py@29998-31798",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/retrieval/video_search.py@15557-17325",
+          "labels": []
+        },
+        {
+          "chars": 855,
+          "key": "src/capicove/retrieval/search.py@15609-16464",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/temporal.py#temporal_iou": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/temporal.py#temporal_iou"
+        ],
+        "size": 30
+      },
+      "query_id": "h-id-02",
+      "ranked": [
+        {
+          "chars": 1400,
+          "key": "src/capicove/retrieval/temporal.py@0-1400",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#temporal_iou"
+          ]
+        },
+        {
+          "chars": 1611,
+          "key": "src/capicove/retrieval/video_evaluation.py@24280-25891",
+          "labels": []
+        },
+        {
+          "chars": 959,
+          "key": "src/capicove/retrieval/temporal.py@1400-2359",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#temporal_iou"
+          ]
+        },
+        {
+          "chars": 1775,
+          "key": "src/capicove/retrieval/temporal.py@4016-5791",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#temporal_iou"
+          ]
+        },
+        {
+          "chars": 1723,
+          "key": "src/capicove/retrieval/video_evaluation.py@29001-30724",
+          "labels": []
+        },
+        {
+          "chars": 1026,
+          "key": "src/capicove/retrieval/video_evaluation.py@32423-33449",
+          "labels": []
+        },
+        {
+          "chars": 1794,
+          "key": "src/capicove/retrieval/video_evaluation.py@17757-19551",
+          "labels": []
+        },
+        {
+          "chars": 1673,
+          "key": "src/capicove/retrieval/video_evaluation.py@6692-8365",
+          "labels": []
+        },
+        {
+          "chars": 858,
+          "key": "src/capicove/retrieval/video_evaluation.py@28143-29001",
+          "labels": []
+        },
+        {
+          "chars": 860,
+          "key": "src/capicove/retrieval/video_evaluation.py@2936-3796",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/processing/audio/_adapters/ffprobe.py#FfprobeAudioStreamInspector": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/processing/audio/_adapters/ffprobe.py#FfprobeAudioStreamInspector"
+        ],
+        "size": 30
+      },
+      "query_id": "h-id-03",
+      "ranked": [
+        {
+          "chars": 1257,
+          "key": "src/capicove/processing/audio/_adapters/ffprobe.py@0-1257",
+          "labels": [
+            "src/capicove/processing/audio/_adapters/ffprobe.py#FfprobeAudioStreamInspector"
+          ]
+        },
+        {
+          "chars": 1520,
+          "key": "src/capicove/runtime/audio_mcp.py@9231-10751",
+          "labels": []
+        },
+        {
+          "chars": 1038,
+          "key": "src/capicove/cli/commands/audio_clip.py@0-1038",
+          "labels": []
+        },
+        {
+          "chars": 1793,
+          "key": "src/capicove/cli/commands/audio_clip.py@3306-5099",
+          "labels": []
+        },
+        {
+          "chars": 514,
+          "key": "src/capicove/processing/audio/_adapters/__init__.py@0-514",
+          "labels": []
+        },
+        {
+          "chars": 1798,
+          "key": "src/capicove/cli/commands/audio_transcribe.py@0-1798",
+          "labels": []
+        },
+        {
+          "chars": 1697,
+          "key": "src/capicove/processing/audio/local_runtime.py@1392-3089",
+          "labels": []
+        },
+        {
+          "chars": 1392,
+          "key": "src/capicove/processing/audio/local_runtime.py@0-1392",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/cli/commands/audio_transcribe.py@4637-6416",
+          "labels": []
+        },
+        {
+          "chars": 1759,
+          "key": "src/capicove/model/providers/audio.py@2315-4074",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/contracts/rank_fusion.py#normalized_rrf": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/contracts/rank_fusion.py#normalized_rrf"
+        ],
+        "size": 30
+      },
+      "query_id": "h-id-04",
+      "ranked": [
+        {
+          "chars": 842,
+          "key": "src/capicove/contracts/rank_fusion.py@0-842",
+          "labels": [
+            "src/capicove/contracts/rank_fusion.py#normalized_rrf"
+          ]
+        },
+        {
+          "chars": 501,
+          "key": "src/capicove/retrieval/text_fusion.py@0-501",
+          "labels": []
+        },
+        {
+          "chars": 663,
+          "key": "src/capicove/retrieval/text_fusion.py@2196-2859",
+          "labels": []
+        },
+        {
+          "chars": 1046,
+          "key": "src/capicove/knowledge/memory_search.py@0-1046",
+          "labels": []
+        },
+        {
+          "chars": 1275,
+          "key": "src/capicove/knowledge/memory_search.py@2733-4008",
+          "labels": []
+        },
+        {
+          "chars": 1773,
+          "key": "src/capicove/retrieval/text_fusion.py@501-2274",
+          "labels": []
+        },
+        {
+          "chars": 661,
+          "key": "src/capicove/retrieval/text_profiles.py@0-661",
+          "labels": []
+        },
+        {
+          "chars": 1324,
+          "key": "src/capicove/retrieval/personal_image_research.py@10565-11889",
+          "labels": []
+        },
+        {
+          "chars": 1092,
+          "key": "src/capicove/retrieval/video_publication.py@5586-6678",
+          "labels": []
+        },
+        {
+          "chars": 1705,
+          "key": "src/capicove/retrieval/personal_image_research.py@11889-13594",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/video_planning.py#VideoQueryPlanner": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/video_planning.py#VideoQueryPlanner"
+        ],
+        "size": 30
+      },
+      "query_id": "h-id-05",
+      "ranked": [
+        {
+          "chars": 1107,
+          "key": "src/capicove/retrieval/video_planning.py@0-1107",
+          "labels": [
+            "src/capicove/retrieval/video_planning.py#VideoQueryPlanner"
+          ]
+        },
+        {
+          "chars": 1683,
+          "key": "src/capicove/retrieval/video_search.py@0-1683",
+          "labels": []
+        },
+        {
+          "chars": 1787,
+          "key": "src/capicove/retrieval/video_search.py@2223-4010",
+          "labels": []
+        },
+        {
+          "chars": 1790,
+          "key": "src/capicove/retrieval/video_search.py@5801-7591",
+          "labels": []
+        },
+        {
+          "chars": 1789,
+          "key": "scripts/check_remote_mcp_coverage.py@622-2411",
+          "labels": []
+        },
+        {
+          "chars": 1214,
+          "key": "src/capicove/batch/__init__.py@0-1214",
+          "labels": []
+        },
+        {
+          "chars": 450,
+          "key": "src/capicove/batch/job_plan_receipt.py@0-450",
+          "labels": []
+        },
+        {
+          "chars": 1029,
+          "key": "src/capicove/processing/__init__.py@0-1029",
+          "labels": []
+        },
+        {
+          "chars": 1673,
+          "key": "src/capicove/retrieval/video_evaluation.py@6692-8365",
+          "labels": []
+        },
+        {
+          "chars": 1328,
+          "key": "src/capicove/runtime/video_search.py@4152-5480",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/receipt.py#verify_model_installation": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/receipt.py#verify_model_installation"
+        ],
+        "size": 30
+      },
+      "query_id": "h-id-06",
+      "ranked": [
+        {
+          "chars": 1244,
+          "key": "src/capicove/model/receipt.py@2410-3654",
+          "labels": [
+            "src/capicove/model/receipt.py#verify_model_installation"
+          ]
+        },
+        {
+          "chars": 1552,
+          "key": "src/capicove/model/__init__.py@0-1552",
+          "labels": []
+        },
+        {
+          "chars": 900,
+          "key": "src/capicove/retrieval/siglip2.py@0-900",
+          "labels": []
+        },
+        {
+          "chars": 1783,
+          "key": "src/capicove/model/provisioning.py@6791-8574",
+          "labels": []
+        },
+        {
+          "chars": 1124,
+          "key": "src/capicove/api/siglip2.py@0-1124",
+          "labels": []
+        },
+        {
+          "chars": 1712,
+          "key": "src/capicove/model/provisioning.py@0-1712",
+          "labels": []
+        },
+        {
+          "chars": 1723,
+          "key": "src/capicove/api/siglip2.py@1124-2847",
+          "labels": []
+        },
+        {
+          "chars": 1511,
+          "key": "src/capicove/model/bundle.py@6964-8475",
+          "labels": []
+        },
+        {
+          "chars": 1762,
+          "key": "src/capicove/runtime/model_mcp.py@1088-2850",
+          "labels": []
+        },
+        {
+          "chars": 1430,
+          "key": "src/capicove/model/bundle.py@5534-6964",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "qualified",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/cursor.py#encode": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/cursor.py#encode"
+        ],
+        "size": 30
+      },
+      "query_id": "h-qual-01",
+      "ranked": [
+        {
+          "chars": 1237,
+          "key": "src/capicove/retrieval/cursor.py@4121-5358",
+          "labels": [
+            "src/capicove/retrieval/cursor.py#encode"
+          ]
+        },
+        {
+          "chars": 1463,
+          "key": "src/capicove/retrieval/cursor.py@5358-6821",
+          "labels": [
+            "src/capicove/retrieval/cursor.py#encode"
+          ]
+        },
+        {
+          "chars": 1747,
+          "key": "src/capicove/retrieval/cursor.py@7522-9269",
+          "labels": []
+        },
+        {
+          "chars": 1257,
+          "key": "src/capicove/retrieval/cursor.py@0-1257",
+          "labels": []
+        },
+        {
+          "chars": 342,
+          "key": "src/capicove/retrieval/cursor.py@12702-13044",
+          "labels": []
+        },
+        {
+          "chars": 1800,
+          "key": "src/capicove/retrieval/search.py@29998-31798",
+          "labels": []
+        },
+        {
+          "chars": 1607,
+          "key": "src/capicove/runtime/reverse_image.py@13383-14990",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/retrieval/video_search.py@15557-17325",
+          "labels": []
+        },
+        {
+          "chars": 1753,
+          "key": "src/capicove/runtime/reverse_image.py@377-2130",
+          "labels": []
+        },
+        {
+          "chars": 1061,
+          "key": "src/capicove/retrieval/search.py@24992-26053",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "qualified",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/temporal.py#assemble": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/temporal.py#assemble"
+        ],
+        "size": 30
+      },
+      "query_id": "h-qual-02",
+      "ranked": [
+        {
+          "chars": 1777,
+          "key": "src/capicove/retrieval/temporal.py@2359-4136",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#assemble"
+          ]
+        },
+        {
+          "chars": 959,
+          "key": "src/capicove/retrieval/temporal.py@1400-2359",
+          "labels": []
+        },
+        {
+          "chars": 1775,
+          "key": "src/capicove/retrieval/temporal.py@4016-5791",
+          "labels": []
+        },
+        {
+          "chars": 1375,
+          "key": "src/capicove/retrieval/video_search.py@10828-12203",
+          "labels": []
+        },
+        {
+          "chars": 1683,
+          "key": "src/capicove/retrieval/video_search.py@0-1683",
+          "labels": []
+        },
+        {
+          "chars": 1050,
+          "key": "src/capicove/agent/memory_service.py@4882-5932",
+          "labels": []
+        },
+        {
+          "chars": 1791,
+          "key": "src/capicove/retrieval/video_evaluation.py@26522-28313",
+          "labels": []
+        },
+        {
+          "chars": 1134,
+          "key": "src/capicove/processing/video/retrieval/segments.py@0-1134",
+          "labels": []
+        },
+        {
+          "chars": 1461,
+          "key": "src/capicove/agent/memory_service.py@0-1461",
+          "labels": []
+        },
+        {
+          "chars": 1675,
+          "key": "scripts/check_remote_mcp_coverage.py@33291-34966",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "qualified",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/bge_reranker.py#rerank": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/bge_reranker.py#rerank"
+        ],
+        "size": 30
+      },
+      "query_id": "h-qual-03",
+      "ranked": [
+        {
+          "chars": 1770,
+          "key": "src/capicove/retrieval/bge_reranker.py@3006-4776",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py#rerank"
+          ]
+        },
+        {
+          "chars": 1597,
+          "key": "src/capicove/cli/commands/reranker.py@0-1597",
+          "labels": []
+        },
+        {
+          "chars": 1792,
+          "key": "src/capicove/retrieval/bge_reranker.py@0-1792",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py#rerank"
+          ]
+        },
+        {
+          "chars": 1787,
+          "key": "src/capicove/cli/commands/reranker.py@3616-5403",
+          "labels": []
+        },
+        {
+          "chars": 1404,
+          "key": "src/capicove/cli/commands/reranker.py@2212-3616",
+          "labels": []
+        },
+        {
+          "chars": 429,
+          "key": "src/capicove/retrieval/bge_reranker.py@4683-5112",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py#rerank"
+          ]
+        },
+        {
+          "chars": 1636,
+          "key": "src/capicove/api/reranker.py@0-1636",
+          "labels": []
+        },
+        {
+          "chars": 1795,
+          "key": "src/capicove/model/reranker_assets.py@0-1795",
+          "labels": []
+        },
+        {
+          "chars": 1432,
+          "key": "src/capicove/cli/commands/models.py@7266-8698",
+          "labels": []
+        },
+        {
+          "chars": 1239,
+          "key": "src/capicove/model/providers/__init__.py@749-1988",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "split_identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/cursor.py#StaleCursorError": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/cursor.py#StaleCursorError"
+        ],
+        "size": 30
+      },
+      "query_id": "h-split-01",
+      "ranked": [
+        {
+          "chars": 1463,
+          "key": "src/capicove/retrieval/cursor.py@5358-6821",
+          "labels": [
+            "src/capicove/retrieval/cursor.py#StaleCursorError"
+          ]
+        },
+        {
+          "chars": 1257,
+          "key": "src/capicove/retrieval/cursor.py@0-1257",
+          "labels": [
+            "src/capicove/retrieval/cursor.py#StaleCursorError"
+          ]
+        },
+        {
+          "chars": 855,
+          "key": "src/capicove/retrieval/search.py@15609-16464",
+          "labels": []
+        },
+        {
+          "chars": 1237,
+          "key": "src/capicove/retrieval/cursor.py@4121-5358",
+          "labels": []
+        },
+        {
+          "chars": 1118,
+          "key": "src/capicove/retrieval/search.py@23874-24992",
+          "labels": []
+        },
+        {
+          "chars": 1287,
+          "key": "src/capicove/retrieval/search.py@12365-13652",
+          "labels": []
+        },
+        {
+          "chars": 1265,
+          "key": "src/capicove/mcp/remote_catalog.py@5553-6818",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/retrieval/video_search.py@15557-17325",
+          "labels": []
+        },
+        {
+          "chars": 1728,
+          "key": "src/capicove/contracts/retrieval.py@1798-3526",
+          "labels": []
+        },
+        {
+          "chars": 1761,
+          "key": "src/capicove/tools/image_search.py@23524-25285",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "split_identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/temporal.py#deduplicate_segments": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/temporal.py#deduplicate_segments"
+        ],
+        "size": 30
+      },
+      "query_id": "h-split-02",
+      "ranked": [
+        {
+          "chars": 896,
+          "key": "src/capicove/tools/video_deduplicate.py@6739-7635",
+          "labels": []
+        },
+        {
+          "chars": 1389,
+          "key": "src/capicove/tools/video_deduplicate.py@2214-3603",
+          "labels": []
+        },
+        {
+          "chars": 1464,
+          "key": "src/capicove/cli/commands/video_deduplicate.py@0-1464",
+          "labels": []
+        },
+        {
+          "chars": 1448,
+          "key": "src/capicove/tools/video_deduplicate.py@5291-6739",
+          "labels": []
+        },
+        {
+          "chars": 1313,
+          "key": "src/capicove/tools/video_deduplicate.py@901-2214",
+          "labels": []
+        },
+        {
+          "chars": 721,
+          "key": "src/capicove/retrieval/temporal.py@5678-6399",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#deduplicate_segments"
+          ]
+        },
+        {
+          "chars": 901,
+          "key": "src/capicove/tools/video_deduplicate.py@0-901",
+          "labels": []
+        },
+        {
+          "chars": 959,
+          "key": "src/capicove/retrieval/temporal.py@1400-2359",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#deduplicate_segments"
+          ]
+        },
+        {
+          "chars": 482,
+          "key": "src/capicove/runtime/video_mcp.py@6019-6501",
+          "labels": []
+        },
+        {
+          "chars": 1257,
+          "key": "src/capicove/processing/video/deduplication/__init__.py@0-1257",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "split_identifier",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/reranking.py#rank_scores": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/reranking.py#rank_scores"
+        ],
+        "size": 30
+      },
+      "query_id": "h-split-03",
+      "ranked": [
+        {
+          "chars": 842,
+          "key": "src/capicove/contracts/rank_fusion.py@0-842",
+          "labels": []
+        },
+        {
+          "chars": 429,
+          "key": "src/capicove/retrieval/bge_reranker.py@4683-5112",
+          "labels": []
+        },
+        {
+          "chars": 1762,
+          "key": "src/capicove/retrieval/video_fusion.py@2036-3798",
+          "labels": []
+        },
+        {
+          "chars": 1324,
+          "key": "src/capicove/retrieval/personal_image_research.py@10565-11889",
+          "labels": []
+        },
+        {
+          "chars": 283,
+          "key": "src/capicove/retrieval/video_fusion.py@1753-2036",
+          "labels": []
+        },
+        {
+          "chars": 663,
+          "key": "src/capicove/retrieval/text_fusion.py@2196-2859",
+          "labels": []
+        },
+        {
+          "chars": 1615,
+          "key": "src/capicove/runtime/native_knowledge.py@13470-15085",
+          "labels": []
+        },
+        {
+          "chars": 1375,
+          "key": "src/capicove/retrieval/video_search.py@10828-12203",
+          "labels": []
+        },
+        {
+          "chars": 1750,
+          "key": "src/capicove/retrieval/search.py@27788-29538",
+          "labels": []
+        },
+        {
+          "chars": 1613,
+          "key": "src/capicove/runtime/native_knowledge.py@11857-13470",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/scale_codec.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/scale_codec.py"
+        ],
+        "size": 30
+      },
+      "query_id": "h-path-01",
+      "ranked": [
+        {
+          "chars": 1648,
+          "key": "src/capicove/retrieval/scale_codec.py@0-1648",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1777,
+          "key": "src/capicove/retrieval/scale_codec.py@1648-3425",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1799,
+          "key": "src/capicove/retrieval/scale_codec.py@30982-32781",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1410,
+          "key": "src/capicove/retrieval/scale_codec.py@26267-27677",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1780,
+          "key": "src/capicove/retrieval/scale_codec.py@20736-22516",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1783,
+          "key": "src/capicove/retrieval/scale_codec.py@12479-14262",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 584,
+          "key": "src/capicove/retrieval/scale_codec.py@10187-10771",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1629,
+          "key": "src/capicove/retrieval/scale_codec.py@27677-29306",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1797,
+          "key": "src/capicove/retrieval/scale_codec.py@3425-5222",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        },
+        {
+          "chars": 1580,
+          "key": "src/capicove/retrieval/scale_codec.py@24129-25709",
+          "labels": [
+            "src/capicove/retrieval/scale_codec.py"
+          ]
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/downloader.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/downloader.py"
+        ],
+        "size": 30
+      },
+      "query_id": "h-path-02",
+      "ranked": [
+        {
+          "chars": 1228,
+          "key": "src/capicove/model/downloader.py@0-1228",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 1076,
+          "key": "src/capicove/model/downloader.py@3609-4685",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 1521,
+          "key": "src/capicove/model/downloader.py@6149-7670",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 593,
+          "key": "src/capicove/model/downloader.py@1228-1821",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 1464,
+          "key": "src/capicove/model/downloader.py@4685-6149",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 1728,
+          "key": "src/capicove/model/downloader.py@7670-9398",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 1788,
+          "key": "src/capicove/model/downloader.py@1821-3609",
+          "labels": [
+            "src/capicove/model/downloader.py"
+          ]
+        },
+        {
+          "chars": 1762,
+          "key": "src/capicove/runtime/model_mcp.py@1088-2850",
+          "labels": []
+        },
+        {
+          "chars": 1478,
+          "key": "src/capicove/api/model_server.py@0-1478",
+          "labels": []
+        },
+        {
+          "chars": 200,
+          "key": "src/capicove/runtime/model_mcp.py@2850-3050",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "path",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/bge_reranker.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/bge_reranker.py"
+        ],
+        "size": 30
+      },
+      "query_id": "h-path-03",
+      "ranked": [
+        {
+          "chars": 1792,
+          "key": "src/capicove/retrieval/bge_reranker.py@0-1792",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py"
+          ]
+        },
+        {
+          "chars": 429,
+          "key": "src/capicove/retrieval/bge_reranker.py@4683-5112",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py"
+          ]
+        },
+        {
+          "chars": 1214,
+          "key": "src/capicove/retrieval/bge_reranker.py@1792-3006",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py"
+          ]
+        },
+        {
+          "chars": 1770,
+          "key": "src/capicove/retrieval/bge_reranker.py@3006-4776",
+          "labels": [
+            "src/capicove/retrieval/bge_reranker.py"
+          ]
+        },
+        {
+          "chars": 1597,
+          "key": "src/capicove/cli/commands/reranker.py@0-1597",
+          "labels": []
+        },
+        {
+          "chars": 1787,
+          "key": "src/capicove/cli/commands/reranker.py@3616-5403",
+          "labels": []
+        },
+        {
+          "chars": 1795,
+          "key": "src/capicove/model/reranker_assets.py@0-1795",
+          "labels": []
+        },
+        {
+          "chars": 628,
+          "key": "src/capicove/cli/commands/reranker.py@5339-5967",
+          "labels": []
+        },
+        {
+          "chars": 615,
+          "key": "src/capicove/cli/commands/reranker.py@1597-2212",
+          "labels": []
+        },
+        {
+          "chars": 1636,
+          "key": "src/capicove/api/reranker.py@0-1636",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/cursor.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/cursor.py"
+        ],
+        "size": 30
+      },
+      "query_id": "h-en-01",
+      "ranked": [
+        {
+          "chars": 1463,
+          "key": "src/capicove/retrieval/cursor.py@5358-6821",
+          "labels": [
+            "src/capicove/retrieval/cursor.py"
+          ]
+        },
+        {
+          "chars": 1257,
+          "key": "src/capicove/retrieval/cursor.py@0-1257",
+          "labels": [
+            "src/capicove/retrieval/cursor.py"
+          ]
+        },
+        {
+          "chars": 1237,
+          "key": "src/capicove/retrieval/cursor.py@4121-5358",
+          "labels": [
+            "src/capicove/retrieval/cursor.py"
+          ]
+        },
+        {
+          "chars": 1664,
+          "key": "src/capicove/cli/commands/search.py@290-1954",
+          "labels": []
+        },
+        {
+          "chars": 1747,
+          "key": "src/capicove/retrieval/cursor.py@7522-9269",
+          "labels": [
+            "src/capicove/retrieval/cursor.py"
+          ]
+        },
+        {
+          "chars": 1645,
+          "key": "src/capicove/retrieval/search.py@1684-3329",
+          "labels": []
+        },
+        {
+          "chars": 1222,
+          "key": "src/capicove/mcp/remote_catalog.py@2664-3886",
+          "labels": []
+        },
+        {
+          "chars": 1800,
+          "key": "src/capicove/retrieval/search.py@29998-31798",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/retrieval/video_search.py@15557-17325",
+          "labels": []
+        },
+        {
+          "chars": 1767,
+          "key": "src/capicove/tools/image_search.py@43753-45520",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/temporal.py#deduplicate_segments": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/temporal.py#deduplicate_segments"
+        ],
+        "size": 30
+      },
+      "query_id": "h-en-02",
+      "ranked": [
+        {
+          "chars": 1400,
+          "key": "src/capicove/retrieval/temporal.py@0-1400",
+          "labels": []
+        },
+        {
+          "chars": 1775,
+          "key": "src/capicove/retrieval/temporal.py@4016-5791",
+          "labels": []
+        },
+        {
+          "chars": 1777,
+          "key": "src/capicove/retrieval/temporal.py@2359-4136",
+          "labels": []
+        },
+        {
+          "chars": 1134,
+          "key": "src/capicove/processing/video/retrieval/segments.py@0-1134",
+          "labels": []
+        },
+        {
+          "chars": 1611,
+          "key": "src/capicove/retrieval/video_evaluation.py@24280-25891",
+          "labels": []
+        },
+        {
+          "chars": 1421,
+          "key": "src/capicove/processing/image/mappers/difference_area.py@4720-6141",
+          "labels": []
+        },
+        {
+          "chars": 959,
+          "key": "src/capicove/retrieval/temporal.py@1400-2359",
+          "labels": [
+            "src/capicove/retrieval/temporal.py#deduplicate_segments"
+          ]
+        },
+        {
+          "chars": 1485,
+          "key": "src/capicove/retrieval/_adapters/sqlite_video_units.py@11999-13484",
+          "labels": []
+        },
+        {
+          "chars": 1682,
+          "key": "src/capicove/knowledge/service.py@0-1682",
+          "labels": []
+        },
+        {
+          "chars": 1357,
+          "key": "src/capicove/processing/image/metrics.py@4767-6124",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/processing/audio/_adapters/ffprobe.py#inspect": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/processing/audio/_adapters/ffprobe.py#inspect"
+        ],
+        "size": 30
+      },
+      "query_id": "h-en-03",
+      "ranked": [
+        {
+          "chars": 1257,
+          "key": "src/capicove/processing/audio/_adapters/ffprobe.py@0-1257",
+          "labels": []
+        },
+        {
+          "chars": 1490,
+          "key": "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py@4330-5820",
+          "labels": []
+        },
+        {
+          "chars": 1791,
+          "key": "src/capicove/processing/audio/_adapters/ffprobe.py@1257-3048",
+          "labels": [
+            "src/capicove/processing/audio/_adapters/ffprobe.py#inspect"
+          ]
+        },
+        {
+          "chars": 1547,
+          "key": "src/capicove/processing/audio/_adapters/ffprobe.py@2981-4528",
+          "labels": []
+        },
+        {
+          "chars": 1641,
+          "key": "src/capicove/runtime/audio_mcp.py@18804-20445",
+          "labels": []
+        },
+        {
+          "chars": 1780,
+          "key": "src/capicove/processing/audio/_adapters/audio_clip.py@8078-9858",
+          "labels": []
+        },
+        {
+          "chars": 1764,
+          "key": "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py@2566-4330",
+          "labels": []
+        },
+        {
+          "chars": 1759,
+          "key": "src/capicove/model/providers/audio.py@2315-4074",
+          "labels": []
+        },
+        {
+          "chars": 1785,
+          "key": "src/capicove/tools/audio_transcribe.py@13879-15664",
+          "labels": []
+        },
+        {
+          "chars": 1755,
+          "key": "src/capicove/cli/commands/audio_transcribe.py@1798-3553",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/downloader.py#download_models": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/downloader.py#download_models"
+        ],
+        "size": 30
+      },
+      "query_id": "h-en-04",
+      "ranked": [
+        {
+          "chars": 689,
+          "key": "src/capicove/retrieval/_adapters/siglip2.py@0-689",
+          "labels": []
+        },
+        {
+          "chars": 1788,
+          "key": "src/capicove/model/downloader.py@1821-3609",
+          "labels": [
+            "src/capicove/model/downloader.py#download_models"
+          ]
+        },
+        {
+          "chars": 551,
+          "key": "src/capicove/processing/image/_adapters/huggingface_caption.py@0-551",
+          "labels": []
+        },
+        {
+          "chars": 705,
+          "key": "src/capicove/processing/video/filtering/_adapters/huggingface_frame_scorers.py@3049-3754",
+          "labels": []
+        },
+        {
+          "chars": 1228,
+          "key": "src/capicove/model/downloader.py@0-1228",
+          "labels": []
+        },
+        {
+          "chars": 684,
+          "key": "src/capicove/processing/image/_adapters/huggingface.py@0-684",
+          "labels": []
+        },
+        {
+          "chars": 1800,
+          "key": "scripts/vlm/README.md@1646-3446",
+          "labels": []
+        },
+        {
+          "chars": 1521,
+          "key": "src/capicove/model/downloader.py@6149-7670",
+          "labels": []
+        },
+        {
+          "chars": 1739,
+          "key": "src/capicove/model/bge_m3.py@1425-3164",
+          "labels": []
+        },
+        {
+          "chars": 1406,
+          "key": "src/capicove/model/cli.py@0-1406",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/manifest.py#parse_image_model_manifest": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/model/manifest.py#parse_image_model_manifest"
+        ],
+        "size": 30
+      },
+      "query_id": "h-en-05",
+      "ranked": [
+        {
+          "chars": 822,
+          "key": "src/capicove/model/manifest.py@1762-2584",
+          "labels": [
+            "src/capicove/model/manifest.py#parse_image_model_manifest"
+          ]
+        },
+        {
+          "chars": 1170,
+          "key": "src/capicove/model/manifest.py@2584-3754",
+          "labels": []
+        },
+        {
+          "chars": 1646,
+          "key": "src/capicove/wiki/maintenance/compatibility.py@0-1646",
+          "labels": []
+        },
+        {
+          "chars": 1800,
+          "key": "scripts/vlm/README.md@1646-3446",
+          "labels": []
+        },
+        {
+          "chars": 1796,
+          "key": "src/capicove/model/provisioning.py@2956-4752",
+          "labels": []
+        },
+        {
+          "chars": 1563,
+          "key": "src/capicove/processing/video/deduplication/file.py@0-1563",
+          "labels": []
+        },
+        {
+          "chars": 1763,
+          "key": "src/capicove/wiki/filesystem.py@0-1763",
+          "labels": []
+        },
+        {
+          "chars": 1425,
+          "key": "src/capicove/model/bge_m3.py@0-1425",
+          "labels": []
+        },
+        {
+          "chars": 1660,
+          "key": "src/capicove/cli/commands/vlm.py@0-1660",
+          "labels": []
+        },
+        {
+          "chars": 1665,
+          "key": "scripts/vlm/README.md@3446-5111",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "english",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/reranking.py#validate_rerank_request": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/retrieval/reranking.py#validate_rerank_request"
+        ],
+        "size": 30
+      },
+      "query_id": "h-en-06",
+      "ranked": [
+        {
+          "chars": 1608,
+          "key": "src/capicove/retrieval/reranking.py@1024-2632",
+          "labels": [
+            "src/capicove/retrieval/reranking.py#validate_rerank_request"
+          ]
+        },
+        {
+          "chars": 1617,
+          "key": "src/capicove/retrieval/reranking.py@2632-4249",
+          "labels": [
+            "src/capicove/retrieval/reranking.py#validate_rerank_request"
+          ]
+        },
+        {
+          "chars": 830,
+          "key": "src/capicove/api/reranker.py@3370-4200",
+          "labels": []
+        },
+        {
+          "chars": 1787,
+          "key": "src/capicove/cli/commands/reranker.py@3616-5403",
+          "labels": []
+        },
+        {
+          "chars": 1024,
+          "key": "src/capicove/retrieval/reranking.py@0-1024",
+          "labels": []
+        },
+        {
+          "chars": 1770,
+          "key": "src/capicove/retrieval/bge_reranker.py@3006-4776",
+          "labels": []
+        },
+        {
+          "chars": 1404,
+          "key": "src/capicove/cli/commands/reranker.py@2212-3616",
+          "labels": []
+        },
+        {
+          "chars": 752,
+          "key": "scripts/benchmarks/temporal_memory.py@7169-7921",
+          "labels": []
+        },
+        {
+          "chars": 1787,
+          "key": "src/capicove/export/validation.py@10973-12760",
+          "labels": []
+        },
+        {
+          "chars": 429,
+          "key": "src/capicove/retrieval/bge_reranker.py@4683-5112",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/cursor.py": 1
+      },
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "h-zh-01",
+      "ranked": [],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/temporal.py": 1
+      },
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "h-zh-02",
+      "ranked": [],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/processing/audio/_adapters/ffprobe.py": 1
+      },
+      "pool": {
+        "labels": [
+          "src/capicove/processing/audio/_adapters/ffprobe.py"
+        ],
+        "size": 30
+      },
+      "query_id": "h-zh-03",
+      "ranked": [
+        {
+          "chars": 1720,
+          "key": "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py@0-1720",
+          "labels": []
+        },
+        {
+          "chars": 1764,
+          "key": "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py@2566-4330",
+          "labels": []
+        },
+        {
+          "chars": 1257,
+          "key": "src/capicove/processing/audio/_adapters/ffprobe.py@0-1257",
+          "labels": [
+            "src/capicove/processing/audio/_adapters/ffprobe.py"
+          ]
+        },
+        {
+          "chars": 1490,
+          "key": "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py@4330-5820",
+          "labels": []
+        },
+        {
+          "chars": 879,
+          "key": "src/capicove/processing/audio/_adapters/audio_clip.py@2305-3184",
+          "labels": []
+        },
+        {
+          "chars": 1475,
+          "key": "src/capicove/processing/video/_adapters/ffmpeg.py@5571-7046",
+          "labels": []
+        },
+        {
+          "chars": 693,
+          "key": "src/capicove/runtime/video_mcp.py@3881-4574",
+          "labels": []
+        },
+        {
+          "chars": 1553,
+          "key": "src/capicove/processing/video/filtering/_adapters/ffprobe_video_metadata.py@5820-7373",
+          "labels": []
+        },
+        {
+          "chars": 1445,
+          "key": "src/capicove/runtime/video_mcp.py@4574-6019",
+          "labels": []
+        },
+        {
+          "chars": 1439,
+          "key": "src/capicove/cli/commands/audio_transcribe.py@10833-12272",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/model/downloader.py": 1
+      },
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "h-zh-04",
+      "ranked": [],
+      "status": "succeeded"
+    },
+    {
+      "category": "chinese",
+      "diagnostics": {},
+      "judgments": {
+        "src/capicove/retrieval/bge_reranker.py": 1,
+        "src/capicove/retrieval/reranking.py": 1
+      },
+      "pool": {
+        "labels": [],
+        "size": 0
+      },
+      "query_id": "h-zh-05",
+      "ranked": [],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 30
+      },
+      "query_id": "h-none-01",
+      "ranked": [
+        {
+          "chars": 265,
+          "key": "src/capicove/tools/registry.py@1744-2009",
+          "labels": []
+        },
+        {
+          "chars": 819,
+          "key": "src/capicove/tools/errors.py@0-819",
+          "labels": []
+        },
+        {
+          "chars": 1409,
+          "key": "src/capicove/processing/image/_adapters/onnx_target.py@12344-13753",
+          "labels": []
+        },
+        {
+          "chars": 1409,
+          "key": "src/capicove/retrieval/_adapters/onnx_image.py@11527-12936",
+          "labels": []
+        },
+        {
+          "chars": 1434,
+          "key": "src/capicove/model/bundle.py@16319-17753",
+          "labels": []
+        },
+        {
+          "chars": 1759,
+          "key": "scripts/check_remote_mcp_coverage.py@29117-30876",
+          "labels": []
+        },
+        {
+          "chars": 1716,
+          "key": "src/capicove/processing/image/_adapters/onnx_target.py@9528-11244",
+          "labels": []
+        },
+        {
+          "chars": 1441,
+          "key": "src/capicove/plugins/discovery.py@5390-6831",
+          "labels": []
+        },
+        {
+          "chars": 1715,
+          "key": "src/capicove/retrieval/_adapters/onnx_image.py@8712-10427",
+          "labels": []
+        },
+        {
+          "chars": 1768,
+          "key": "src/capicove/model/bundle.py@17753-19521",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 30
+      },
+      "query_id": "h-none-02",
+      "ranked": [
+        {
+          "chars": 206,
+          "key": "src/capicove/export/media.py@6777-6983",
+          "labels": []
+        },
+        {
+          "chars": 1240,
+          "key": "src/capicove/cli/commands/setup.py@11251-12491",
+          "labels": []
+        },
+        {
+          "chars": 718,
+          "key": "src/capicove/runtime/retrieval_qualification.py@12566-13284",
+          "labels": []
+        },
+        {
+          "chars": 987,
+          "key": "src/capicove/_windows_files.py@18288-19275",
+          "labels": []
+        },
+        {
+          "chars": 617,
+          "key": "src/capicove/processing/audio/_adapters/ffprobe.py@6244-6861",
+          "labels": []
+        },
+        {
+          "chars": 1602,
+          "key": "src/capicove/cli/commands/setup.py@14220-15822",
+          "labels": []
+        },
+        {
+          "chars": 1511,
+          "key": "src/capicove/retrieval/scale_oracle.py@24115-25626",
+          "labels": []
+        },
+        {
+          "chars": 804,
+          "key": "src/capicove/traces/_adapters/sqlite.py@30895-31699",
+          "labels": []
+        },
+        {
+          "chars": 914,
+          "key": "src/capicove/graph_build/_adapters/sqlite.py@17611-18525",
+          "labels": []
+        },
+        {
+          "chars": 1394,
+          "key": "src/capicove/processing/video/retrieval/pipeline.py@3053-4447",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    },
+    {
+      "category": "no_answer",
+      "diagnostics": {},
+      "judgments": {},
+      "pool": {
+        "labels": [],
+        "size": 30
+      },
+      "query_id": "h-none-03",
+      "ranked": [
+        {
+          "chars": 1754,
+          "key": "src/capicove/knowledge/facts.py@9303-11057",
+          "labels": []
+        },
+        {
+          "chars": 927,
+          "key": "src/capicove/retrieval/_adapters/sqlite_unit_catalog.py@22196-23123",
+          "labels": []
+        },
+        {
+          "chars": 1451,
+          "key": "src/capicove/retrieval/_adapters/sqlite_image_generations.py@11472-12923",
+          "labels": []
+        },
+        {
+          "chars": 951,
+          "key": "src/capicove/retrieval/_adapters/sqlite_unit_catalog.py@24199-25150",
+          "labels": []
+        },
+        {
+          "chars": 1608,
+          "key": "src/capicove/knowledge/_adapters/sqlite_memory.py@9113-10721",
+          "labels": []
+        },
+        {
+          "chars": 1779,
+          "key": "src/capicove/knowledge/facts.py@10974-12753",
+          "labels": []
+        },
+        {
+          "chars": 1780,
+          "key": "src/capicove/retrieval/scale_codec.py@18956-20736",
+          "labels": []
+        },
+        {
+          "chars": 1739,
+          "key": "src/capicove/retrieval/_adapters/sqlite_image_generations.py@18546-20285",
+          "labels": []
+        },
+        {
+          "chars": 896,
+          "key": "src/capicove/processing/_adapters/sqlite.py@14612-15508",
+          "labels": []
+        },
+        {
+          "chars": 1652,
+          "key": "src/capicove/contracts/data.py@3197-4849",
+          "labels": []
+        }
+      ],
+      "status": "succeeded"
+    }
+  ],
+  "results_sha256": "890257e642fc0f25e4ed461f9fff9dafac663148f74702a7765d3cd1299111a0",
+  "schema": "capicove.retrieval-eval-run.v1",
+  "stack": "code",
+  "timing": {
+    "build_ms": 17179.450441,
+    "query_ms": {
+      "h-en-01": 3238.538401,
+      "h-en-02": 7081.931249,
+      "h-en-03": 6278.742851,
+      "h-en-04": 9301.10033,
+      "h-en-05": 9512.623348,
+      "h-en-06": 7284.184117,
+      "h-id-01": 12099.106358,
+      "h-id-02": 11831.70199,
+      "h-id-03": 11782.204697,
+      "h-id-04": 12038.698378,
+      "h-id-05": 11062.997065,
+      "h-id-06": 11227.765709,
+      "h-none-01": 11144.114125,
+      "h-none-02": 12343.027051,
+      "h-none-03": 11322.930091,
+      "h-path-01": 10684.233205,
+      "h-path-02": 9773.948387,
+      "h-path-03": 3932.762654,
+      "h-qual-01": 2244.409587,
+      "h-qual-02": 5697.74818,
+      "h-qual-03": 10974.783186,
+      "h-split-01": 5487.188235,
+      "h-split-02": 11091.000922,
+      "h-split-03": 5896.480322,
+      "h-zh-01": 488.871344,
+      "h-zh-02": 460.598905,
+      "h-zh-03": 5256.437424,
+      "h-zh-04": 501.868368,
+      "h-zh-05": 476.110082
+    },
+    "search_ms": {
+      "h-en-01": 457.637629,
+      "h-en-02": 516.315229,
+      "h-en-03": 554.458653,
+      "h-en-04": 492.285989,
+      "h-en-05": 473.458169,
+      "h-en-06": 437.653965,
+      "h-id-01": 565.718972,
+      "h-id-02": 414.116119,
+      "h-id-03": 462.759425,
+      "h-id-04": 506.200686,
+      "h-id-05": 494.025153,
+      "h-id-06": 444.34804,
+      "h-none-01": 506.937976,
+      "h-none-02": 523.832059,
+      "h-none-03": 473.87824,
+      "h-path-01": 475.777527,
+      "h-path-02": 445.410477,
+      "h-path-03": 443.824399,
+      "h-qual-01": 455.918199,
+      "h-qual-02": 405.522202,
+      "h-qual-03": 563.056476,
+      "h-split-01": 499.821278,
+      "h-split-02": 444.135899,
+      "h-split-03": 460.869267,
+      "h-zh-01": 488.785519,
+      "h-zh-02": 460.52715,
+      "h-zh-03": 480.740401,
+      "h-zh-04": 501.78043,
+      "h-zh-05": 476.014911
+    },
+    "search_stats": {
+      "count": 29,
+      "max_ms": 565.718972,
+      "mean_ms": 480.2003599655173,
+      "p50_ms": 475.777527,
+      "p95_ms": 563.056476
+    },
+    "stats": {
+      "count": 29,
+      "max_ms": 12343.027051,
+      "mean_ms": 7604.003674517241,
+      "p50_ms": 9301.10033,
+      "p95_ms": 12099.106358
+    }
+  }
+}

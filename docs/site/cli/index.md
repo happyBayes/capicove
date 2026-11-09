@@ -35,12 +35,15 @@ capicove retrieval --help
 capicove code --help
 capicove book --help
 capicove memory --help
+capicove eval --help
 ```
 
 The [native knowledge guide](../guides/native-knowledge.md) covers unified import,
 update, graph construction and evidence-backed questions through `capicove kb`.
 The [Skill evolution guide](../guides/skill-evolution.md) covers local versioning,
 evaluation and promotion through `capicove evolution` on POSIX platforms.
+The experimental [evaluation reference](eval.md) covers `capicove eval run|score|compare`
+for offline, deterministic retrieval baselines (RFC-0034, Proposed).
 The [native audio guide](../guides/native-audio-search.md) covers `capicove retrieval`
 (shared-space audio, image, video and note search), and the
 [code search guide](../guides/code-search.md) covers `capicove code`.
