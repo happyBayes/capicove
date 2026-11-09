@@ -146,7 +146,7 @@ image-ray = [
   "ray>=2.40,<3",
 ]
 video-av = [
-  "av>=14,<18",
+  "av>=14,<19",
 ]
 video-scene = [
   "opencv-python-headless>=4.8,<5",
@@ -156,12 +156,12 @@ video-dedup = [
   "xxhash>=3.5,<5",
 ]
 video = [
-  "av>=14,<18",
+  "av>=14,<19",
   "opencv-python-headless>=4.8,<5",
   "scenedetect-headless>=0.7.1,<0.8",
 ]
 video-filter = [
-  "av>=14,<18",
+  "av>=14,<19",
   "numpy>=1.26,<3",
   "opencv-python-headless>=4.8,<5",
 ]
@@ -180,7 +180,7 @@ video-filter-tags = [
   "torch>=2.2,<3",
 ]
 video-all = [
-  "av>=14,<18",
+  "av>=14,<19",
   "easyocr>=1.7,<2",
   "numpy>=1.26,<3",
   "opencv-python-headless>=4.8,<5",
